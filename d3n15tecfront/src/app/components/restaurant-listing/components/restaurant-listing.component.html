@@ -1,0 +1,38 @@
+
+<main class="main-content my-gap" >
+
+  <div class="restaurant-grid">
+    <div class="restaurant-card" *ngFor="let restaurant of restaurantList | paginate : {
+          itemsPerPage: pageSize,
+          currentPage: page,
+          totalItems: count
+        };
+        let i = index">
+
+      <div class="restaurant-image">
+        <img [src]="'assets/restaurant-pics/' + getRandomImage()" alt="Restaurant 1">
+      </div>
+      <div class="restaurant-details">
+        <h3 class="restaurant-name">{{restaurant.name}}</h3>
+        <div class="restaurant-rating">
+          <span class="rating"><i class="fa fa-star"></i>4.5</span>
+          <span class="rating-count">(500+)</span>
+        </div>
+        <button class="btn color color-borda" (click)="onButtonClick(restaurant.id)">Visualizar</button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="col-md-12">
+    <pagination-controls
+      previousLabel=""
+      nextLabel=""
+      [responsive]="true"
+      (pageChange)="handlePageChange($event)"
+    ></pagination-controls>
+  </div>
+</main>
+    
+    

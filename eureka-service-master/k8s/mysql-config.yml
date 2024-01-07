@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-configmap
+data:
+  database_url: jdbc:mysql://mysql-service:3306/vaccinationcenterdb
+  mysql-server: mysql-service    # The name of mysql service
+  mysql-database-name: vaccinationcenterdb     # The name of the database used by the demo app
+  mysql-user-username: root
+  citizen_database_url: jdbc:mysql://mysql-service:3306/citizendb
+  mysql_citizen_db: citizendb
+  restaurantdb_url: jdbc:mysql://mysql-service:3306/restaurantdb
+  foodcataloguedb_url: jdbc:mysql://mysql-service:3306/foodcataloguedb
+  restaurantdb: restaurantdb
+  foodcataloguedb: foodcataloguedb

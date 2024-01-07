@@ -1,0 +1,51 @@
+.sub-footer {
+    background-color: #ffffff;
+}
+
+.sub-footer .payment-card-bottom {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.sub-footer .payment-card-bottom li {
+    padding-left: 7px;
+    padding-right: 7px;
+    display: inline-block;
+}
+
+footer {
+    font-family: 'Titillium Web', sans-serif;
+    position: relative;
+    height: 55px !important;
+    padding: 10px 0px 0px 0px;
+    box-shadow: 2px 2px 15px #bebebe;
+}
+
+.footer-end{
+    height: 0px;
+}
+
+@media screen and (max-width: 450px){
+    .footer-end{
+        height: 40px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .payment-card-bottom{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .sub-footer .payment-card-bottom li {
+        padding-left: 7px;
+        padding-right: 7px;
+        display: inline-block;
+        margin: 0% 0% 2% -3%;
+    }
+
+}

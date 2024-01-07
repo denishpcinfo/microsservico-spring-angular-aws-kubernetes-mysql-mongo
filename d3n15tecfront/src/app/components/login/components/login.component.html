@@ -1,0 +1,44 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 ">
+            <br><br><br><br><br><br>
+            <div class="card shadon-lg border-0 rounded-lg mt-5">    
+                <div class="card-body ">
+                    <form #f="ngForm" (ngSubmit)="f.form.valid && authenticate()">
+                        <div class="form-group text-centralizado">
+                            <h2 class="font-padrao "> d3n15 Tec</h2>
+                        </div>
+                        <div class="form-group margin-top">
+                            <label class="tamanho-fonte" for="username">E-mail:</label>
+                            <input type="email" name="username" #username="ngModel"
+                                [(ngModel)]="authRequest.email" id="username"
+                                class="form-control py-4 color-borda" required autofocus placeholder="nome@exemplo.com"/>
+                                <div class="alert-danger color-alert" *ngIf="!username.valid && f.submitted">
+                                  Nome de usuário é obrigatório.
+                                </div>
+                        </div>
+                        <div class="form-group" style="margin: 0% 0% 11% 0%;">
+                            <label class="tamanho-fonte">Senha:</label>
+                            <input type="password" name="password" #password="ngModel"
+                                [(ngModel)]="authRequest.password"
+                                class="form-control py-4 color-borda" id="password" required/>
+                                <div class="alert-danger color-alert" *ngIf="!password.valid && f.submitted">
+                                  Senha é obrigatório.
+                                </div>
+                        </div>
+                        <div class="form-group align-items-center justify-content-between mt-4 mb-0 text-centralizado margin-botao">
+                            <button type="submit" class="btn color">
+                                Acessar
+                            </button>
+                            <button style="margin-left: 10px;" type="button" class="btn color color-borda" [routerLink]="['/register']">
+                                Criar conta
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

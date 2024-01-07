@@ -1,0 +1,77 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+
+.color {
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #000000;
+  color: white;
+  text-align: center;
+}
+
+.border-color{
+  border: 2px solid black;
+}
+
+.color-borda {
+  font-family: 'Titillium Web', sans-serif;
+  border:2px solid #000000 !important;
+  cursor: pointer;
+}
+
+.tamanho-fonte{
+  font-family: 'Titillium Web', sans-serif;
+  font-size:22px;
+  color: black;
+  margin: 0% 0% 2% 0%;
+}
+
+.font-padrao{
+  font-family: 'Titillium Web', sans-serif;
+  font-size:46px;
+}
+
+.text-centralizado{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0% 0% 15% 0%;
+  width: 100%;
+}
+
+.h2 {
+  font-size: 4rem;
+}
+
+.margin-top{
+  margin: 0% 0% 8% 0%;
+}
+
+.margin-botao{
+  margin: 0% 0% 0% 0%;
+}
+
+.color-alert{
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #000000;
+  color: white;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  font-size: 31px;
+}
+
+.qr-code {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.qr-code img {
+  max-width: 100%;
+  border: solid 1px;
+}
+
