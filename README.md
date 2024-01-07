@@ -1,4 +1,4 @@
-# Projeto de Microsserviço Kubernetes, Docker, Spring 3.1.6 e 2.7.12, Maven, Angular 16, My SQL e Mongo, hospedado na AWS com Jenkins pipeline e Deploy Argo e Github.
+# Projeto de Microsserviço Kubernetes, Docker, Spring 3.1.6 e 2.7.12, Maven, Angular 16, My SQL e Mongo, hospedado na AWS, Jenkins pipeline, Deploy Argo e Github.
 
 
 
