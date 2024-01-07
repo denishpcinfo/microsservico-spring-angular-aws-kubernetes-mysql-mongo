@@ -7,3 +7,14 @@
 
 
 
+Pipeline
+
+
+
+![CI CD Flow2](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/fc9d43b0-950c-4ddb-b112-0d5549aace56)
+
+
+
+
+
+Obs: Em desenvolvimento!
