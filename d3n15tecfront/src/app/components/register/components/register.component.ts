@@ -19,8 +19,7 @@ export class RegisterComponent {
   constructor(
     private authService: AuthenticationService,
     private router: Router
-  ) {
-  }
+  ) {}
 
   registerUser() {
     this.message = '';
@@ -30,7 +29,6 @@ export class RegisterComponent {
           if (response) {
             this.authResponse = response;
           } else {
-            // inform the user
             this.message = 'Conta criada com sucesso\nVocê será redirecionado para a página de login em 3 segundos';
             setTimeout(() => {
               this.router.navigate(['login']);
@@ -38,6 +36,5 @@ export class RegisterComponent {
           }
         }
       });
-
   }
 }

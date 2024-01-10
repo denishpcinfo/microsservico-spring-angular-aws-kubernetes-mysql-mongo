@@ -11,20 +11,14 @@ export class AuthenticationService {
 
   private baseUrl = 'http://localhost:9093/api/autenticacao'
 
-  constructor( private http: HttpClient
-    ) { }
+  constructor( private http: HttpClient ) { }
 
-  register(
-    registerRequest: RegisterRequest
-  ) {
-    return this.http.post<AuthenticationResponse>
-    (`${this.baseUrl}/registrar`, registerRequest);
+  register(registerRequest: RegisterRequest) {
+    return this.http.post<AuthenticationResponse>(`${this.baseUrl}/registrar`, registerRequest);
   }
 
-  login(
-    authRequest: AuthenticationRequest
-  ) {
-    return this.http.post<AuthenticationResponse>
-    (`${this.baseUrl}/sig-in`, authRequest);
+  login(authRequest: AuthenticationRequest) {
+    return this.http.post<AuthenticationResponse>(`${this.baseUrl}/sig-in`, authRequest);
   }
+
 }

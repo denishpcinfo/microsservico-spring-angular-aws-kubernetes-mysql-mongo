@@ -79,10 +79,15 @@
 			<version>2.2.9</version>
 		</dependency>
 		<dependency>
-			<groupId>dev.samstevens.totp</groupId>
-			<artifactId>totp</artifactId>
-			<version>1.7.1</version>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>1.5.5.Final</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

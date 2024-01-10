@@ -26,8 +26,14 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           this.authResponse = response;
-            localStorage.setItem('token', response.accessToken as string);
-            this.router.navigate(['home']);
+
+          console.log("this.authResponse.user");
+          console.log(this.authResponse.user);
+
+          localStorage.setItem('user', JSON.stringify(response.user));
+          localStorage.setItem('token', response.accessToken as string);
+
+          this.router.navigate(['home']);
         }
       }
       );

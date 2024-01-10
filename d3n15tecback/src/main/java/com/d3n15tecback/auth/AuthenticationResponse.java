@@ -1,5 +1,6 @@
 package com.d3n15tecback.auth;
 
+import com.d3n15tecback.user.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,4 +16,5 @@ public class AuthenticationResponse {
 
   private String accessToken;
   private String refreshToken;
+  private User user;
 }
