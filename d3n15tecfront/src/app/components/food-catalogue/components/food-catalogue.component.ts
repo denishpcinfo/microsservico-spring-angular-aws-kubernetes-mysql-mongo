@@ -17,8 +17,9 @@ export class FoodCatalogueComponent {
   orderSummary: FoodCataloguePage;
 
 
-  constructor(private route: ActivatedRoute, private foodItemService: FoodItemService, private router: Router) {
-  }
+  constructor(private route: ActivatedRoute, 
+              private foodItemService: FoodItemService, 
+              private router: Router) { }
 
   ngOnInit() {
 

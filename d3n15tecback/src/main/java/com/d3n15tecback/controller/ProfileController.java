@@ -19,12 +19,12 @@ public class ProfileController {
 
     private final UserRepository userRepository;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getByUser(@PathVariable long id) {
-        Optional<User> user = userRepository.findById(id);
-        if (user.isPresent()) {
-            return new ResponseEntity<>(user.get(), HttpStatus.OK);
-        }
+    @GetMapping()
+    public ResponseEntity<User> getByUser() {
+//        Optional<User> user = userRepository.findByAll();
+//        if (user.isPresent()) {
+//            return new ResponseEntity<>(user.get(), HttpStatus.OK);
+//        }
 //        else {
 //            throw new RecordNotFoundException();
 //        }

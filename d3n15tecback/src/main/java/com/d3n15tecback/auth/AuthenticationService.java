@@ -1,6 +1,8 @@
 package com.d3n15tecback.auth;
 
 import com.d3n15tecback.config.JwtService;
+import com.d3n15tecback.dto.UserDTO;
+import com.d3n15tecback.mapper.UserMapper;
 import com.d3n15tecback.user.Role;
 import com.d3n15tecback.user.User;
 import com.d3n15tecback.user.UserRepository;
@@ -8,6 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,6 +27,8 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
+    private UserDTO userDTO;
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
@@ -55,6 +61,7 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
+                .user(UserMapper.INSTANCE.mapUserDTOToUser(userDTO))
                 .build();
     }
 
