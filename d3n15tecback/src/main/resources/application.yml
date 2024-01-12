@@ -12,13 +12,13 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/userdb?useTimezone=true&serverTimezone=UTC
     username: root
-    password: xxx
+    password: eusou100
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-d   atabase-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
 application:
   security:

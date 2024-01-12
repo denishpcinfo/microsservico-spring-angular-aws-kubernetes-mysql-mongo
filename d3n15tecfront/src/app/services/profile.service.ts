@@ -12,11 +12,10 @@ export class ProfileService {
 
   constructor( private http: HttpClient ) { }
 
-  getProfile(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}`)
-      .pipe(
-        catchError(this.handleError)
-      );
+  public getProfileId(item: String) {
+    return this.http.get(this.apiUrl + `/${item}`).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: any) {
