@@ -27,11 +27,7 @@ export class LoginComponent {
         next: (response) => {
           this.authResponse = response;
 
-          console.log("this.authResponse.user");
-          console.log(this.authResponse.user);
 
-          localStorage.setItem('user', JSON.stringify(response.user));
-          localStorage.setItem('token', response.accessToken as string);
 
           this.router.navigate(['home']);
         }

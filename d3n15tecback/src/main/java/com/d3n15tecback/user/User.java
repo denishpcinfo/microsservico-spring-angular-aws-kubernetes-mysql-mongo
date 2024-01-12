@@ -1,11 +1,7 @@
 package com.d3n15tecback.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,13 +20,16 @@ import java.util.Collection;
 public class User implements UserDetails {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(unique=true, nullable=false)
   private Integer id;
 
   private String firstname;
 
   private String lastname;
 
+  @Email
+  @Column(unique = true, nullable = false)
   private String email;
 
   private String password;
