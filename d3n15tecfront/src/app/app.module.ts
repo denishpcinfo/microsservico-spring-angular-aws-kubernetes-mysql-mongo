@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header/header.module';
 import { RestaurantListingModule } from './components/restaurant-listing/restaurant-listing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FoodCatalogueModule } from './components/food-catalogue/food-catalogue.module';
 import { OrderSummaryModule } from './components/order-summary/order-summary.module';
 import { LoginComponent } from './components/login/components/login.component';
@@ -18,6 +18,7 @@ import { BodyModule } from './components/body/body.module';
 import { FooterModule } from './components/footer/footer.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProfileComponent } from './components/profile/components/profile.component';
+import { AuthTokenInterceptor } from './auth-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,14 @@ import { ProfileComponent } from './components/profile/components/profile.compon
     FooterModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [
+    AuthTokenInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

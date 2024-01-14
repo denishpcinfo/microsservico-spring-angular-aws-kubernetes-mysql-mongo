@@ -18,7 +18,7 @@ export class AuthenticationService {
   }
 
   login(authRequest: AuthenticationRequest) {
-    return this.http.post<AuthenticationResponse>(`${this.baseUrl}/sig-in`, authRequest);
+    return this.http.post<AuthenticationResponse>(`${this.baseUrl}/login`, authRequest);
   }
 
 }

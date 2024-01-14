@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { User } from 'src/app/shared/models/User';
+import { User } from 'src/app/shared/models/user.model';
+
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +16,9 @@ export class ProfileComponent {
   public user: User;
 
   constructor( private  authTokenService: AuthTokenService,
-               private profileService: ProfileService) {
+               private profileService: ProfileService,
+              //  private toastr: ToastrService
+               ) {
 
     if(authTokenService.getToken != null){
       this.item = authTokenService.decodePayloadJWT();
@@ -25,16 +29,27 @@ export class ProfileComponent {
   ngOnInit() {
     this.getProfile();
 
-    console.log("this.user");
-    console.log(this.user);
-
   }
   
   getProfile() {
-    this.profileService.getProfileId(this.item.sub).subscribe(
-      data => {
-        this.user = data;
+    this.user = new User();
+    this.profileService.getProfileId(this.item.sub)
+    .subscribe(
+      res => {
+
+        this.user  = res;
+
+        // this.toastr.success("ok", "Sucesso!");
+
+      },
+      erro => {
+        // if (erro.error)
+        //   this.toastr.error(erro.error.titulo, `Erro ${erro.error.status}!`);
+        // else this.toastr.error("Erro", "Erro!");
       }
-    )
+    
+    );
+
+
   }
 }

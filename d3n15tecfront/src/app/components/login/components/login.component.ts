@@ -27,11 +27,14 @@ export class LoginComponent {
         next: (response) => {
           this.authResponse = response;
 
+          if (this.authResponse) {
+            localStorage.setItem('token', this.authResponse.accessToken);
+            this.router.navigate(['home']);
+          }else{
 
-
-          this.router.navigate(['home']);
+          }
         }
-      }
-      );
+      });
   }
+
 }
