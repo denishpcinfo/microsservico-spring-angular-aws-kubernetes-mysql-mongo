@@ -19,6 +19,8 @@ import { FooterModule } from './components/footer/footer.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProfileComponent } from './components/profile/components/profile.component';
 import { AuthTokenInterceptor } from './auth-token.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,13 @@ import { AuthTokenInterceptor } from './auth-token.interceptor';
     TamplateModule,
     BodyModule,
     FooterModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      progressBar: false,
+      enableHtml: true,
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     AuthTokenInterceptor,

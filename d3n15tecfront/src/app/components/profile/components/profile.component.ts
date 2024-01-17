@@ -16,8 +16,7 @@ export class ProfileComponent {
   public user: User;
 
   constructor( private  authTokenService: AuthTokenService,
-               private profileService: ProfileService,
-              //  private toastr: ToastrService
+               private profileService: ProfileService
                ) {
 
     if(authTokenService.getToken != null){
@@ -34,22 +33,5 @@ export class ProfileComponent {
   getProfile() {
     this.user = new User();
     this.profileService.getProfileId(this.item.sub)
-    .subscribe(
-      res => {
-
-        this.user  = res;
-
-        // this.toastr.success("ok", "Sucesso!");
-
-      },
-      erro => {
-        // if (erro.error)
-        //   this.toastr.error(erro.error.titulo, `Erro ${erro.error.status}!`);
-        // else this.toastr.error("Erro", "Erro!");
-      }
-    
-    );
-
-
   }
 }

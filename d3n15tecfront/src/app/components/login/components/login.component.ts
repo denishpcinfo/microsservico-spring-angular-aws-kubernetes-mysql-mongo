@@ -22,19 +22,7 @@ export class LoginComponent {
   }
 
   authenticate() {
-    this.authService.login(this.authRequest)
-      .subscribe({
-        next: (response) => {
-          this.authResponse = response;
-
-          if (this.authResponse) {
-            localStorage.setItem('token', this.authResponse.accessToken);
-            this.router.navigate(['home']);
-          }else{
-
-          }
-        }
-      });
+    this.authService.login(this.authRequest);
   }
 
 }

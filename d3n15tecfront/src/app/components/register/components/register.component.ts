@@ -13,8 +13,6 @@ export class RegisterComponent {
 
   registerRequest: RegisterRequest = {};
   authResponse: AuthenticationResponse = {};
-  message = '';
-  otpCode = '';
 
   constructor(
     private authService: AuthenticationService,
@@ -22,19 +20,6 @@ export class RegisterComponent {
   ) {}
 
   registerUser() {
-    this.message = '';
-    this.authService.register(this.registerRequest)
-      .subscribe({
-        next: (response) => {
-          if (response) {
-            this.authResponse = response;
-          } else {
-            this.message = 'Conta criada com sucesso\nVocê será redirecionado para a página de login em 3 segundos';
-            setTimeout(() => {
-              this.router.navigate(['login']);
-            }, 3000)
-          }
-        }
-      });
+    this.authService.register(this.registerRequest);
   }
 }

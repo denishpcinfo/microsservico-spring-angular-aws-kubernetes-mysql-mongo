@@ -1,5 +1,6 @@
 package com.d3n15tecback.auth;
 
+import com.d3n15tecback.service.exception.AcaoNaoPermitidaException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class AuthenticationController {
     private final AuthenticationService service;
 
     @PostMapping("/registrar")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) throws AcaoNaoPermitidaException {
         service.register(request);
         return ResponseEntity.accepted().build();
     }
