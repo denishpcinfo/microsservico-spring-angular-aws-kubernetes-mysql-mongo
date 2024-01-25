@@ -18,4 +18,4 @@ Pipeline
 
 
 Obs: Em desenvolvimento!
-Finalizando refresh token, Microsserviço Usuário  
+Ajustes no Microsserviço Usuário  
