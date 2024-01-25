@@ -72,9 +72,6 @@ export class FoodCatalogueComponent {
       foodItemsList: [],
       restaurant: null
     }
-    console.log("food catalogue this.foodItemCart");
-    console.log(this.foodItemCart);
-
     this.orderSummary.foodItemsList = this.foodItemCart;
     this.orderSummary.restaurant = this.foodItemResponse.restaurant;
     this.router.navigate(['/pedidos'], { queryParams: { data: JSON.stringify(this.orderSummary) } });

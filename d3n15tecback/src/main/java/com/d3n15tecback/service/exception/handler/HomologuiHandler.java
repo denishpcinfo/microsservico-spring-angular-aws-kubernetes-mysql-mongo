@@ -15,7 +15,6 @@ public class HomologuiHandler {
     public ResponseEntity<DetalhesErro> handlerAcaoNaoPermitidaException(AcaoNaoPermitidaException e, HttpServletRequest request){
 
         DetalhesErro erro = new DetalhesErro();
-        erro.setStatus(400);
         erro.setTitulo(e.getMessage());
         erro.setMensagemDesenvolvedor("");
         erro.setTimestamp(System.currentTimeMillis());

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { RegisterRequest } from 'src/app/shared/models/RegisterRequest';
 import { AuthenticationResponse } from 'src/app/shared/models/AuthenticationResponse';
 import { AuthenticationRequest } from 'src/app/shared/models/AuthenticationRequest';
@@ -14,6 +14,7 @@ export class AuthenticationService {
   authRequest: AuthenticationRequest = {};
   authResponse: AuthenticationResponse = {};
 
+  
   private baseUrl = 'http://localhost:9093/api/autenticacao'
 
   constructor( private http: HttpClient,
@@ -46,18 +47,27 @@ export class AuthenticationService {
         this.authResponse = data;
         if (this.authResponse) {
           localStorage.setItem('token', this.authResponse.accessToken);
+          localStorage.setItem('refreshToken', this.authResponse.refreshToken);
            this.toastr.success('Login realizado com sucesso!');
           this.router.navigateByUrl('/home', {skipLocationChange: true});
         }
       },
       error: (erro) => {
-        if (erro.error)
+      if (erro.error)
         this.toastr.error(erro.error.titulo, `Erro ${erro.error.status}!`);
       else
-        this.toastr.error("Ocorreu um erro no servidor!", "Erro!");
+        this.toastr.error("Usuário ou senha inválidos!");
       }
-    }
-    )
+    })
+  }
+
+
+  refreshToken() {
+  const refreshToken = 'Bearer ' + localStorage.getItem('refreshToken');
+  const httpOptions = {
+    headers: new HttpHeaders({ 'RefreshToken': refreshToken,
+                              'Authorization': refreshToken })};
+    return this.http.post<AuthenticationResponse>(`${this.baseUrl}/refresh-token`, {}, httpOptions)
   }
 
 }

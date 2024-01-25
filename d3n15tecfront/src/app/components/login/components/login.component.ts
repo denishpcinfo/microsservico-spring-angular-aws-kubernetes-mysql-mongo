@@ -16,10 +16,8 @@ export class LoginComponent {
   errorMessage: string = "";
   
   constructor(
-    private authService: AuthenticationService,
-    private router: Router
-  ) {
-  }
+    private authService: AuthenticationService
+  ) { }
 
   authenticate() {
     this.authService.login(this.authRequest);

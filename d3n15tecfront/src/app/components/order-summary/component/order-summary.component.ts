@@ -20,9 +20,6 @@ export class OrderSummaryComponent {
   ngOnInit() {
     const data = this.route.snapshot.queryParams['data'];
 
-    console.log("data order");
-    console.log(data);
-
     this.obj = JSON.parse(data);
     this.obj.userId=1;
     this.orderSummary = this.obj;

@@ -21,7 +21,6 @@ export class RestaurantService {
   }
 
   private handleError(error: any) {
-    console.error('An error occurred:', error);
     return throwError(error.message || error);
   }
 

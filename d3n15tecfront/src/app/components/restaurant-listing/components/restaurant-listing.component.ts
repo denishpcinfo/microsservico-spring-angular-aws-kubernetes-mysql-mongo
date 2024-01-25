@@ -70,12 +70,6 @@ export class RestaurantListingComponent {
           const { restaurantList, totalItems } = data;
           this.restaurantList = restaurantList;
           this.count = totalItems;
-
-          console.log(data);
-
-          console.log(this.restaurantList);
-
-          console.log(totalItems);
         }
       });
   }

@@ -41,8 +41,10 @@ public class AuthenticationService {
 
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
+        var refreshToken = jwtService.generateRefreshToken(user);
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
+                .refreshToken(refreshToken)
                 .build();
     }
 
@@ -53,12 +55,40 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-
-        var user = repository.findByEmail(request.getEmail()).orElseThrow();
+        var user = repository.findByEmail(request.getEmail())
+                .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
+        var refreshToken = jwtService.generateRefreshToken(user);
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
+                .refreshToken(refreshToken)
                 .build();
+    }
+
+    public void refreshToken(
+            HttpServletRequest requisicao,
+            HttpServletResponse response
+    ) throws IOException {
+        final String authHeaderRefresh = requisicao.getHeader("refreshtoken");
+        final String refreshToken;
+        final String userEmail;
+        if (authHeaderRefresh == null || !authHeaderRefresh.startsWith("Bearer ")) {
+            return;
+        }
+        refreshToken = authHeaderRefresh.substring(7);
+        userEmail = jwtService.extractUsername(refreshToken);
+        if (userEmail != null) {
+            var user = this.repository.findByEmail(userEmail)
+                    .orElseThrow();
+            if (jwtService.isTokenValid(refreshToken, user)) {
+                var accessToken = jwtService.generateToken(user);
+                var authResponse = AuthenticationResponse.builder()
+                        .accessToken(accessToken)
+                        .refreshToken(refreshToken)
+                        .build();
+                new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
+            }
+        }
     }
 
 }

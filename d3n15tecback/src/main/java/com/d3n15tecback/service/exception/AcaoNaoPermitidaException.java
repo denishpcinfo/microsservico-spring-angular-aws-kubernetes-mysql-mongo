@@ -7,8 +7,4 @@ public class AcaoNaoPermitidaException extends Throwable {
     public AcaoNaoPermitidaException(String mensagem) {
         super(mensagem);
     }
-
-    public AcaoNaoPermitidaException(String mensagem, Throwable causa) {
-        super(mensagem, causa);
-    }
 }

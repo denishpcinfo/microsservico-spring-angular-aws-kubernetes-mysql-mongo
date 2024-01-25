@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { jwtDecode } from "jwt-decode";
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthTokenService {
 
-  constructor() { }
+  constructor( private router: Router,
+               private authenticationService: AuthenticationService ) { }
 
   public getToken(): string {
-    return localStorage.getItem('token');
+    try {
+      return localStorage.getItem('token');
+    } catch (Error) {
+      this.router.navigate(["/login"]);
+      return null;
+    }
   }
 
   public decodePayloadJWT(): any {
