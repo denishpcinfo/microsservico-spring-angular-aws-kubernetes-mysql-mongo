@@ -26,4 +26,4 @@ application:
       secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
       expiration: 180000 # 3 minutos
       refresh-token:
-        expiration: 604800000 # 7 days
+        expiration: 360000 # 6 min ---604800000 7 days

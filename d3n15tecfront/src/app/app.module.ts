@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,8 @@ import { ProfileComponent } from './components/profile/components/profile.compon
 import { AuthTokenInterceptor } from './auth-token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CpfPipe } from './shared/pipes/cpf.pipe';
+import { TelefonePipe } from './shared/pipes/telefone.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     RegisterComponent,
     WelcomeComponent,
     LayoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    CpfPipe,
+    TelefonePipe
   ],
   imports: [
     BrowserModule,

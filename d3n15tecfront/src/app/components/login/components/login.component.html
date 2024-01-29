@@ -6,7 +6,7 @@
             <div class="card shadon-lg border-0 rounded-lg mt-5">    
                 <div class="card-body ">
                     <form #f="ngForm" (ngSubmit)="f.form.valid && authenticate()">
-                        <div class="form-group text-centralizado">
+                        <div class="form-group text-centralizado-logo">
                             <h2 class="font-padrao "> d3n15 Tec</h2>
                         </div>
                         <div class="form-group margin-top">
@@ -18,7 +18,7 @@
                                   Nome de usuário é obrigatório.
                                 </div>
                         </div>
-                        <div class="form-group" style="margin: 0% 0% 11% 0%;">
+                        <div class="form-group margin-form-group">
                             <label class="tamanho-fonte">Senha:</label>
                             <input type="password" name="password" #password="ngModel"
                                 [(ngModel)]="authRequest.password"
@@ -31,7 +31,7 @@
                             <button type="submit" class="btn color">
                                 Acessar
                             </button>
-                            <button style="margin-left: 10px;" type="button" class="btn color color-borda" [routerLink]="['/register']">
+                            <button style="margin-left: 10px;" type="button" class="btn color color-borda" [routerLink]="['/registrar']">
                                 Criar conta
                             </button>
                         </div>

@@ -3,6 +3,24 @@
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
 
+.margin-senha-left{
+  margin: 0% 0% 11% 0%;
+  padding: 0px 15px 0px 0px;
+}
+
+.margin-senha-right{
+  margin: 0% 0% 11% 0%;
+  padding: 0px 0px 0px 15px;
+}
+
+.margin-input{
+  margin: 0% 0% 11% 0%;
+}
+
+.margin-group-double{
+  display: flex;
+}
+
 .color {
   font-family: 'Titillium Web', sans-serif;
   background-color: #000000;
@@ -10,8 +28,9 @@
   text-align: center;
 }
 
-.border-color{
+.border-color {
   border: 2px solid black;
+  margin-left: 10px;
 }
 
 .color-borda {
@@ -65,13 +84,73 @@ input[type="password"] {
   font-size: 31px;
 }
 
-.qr-code {
-  text-align: center;
-  margin-bottom: 15px;
+.input-data{
+  height: 98px !important;
+  font-size: 31px;
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  padding: 0px 40px 0px 40px;
 }
 
-.qr-code img {
-  max-width: 100%;
-  border: solid 1px;
+.margin-input-data{
+  padding: 0px 0px 0px 15px;
 }
 
+.margin-input-cpf{
+  padding: 0px 15px 0px 0px;
+}
+
+@media only screen and (min-width : 200px) and (max-width : 992px) {
+
+  .form-padding{
+    margin: 0% 10% 9% 10%;
+  }
+
+  .margin-group-double{
+    display: block;
+  }
+
+  .margin-senha-left{
+    margin: 0% 0% 11% 0%;
+    padding: 0px 0px 0px 0px;
+  }
+  
+  .margin-senha-right{
+    margin: 0% 0% 11% 0%;
+    padding: 0px 0px 0px 0px;
+  
+  }
+
+  .margin-senha-group{
+    display: block;
+  }
+
+  .margin-data{
+    padding: 0px 0px 0px 0px;
+  }
+  
+  .margin-input-data{
+    padding: 8% 0px 0px 0px;
+  }
+
+  .margin-input-cpf {
+    padding: 0px 0px 0px 0px;
+  }
+}
+
+@media only screen and (min-width : 993px) and (max-width : 1400px) {
+
+  .col-lg-5{
+    width: 80%;
+  }
+
+}
+
+@media only screen and (min-width : 1400px){
+
+  .col-lg-5{
+    width: 60%;
+  }
+
+}

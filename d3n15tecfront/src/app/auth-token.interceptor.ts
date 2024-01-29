@@ -3,7 +3,6 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { Observable, catchError, switchMap, tap, throwError } from 'rxjs';
 import { AuthenticationRequest } from './shared/models/AuthenticationRequest';
 import { AuthenticationService } from './services/auth/authentication.service';
-import { AuthTokenService } from './services/auth/auth-token.service';
 import { AuthenticationResponse } from './shared/models/AuthenticationResponse';
 import { Router } from '@angular/router';
 
@@ -12,7 +11,8 @@ export class AuthTokenInterceptor implements HttpInterceptor {
 
   authRequest: AuthenticationRequest = {};
   authResponse: AuthenticationResponse = {};
-
+  booleanErroRefresh = false;
+  
   constructor( private authenticationService: AuthenticationService,
                private router: Router ) {}
 
@@ -26,9 +26,12 @@ export class AuthTokenInterceptor implements HttpInterceptor {
       const tokenRequest = req.clone({
         headers: req.headers.set('Authorization', token)
       });
+
+      console.log(tokenRequest)
       return next.handle(tokenRequest).pipe(
         catchError((error) => {
-          if (error.status === 403) {
+          if (error.status === 403 && this.booleanErroRefresh === false) {
+            this. booleanErroRefresh = true;
             return this.authenticationService.refreshToken().pipe(
               switchMap((respost) => {
                 this.authResponse = respost;
@@ -40,33 +43,27 @@ export class AuthTokenInterceptor implements HttpInterceptor {
                 const tokenRequest2 = req.clone({
                   headers: req.headers.set('Authorization', token)
                 });
-
                 return next.handle(tokenRequest2);
-              }),
-              catchError((error) => {
-                localStorage.clear();
-                this.router.navigate(["/login"]);
-                return throwError(() => error);
               })
             );
+          }else{
+            localStorage.clear();
+            this.router.navigate(["/login"]);
           }
-          return throwError(() => error);
+          return throwError(() => this.processaError(error));
         })
     );
     } 
-    return next.handle(req).pipe(catchError(this.processaError));
+    return next.handle(req).pipe();
   }
 
   processaError(error: HttpErrorResponse) {
-    let errorMessage = 'Erro desconhecido';
-    if (error.error instanceof ErrorEvent) {
+    let errorMessage;
+    error.error instanceof ErrorEvent
+    if (error.error) {
       errorMessage = 'Error: ' + error.error.error;
-    } if(error.status === 500 ) {
-      errorMessage = "Você esta Offline!";
-      
-    } else {
       errorMessage = 'Código: ' + error.error.code + '\nMensagem: ' + error.error.error;
-    }
+    } 
     return throwError(errorMessage); 
   }
 

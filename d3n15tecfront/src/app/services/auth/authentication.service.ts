@@ -32,10 +32,7 @@ export class AuthenticationService {
         }
       },
       error: (erro) => {
-        if (erro.error)
         this.toastr.error(erro.error.titulo, `Erro ${erro.error.status}!`);
-      else
-        this.toastr.error("Ocorreu um erro no servidor!", "Erro!");
       }
     });
   }
@@ -52,11 +49,8 @@ export class AuthenticationService {
           this.router.navigateByUrl('/home', {skipLocationChange: true});
         }
       },
-      error: (erro) => {
-      if (erro.error)
-        this.toastr.error(erro.error.titulo, `Erro ${erro.error.status}!`);
-      else
-        this.toastr.error("Usuário ou senha inválidos!");
+      error: () => {
+        this.toastr.error('Usuário ou senha inválidos!');
       }
     })
   }

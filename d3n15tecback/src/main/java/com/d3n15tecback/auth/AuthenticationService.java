@@ -1,15 +1,16 @@
 package com.d3n15tecback.auth;
 
 import com.d3n15tecback.config.JwtService;
+import com.d3n15tecback.helper.UsuarioHelper;
+import com.d3n15tecback.repository.UserRepository;
 import com.d3n15tecback.service.exception.AcaoNaoPermitidaException;
+import com.d3n15tecback.service.exception.DadoNaoInformadoException;
 import com.d3n15tecback.user.Role;
 import com.d3n15tecback.user.User;
-import com.d3n15tecback.user.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,29 +33,43 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .dataNascimento(request.getDataNascimento())
+                .cpf(request.getCpf())
+                .telefoneCelular(request.getTelefoneCelular())
                 .role(Role.USER)
                 .build();
 
         if(repository.findByEmail(user.getEmail()).isPresent()){
-            throw new AcaoNaoPermitidaException("Email já cadastrado");
+            throw new DadoNaoInformadoException("Email já cadastrado!");
         }
 
-        repository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefreshToken(user);
-        return AuthenticationResponse.builder()
-                .accessToken(jwtToken)
-                .refreshToken(refreshToken)
-                .build();
+        user.setCpf(user.getCpf().trim().replace(".", "").replace("-", ""));
+
+        if(repository.findByCpf(user.getCpf()).isPresent()){
+            throw new DadoNaoInformadoException("CPF já cadastrado!");
+        }
+
+        user.setTelefoneCelular(user.getTelefoneCelular().trim().replace("+", "").replace("-", "").replace("(", "").replace(")", "").replace(" ", ""));
+
+        if(!UsuarioHelper.validaCPF(user.getCpf())){
+            throw new DadoNaoInformadoException("CPF inválido!");
+        }else if(!UsuarioHelper.validaTelefone(user.getTelefoneCelular())){
+            throw new DadoNaoInformadoException("Telefone inválido!");
+        }else{
+            repository.save(user);
+            var jwtToken = jwtService.generateToken(user);
+            var refreshToken = jwtService.generateRefreshToken(user);
+            return AuthenticationResponse.builder()
+                    .accessToken(jwtToken)
+                    .refreshToken(refreshToken)
+                    .build();
+        }
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
@@ -68,7 +83,7 @@ public class AuthenticationService {
     public void refreshToken(
             HttpServletRequest requisicao,
             HttpServletResponse response
-    ) throws IOException {
+    ) throws IOException, AcaoNaoPermitidaException {
         final String authHeaderRefresh = requisicao.getHeader("refreshtoken");
         final String refreshToken;
         final String userEmail;
@@ -76,8 +91,12 @@ public class AuthenticationService {
             return;
         }
         refreshToken = authHeaderRefresh.substring(7);
-        userEmail = jwtService.extractUsername(refreshToken);
-        if (userEmail != null) {
+
+        if(jwtService.extractUsername(refreshToken) != null){
+            userEmail = jwtService.extractUsername(refreshToken);
+        }else{
+            throw new AcaoNaoPermitidaException("Login expirado!");
+        }
             var user = this.repository.findByEmail(userEmail)
                     .orElseThrow();
             if (jwtService.isTokenValid(refreshToken, user)) {
@@ -87,8 +106,10 @@ public class AuthenticationService {
                         .refreshToken(refreshToken)
                         .build();
                 new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
+            }else{
+                throw new AcaoNaoPermitidaException("Login expirado!");
             }
-        }
+
     }
 
 }

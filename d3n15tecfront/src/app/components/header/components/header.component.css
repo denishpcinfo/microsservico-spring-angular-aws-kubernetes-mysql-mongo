@@ -465,9 +465,7 @@ input {
     }
 
     .top-bar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
     }
 
     .widget_contact {
@@ -478,10 +476,7 @@ input {
     }
 
     #site-branding {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
     }
 
     .header-right {
@@ -516,7 +511,7 @@ input {
         z-index: 999;
         height: 80px;
         width: 112%;
-        margin: 16px 0px 0px -34px;
+        margin: -5px 0px 0px -34px;
     }
 
     header {
@@ -528,6 +523,11 @@ input {
         margin-top: -20px;
         padding: 10px 0px 43px 0px;
     }
+
+    .desktop{
+        display: none;
+    }
+
 }
 
 @media screen and (max-width: 475px) and (min-width: 376px) {
@@ -540,9 +540,7 @@ input {
     }
     
     .top-bar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
     }
 
     .widget_contact {
@@ -553,10 +551,7 @@ input {
     }
 
     #site-branding {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
     }
 
     .header-right {
@@ -591,7 +586,7 @@ input {
         z-index: 999;
         height: 80px;
         width: 112%;
-        margin: 16px 0px 0px -34px;
+        margin: -4px 0px 0px -34px;
     }
 
     header {
@@ -604,13 +599,15 @@ input {
         padding: 10px 0px 43px 0px
     }
 
+    .desktop{
+        display: none;
+    }
+
 }
 
 @media screen and (max-width: 600px) and (min-width: 476px) {
     .top-bar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
     }
 
     .widget_contact {
@@ -621,10 +618,7 @@ input {
     }
 
     #site-branding {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
     }
 
     .header-right {
@@ -653,7 +647,7 @@ input {
         height: 80px;
         width: 112%;
         padding: 2px 0px 0px 0px;
-        margin: 27px 0px 0px -33px;
+        margin: 0px 0px 0px -33px;
     }
     
     .fa-menu{
@@ -673,15 +667,17 @@ input {
         margin-top: -34px;
         padding: 10px 0px 42px 0px;
     }
+
+    .desktop{
+        display: none;
+    }
 }
 
 
 @media screen and (max-width: 745px) and (min-width: 601px) {
 
     .top-bar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
     }
 
     .widget_contact {
@@ -692,10 +688,7 @@ input {
     }
 
     #site-branding {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: none;
     }
 
     .header-right {
@@ -724,7 +717,7 @@ input {
         height: 80px;
         width: 112%;
         padding: 2px 0px 0px 0px;
-        margin: 27px 0px 0px -33px;
+        margin: 8px 0px 0px -33px;
     }
 
     header {
@@ -735,6 +728,10 @@ input {
         z-index: 9999;
         margin-top: -51px;
         padding: 10px 0px 44px 0px;
+    }
+
+    .desktop{
+        display: none;
     }
 }
 
@@ -777,6 +774,10 @@ input {
         margin-top: -49px;
         padding: 10px 0px 21px 0px;
     }
+
+    .mobile{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 1001px) {
@@ -806,12 +807,16 @@ input {
         margin-top: -60px;
         padding: 10px 0px 21px 0px;
     }
+
+    .mobile{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1400px) and (min-width: 1201px) {
 
     .wrap{
-        margin: 2% 5% 0% 12%;
+        margin: 2% 9% 0% 12%;
         max-width: 100%;
         padding: 0;
         position: relative;
@@ -831,11 +836,15 @@ input {
         margin-top: -83px;
     }
 
+    .mobile{
+        display: none;
+    }
+
 }
 
 @media only screen and (min-width: 1401px){
     .wrap{
-        margin: 2% 5% 0% 12%;
+        margin: 2% 14% 0% 12%;
         max-width: 100%;
         padding: 0;
         position: relative;
@@ -853,5 +862,9 @@ input {
         z-index: 9999;
         padding: 10px 0px 21px 0px;
         margin-top: -100px;
+    }
+
+    .mobile{
+        display: none;
     }
 }

@@ -4,6 +4,10 @@ form{
     padding: 10% 10% 10% 10%;
 }
 
+.margin-form-group{
+  margin: 0% 0% 11% 0%;
+}
+
 .color {
     font-family: 'Titillium Web', sans-serif;
     background-color: #000000;
@@ -22,6 +26,14 @@ form{
     color: black;
     font-size:27px;
     margin: 0% 0% 2% 0%;
+}
+
+.text-centralizado-logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -32% 0% 23% -0px;
+  width: 100%;
 }
 
 .font-padrao{
@@ -71,6 +83,10 @@ input[type="password"] {
     align-items: center;
     margin: -50% 0% 23% 0%;
     width: 100%;
+  }
+
+  form{
+    padding: 0% 10% 10% 10%;
   }
 
 }

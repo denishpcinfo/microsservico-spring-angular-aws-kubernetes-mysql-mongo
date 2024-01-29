@@ -1,70 +1,105 @@
 <div class="container">
   <div class="row justify-content-center">
-      <div class="col-lg-5 ">
-          <div class="card shadon-lg border-0 rounded-lg mt-5">    
-              <div class="card-body ">
-                  
-                  <form #f="ngForm" (ngSubmit)="f.form.valid && registerUser()">
+    <div class="col-lg-5">
+      <div class="card shadon-lg border-0 rounded-lg mt-5">    
+          <div class="card-body ">
+            <form #f="ngForm" (ngSubmit)="f.form.valid && registerUser()" class="form-padding">
+              <div class="form-group text-centralizado">
+                <h2 class="font-padrao "> Cadastro novo usuário</h2>
+              </div>
 
-                    <div class="form-group text-centralizado">
-                      <h2 class="font-padrao "> Cadastro novo usuário</h2>
+              <div class="form-group margin-top">
+                  <label class="tamanho-fonte" for="firstname">Primeiro Nome:</label>
+                  <input type="text" name="firstname" #firstname="ngModel"
+                  [(ngModel)]="registerRequest.firstname" id="firstname"
+                      class="form-control py-4 color-borda" required autofocus />
+                      <div class="alert-danger color-alert" *ngIf="!firstname.valid && f.submitted">
+                        Primeiro nome é obrigatório.
+                      </div>
+              </div>
+
+              <div class="form-group margin-top">
+                <label class="tamanho-fonte" for="lastname">Sobrenome:</label>
+                <input type="text" name="lastname" #lastname="ngModel"
+                [(ngModel)]="registerRequest.lastname" id="lastname"
+                    class="form-control py-4 color-borda" required />
+                    <div class="alert-danger color-alert" *ngIf="!lastname.valid && f.submitted">
+                      Sobrenome é obrigatório.
+                    </div>
+              </div>
+
+              <div class="form-group margin-top">
+                  <label class="tamanho-fonte" for="email">E-mail:</label>
+                <input type="email" name="email" #email="ngModel"
+                  [(ngModel)]="registerRequest.email" id="email"
+                  class="form-control py-4 color-borda" required placeholder="nome@exemplo.com"/>
+                <div class="alert-danger color-alert" *ngIf="!email.valid && f.submitted">
+                E-mail é obrigatório.
+                </div>
+              </div>
+
+              <div class="form-group margin-group-double">
+                <div class="col-lg-6 margin-senha-left">
+                  <label class="tamanho-fonte">Senha:</label>
+                  <input type="password" name="password" #password="ngModel"
+                    [(ngModel)]="registerRequest.password"
+                    class="form-control py-4 color-borda" id="password" required/>
+                  <div class="alert-danger color-alert" *ngIf="!password.valid && f.submitted">
+                    Senha é obrigatório.
                   </div>
-
-                      <div class="form-group margin-top">
-                          <label class="tamanho-fonte" for="firstname">Primeiro Nome:</label>
-                          <input type="text" name="firstname" #firstname="ngModel"
-                          [(ngModel)]="registerRequest.firstname" id="firstname"
-                              class="form-control py-4 color-borda" required autofocus />
-                              <div class="alert-danger color-alert" *ngIf="!firstname.valid && f.submitted">
-                                Primeiro nome é obrigatório.
-                              </div>
-                      </div>
-
-                      <div class="form-group margin-top">
-                        <label class="tamanho-fonte" for="lastname">Segundo Nome:</label>
-                        <input type="text" name="lastname" #lastname="ngModel"
-                        [(ngModel)]="registerRequest.lastname" id="lastname"
-                            class="form-control py-4 color-borda" required />
-                            <div class="alert-danger color-alert" *ngIf="!lastname.valid && f.submitted">
-                              Segundo nome é obrigatório.
-                            </div>
-                      </div>
-
-                      <div class="form-group margin-top">
-                        <label class="tamanho-fonte" for="email">E-mail:</label>
-                        <input type="email" name="email" #email="ngModel"
-                            [(ngModel)]="registerRequest.email" id="email"
-                            class="form-control py-4 color-borda" required placeholder="nome@exemplo.com"/>
-                            <div class="alert-danger color-alert" *ngIf="!email.valid && f.submitted">
-                              E-mail é obrigatório.
-                            </div>
-                    </div>
-
-                    <div class="form-group" style="margin: 0% 0% 11% 0%;">
-                        <label class="tamanho-fonte">Senha:</label>
-                        <input type="password" name="password" #password="ngModel"
-                            [(ngModel)]="registerRequest.password"
-                            class="form-control py-4 color-borda" id="password" required/>
-                            <div class="alert-danger color-alert" *ngIf="!password.valid && f.submitted">
-                              Senha é obrigatório.
-                            </div>
-                    </div>
-                      
-                      <div class="form-group align-items-center justify-content-between mt-4 mb-0 text-centralizado margin-botao">
-                          <button type="submit" class="btn color">
-                            Inscrever-se
-                          </button>
-
-                        <button style="margin-left: 10px;" type="button" class="btn border-color" [routerLink]="['/login']">Voltar</button>
-
-                      </div>
-                  </form>
+                </div>
+                <div div class="col-lg-6 margin-senha-right">
+                  <label class="tamanho-fonte">Confirme a Senha:</label>
+                  <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" id="confirmPassword"
+                  class="form-control py-4 color-borda" placeholder="Confirme sua senha" required autocomplete="off">
+                </div>
               </div>
               
-          </div>
-          
-          
+              <div class="form-group margin-group-double">
+                <div class="col-lg-6 form-group margin-input-cpf">
+                  <label class="tamanho-fonte">CPF:</label>
+                  <input type="text" name="cpf" #cpf="ngModel" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                  [(ngModel)]="registerRequest.cpf" (ngModelChange)="onCpfChange($event)" autocomplete="off" MAXLENGTH=14
+                  class="form-control py-4 color-borda" id="cpf" required placeholder="000.000.000-00"/>
+                    <div class="alert-danger color-alert" *ngIf="!cpf.valid && f.submitted">
+                      CPF é obrigatório.
+                    </div>
+                </div>
+
+                <div class="col-lg-6 form-group margin-top margin-input margin-input-data">
+                  <label class="tamanho-fonte">Data Nascimento:</label>
+                  <input type="date" name="dataNascimento" #dataNascimento="ngModel"
+                  [(ngModel)]="registerRequest.dataNascimento"
+                  class="form-control py-4 color-borda input-data" id="dataNascimento" required/>
+                </div>
+              </div>
+              
+              <div class="form-group margin-input">
+                <div class="col-lg-6">
+                  <label class="tamanho-fonte">Telefone Celular:</label>
+                  <input type="text" name="telefoneCelular" #telefoneCelular="ngModel" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                  [(ngModel)]="registerRequest.telefoneCelular" placeholder="(00)-00000-0000" (ngModelChange)="onTelefoneChange($event)"
+                  class="form-control py-4 color-borda" id="telefoneCelular" required/>
+                  <div class="alert-danger color-alert" *ngIf="!telefoneCelular.valid && f.submitted">
+                    Telefone Celular é obrigatório.
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group align-items-center justify-content-between mt-4 mb-0 text-centralizado margin-botao">
+                <button type="button" class="btn border-color" [routerLink]="['/login']">
+                  Voltar
+                </button>
+                <button type="submit" class="btn color">
+                  Inscrever-se
+                </button>
+              </div>
+            </form>
+            <br>
+            <br>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 

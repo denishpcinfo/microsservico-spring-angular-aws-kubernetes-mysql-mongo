@@ -601,7 +601,7 @@ footer p {
 }
 
 
-@media only screen and (min-width : 200px) and (max-width : 860px) {
+@media only screen and (min-width : 200px) and (max-width : 745px) {
 
   #title-text-separator {
     width: 15%;
@@ -742,7 +742,7 @@ footer p {
     align-items: center;
     text-align: center;
     margin: auto;
-    margin-top: 375px;
+    margin-top: 90px;
     padding: 1%;
     display: flex;
     width: 90%;
@@ -958,7 +958,7 @@ footer p {
 }
 
 
-@media only screen and (min-width : 860px) and (max-width : 1280px) {
+@media only screen and (min-width : 746px) and (max-width : 1000px) {
 
     #header {
       background: white;
@@ -1097,7 +1097,7 @@ footer p {
     align-items: center;
     text-align: center;
     margin: auto;
-    margin-top: 244px;
+    margin-top: 288px;
     padding: 1%;
     display: flex;
     width: 90%;

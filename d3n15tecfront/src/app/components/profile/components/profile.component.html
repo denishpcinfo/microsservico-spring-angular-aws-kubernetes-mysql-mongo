@@ -1,38 +1,143 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-5 ">
+        <div class="position-div">
             <div class="card shadon-lg border-0 rounded-lg mt-5">    
                 <div class="card-body ">
                     <div class="form-group text-centralizado">
-                        <h2 class="font-padrao "> Meu cadastro</h2>
+                        <h2 class="font-padrao"> Minha conta</h2>
                     </div>
-                    <div class="form-group margin-top position-on">
-                        <label class="tamanho-fonte">ID:</label>
-                        <h4 class="margin-h4"> {{user.id}}</h4> 
-                    </div>
+
                     <div class="form-group margin-top position-on">
                         <label class="tamanho-fonte">Primeiro Nome:</label>
-                        <h4 class="margin-h4"> {{user.firstname}}</h4> 
+                        <h4 class="margin-h4"> {{user.firstname}} </h4> 
                     </div>
 
                     <div class="form-group margin-top position-on">
                         <label class="tamanho-fonte">Sobrenome:</label>
-                        <h4 class="margin-h4"> {{user.lastname}}</h4> 
+                        <h4 class="margin-h4"> {{user.lastname}} </h4> 
                     </div>
 
                     <div class="form-group margin-top position-on">
                         <label class="tamanho-fonte">E-mail:</label>
-                        <h4 class="margin-h4"> {{user.email}}</h4> 
+                        <h4 class="margin-h4"> {{user.email}} </h4> 
                     </div>
 
                     <div class="form-group position-on">
-                        <label class="tamanho-fonte">Senha:</label>
-                        <h4 class="margin-h4"> {{user.password}}</h4> 
+                        <label class="tamanho-fonte">CPF:</label>
+                        <h4 class="margin-h4"> {{user.cpf | cpf }} </h4> 
                     </div>
+
+                    <div class="form-group position-on">
+                        <label class="tamanho-fonte">Data Nascimento:</label>
+                        <h4 class="margin-h4"> {{user.dataNascimento | date:'dd/MM/yyyy'}} </h4> 
+                    </div>
+
+                    <div class="form-group position-on">
+                        <label class="tamanho-fonte">Telefone Celular:</label>
+                        <h4 class="margin-h4"> {{user.telefoneCelular | telefone}} </h4> 
+                    </div>
+
                 </div>
+                    <button type="button" class="btn color-perfil" data-bs-toggle="modal" data-bs-target="#editarPerfil">
+                        Editar perfil
+                    </button>
             </div>
         </div>
     </div>
   </div>
   
-  
+
+
+  <div class="modal fade" id="editarPerfil" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+        aria-labelledby="editarPerfil" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title tamanho-fonte" id="editarPerfil">Alterar cadastro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="enviar()" class="form-horizontal" #form="ngForm" >
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-lg-12 padding-form">
+      
+                      <div class="form-group margin-top">
+                          <label class="tamanho-fonte" for="firstname">Primeiro Nome:</label>
+                          <input type="text" name="firstname" #firstname="ngModel"
+                          [(ngModel)]="user.firstname" id="firstname"
+                              class="form-control py-4 color-borda" required autofocus />
+                      </div>
+        
+                      <div class="form-group margin-top">
+                        <label class="tamanho-fonte" for="lastname">Sobrenome:</label>
+                        <input type="text" name="lastname" #lastname="ngModel"
+                        [(ngModel)]="user.lastname" id="lastname"
+                            class="form-control py-4 color-borda" required />
+                       </div>
+      
+                      <div class="form-group margin-top">
+                          <label class="tamanho-fonte" for="email">E-mail:</label>
+                        <input type="email" name="email" #email="ngModel"
+                          [(ngModel)]="user.email" id="email"
+                          class="form-control py-4 color-borda" disabled placeholder="nome@exemplo.com"/>
+                       </div>
+        
+                       <div class="form-group margin-group-double">
+                        <div class="col-lg-6 margin-senha-left">
+                          <label class="tamanho-fonte">Senha:</label>
+                          <input type="password" name="password" #password="ngModel"
+                            [(ngModel)]="user.password"
+                            class="form-control py-4 color-borda" id="password" required/>
+                        </div>
+
+                        <div div class="col-lg-6 margin-senha-right">
+                          <label class="tamanho-fonte">Confirme a Senha:</label>
+                          <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" id="confirmPassword"
+                          class="form-control py-4 color-borda" placeholder="Confirme sua senha" required autocomplete="off">
+                        </div>
+                      </div>
+      
+                      <div class="form-group margin-group-double">
+                        <div class="col-lg-6 form-group margin-input-cpf">
+                          <label class="tamanho-fonte">CPF:</label>
+                          <input type="text" name="cpf" #cpf="ngModel" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                          [(ngModel)]="user.cpf" (ngModelChange)="onCpfChange($event)" autocomplete="off" MAXLENGTH=14
+                          class="form-control py-4 color-borda" id="cpf" disabled placeholder="000.000.000-00"/>
+                        </div>
+        
+                        <div class="col-lg-6 form-group margin-top margin-input-data">
+                          <label class="tamanho-fonte">Data Nascimento:</label>
+                          <input type="date" name="dataNascimento" #dataNascimento="ngModel"
+                          [(ngModel)]="user.dataNascimento"
+                          class="form-control py-4 color-borda input-data" id="dataNascimento" required/>
+                        </div>
+                      </div>
+        
+                      <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="tamanho-fonte">Telefone Celular:</label>
+                            <input type="text" name="telefoneCelular" #telefoneCelular="ngModel" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                            [(ngModel)]="user.telefoneCelular" placeholder="(00)-00000-0000" (ngModelChange)="onTelefoneChange($event)"
+                            class="form-control py-4 color-borda" id="telefoneCelular" required/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group margin-input-footer">
+                    <button type="submit" class="btn color">
+                        Salvar
+                      </button>
+
+                    <button data-bs-dismiss="modal" type="button" class="btn border-color">
+                        Fechar
+                    </button>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,7 +1,10 @@
 package com.d3n15tecback.controller;
 
+import com.d3n15tecback.dto.UserDTO;
+import com.d3n15tecback.repository.UserRepository;
+import com.d3n15tecback.service.UserService;
+import com.d3n15tecback.service.exception.AcaoNaoPermitidaException;
 import com.d3n15tecback.user.User;
-import com.d3n15tecback.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +18,23 @@ import java.util.Optional;
 public class ProfileController {
 
     private final UserRepository userRepository;
+    private final UserService userService;
 
     @GetMapping("/{item}")
-    public ResponseEntity<User> getByUser(@PathVariable("item") String item) {
+    public ResponseEntity<User> getByUser(@PathVariable("item") String item) throws AcaoNaoPermitidaException {
         Optional<User> user = userRepository.findByEmail(item);
         if (user.isPresent()) {
             return new ResponseEntity<>(user.get(), HttpStatus.OK);
         }
         else {
-            return null;
+            throw new AcaoNaoPermitidaException("Usuário não encontrado!!");
         }
+    }
+
+    @PutMapping("/atualizar-cadastro")
+    public ResponseEntity<User> atualizarUser(@RequestBody UserDTO userNovo) throws AcaoNaoPermitidaException {
+        userService.atualizarUser(userNovo);
+        return null;
     }
 
 }

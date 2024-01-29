@@ -26,7 +26,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> authenticate( @RequestBody AuthenticationRequest request) {
+    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
@@ -34,7 +34,7 @@ public class AuthenticationController {
     public void refreshToken(
             HttpServletRequest requisicao,
             HttpServletResponse response
-    ) throws IOException {
+    ) throws IOException, AcaoNaoPermitidaException {
         service.refreshToken(requisicao, response);
     }
 }
