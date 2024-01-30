@@ -7,4 +7,5 @@ export interface AtualizaRequest {
   cpf?: string;
   dataNascimento?: Date;
   telefoneCelular?: string;
+  role?: string;
 }

@@ -34,7 +34,10 @@ export class ProfileComponent {
     .subscribe({
       next: (data) => {
         this.user = data;
-        this.confirmPassword = this.user.password;
+
+        console.log("this.user.password;");
+        console.log(this.user.password);
+
         this.user.telefoneCelular = new TelefonePipe().transform(this.user.telefoneCelular);
         this.user.cpf = new CpfPipe().transform(this.user.cpf);
       }
@@ -50,7 +53,6 @@ export class ProfileComponent {
   }
 
   enviar(){
-    console.log(this.user);
     this.profileService.atualizar(this.user);
   }
 }

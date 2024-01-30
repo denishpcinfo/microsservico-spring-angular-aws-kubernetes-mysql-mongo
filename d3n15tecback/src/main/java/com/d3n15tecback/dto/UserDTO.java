@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UserDTO {
 
-    private Long id;
+    private Integer id;
     private String firstname;
     private String lastname;
     private String email;
@@ -22,4 +22,5 @@ public class UserDTO {
     private String cpf;
     private LocalDate dataNascimento;
     private String telefoneCelular;
+    private Role role;
 }
