@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: restaurantapp
-          image: codedecode25/restaurant:latest # Image that will be used to containers in the cluster
+          image: denishpcinfo/restaurant:latest # Image that will be used to containers in the cluster
           imagePullPolicy: Always
           ports:
             - containerPort: 9091 #

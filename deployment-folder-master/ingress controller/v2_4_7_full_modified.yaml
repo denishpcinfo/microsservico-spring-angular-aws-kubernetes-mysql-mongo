@@ -806,7 +806,7 @@ spec:
         - --ingress-class=alb
         - --aws-vpc-id=vpc-078228c09d13712e1 
         - --aws-region=eu-west-2
-        image: codedecode25/aws-load-balancer:v2.4.7
+        image: denishpcinfo/aws-load-balancer:v2.4.7
         livenessProbe:
           failureThreshold: 2
           httpGet:

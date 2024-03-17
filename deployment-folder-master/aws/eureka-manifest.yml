@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: eureka
-          image: codedecode25/eureka-server:latest
+          image: denishpcinfo/eureka-server:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8761

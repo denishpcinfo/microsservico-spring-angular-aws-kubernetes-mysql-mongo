@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
         - name: eureka
-          image: d3n15tec25/eureka:latest
+          image: d3n15tec/eureka:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8761

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: userapp
-          image: codedecode25/user-service:latest
+          image: denishpcinfo/user-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 9093

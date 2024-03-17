@@ -4,7 +4,7 @@ metadata:
   name: restaurant-listing-default
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: myalias=docker.io/codedecode25        
+    argocd-image-updater.argoproj.io/image-list: myalias=docker.io/denishpcinfo        
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds           
     argocd-image-updater.argoproj.io/git-branch: master                                          
     argocd-image-updater.argoproj.io/myalias.force-update: "true"
@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: default
   source:
-    repoURL: 'git@github.com:udemy-dev-withK8s-AWS-codedecode/deployment-folder.git'
+    repoURL: 'git@github.com:dev-withK8s-AWS-denishpcinfo/deployment-folder.git'
     path: ./aws
     targetRevision: HEAD
     directory:

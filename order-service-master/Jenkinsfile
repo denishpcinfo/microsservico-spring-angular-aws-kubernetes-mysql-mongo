@@ -63,8 +63,8 @@ pipeline {
       stage('Docker Build and Push') {
       steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-          sh 'docker build -t d3n15tec25/order-service:${VERSION} .'
-          sh 'docker push d3n15tec25/order-service:${VERSION}'
+          sh 'docker build -t d3n15tec/order-service:${VERSION} .'
+          sh 'docker push d3n15tec/order-service:${VERSION}'
       }
     } 
 
@@ -80,10 +80,10 @@ pipeline {
 
     stage('Update Image Tag in GitOps') {
       steps {
-         checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[ credentialsId: 'git-ssh', url: 'git@github.com:udemy-dev-withK8s-AWS-d3n15tec/deployment-folder.git']])
+         checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[ credentialsId: 'git-ssh', url: 'git@github.com:dev-withK8s-AWS-d3n15tec/deployment-folder.git']])
         script {
        sh '''
-          sed -i "s/image:.*/image: d3n15tec25\\/order-service:${VERSION}/" aws/order-manifest.yml
+          sed -i "s/image:.*/image: d3n15tec\\/order-service:${VERSION}/" aws/order-manifest.yml
         '''
           sh 'git checkout master'
           sh 'git add .'
