@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/shared/models/user.model';
-import { TelefonePipe } from 'src/app/shared/pipes/telefone.pipe';
-import { CpfPipe } from 'src/app/shared/pipes/cpf.pipe';
+import { TelefonePipe } from 'src/app/shared/pipes/telefone/telefone.pipe';
+import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 
 @Component({
   selector: 'app-profile',

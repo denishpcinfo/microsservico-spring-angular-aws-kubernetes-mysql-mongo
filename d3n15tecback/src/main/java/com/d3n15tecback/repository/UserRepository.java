@@ -1,6 +1,5 @@
 package com.d3n15tecback.repository;
 
-
 import com.d3n15tecback.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
-import { OrderDTO } from 'src/app/shared/models/OrderDTO';
+import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
 
 @Component({
   selector: 'app-order-summary',

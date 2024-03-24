@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, switchMap, tap, throwError } from 'rxjs';
-import { AuthenticationRequest } from './shared/models/AuthenticationRequest';
+import { AuthenticationRequest } from './shared/models/authenticationRequest.model';
 import { AuthenticationService } from './services/auth/authentication.service';
-import { AuthenticationResponse } from './shared/models/AuthenticationResponse';
+import { AuthenticationResponse } from './shared/models/authenticationResponse.model';
 import { Router } from '@angular/router';
 
 @Injectable()

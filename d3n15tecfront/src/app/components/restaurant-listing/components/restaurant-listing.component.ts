@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Restaurant } from 'src/app/shared/models/Restaurant';
+import { Restaurant } from 'src/app/shared/models/restaurant.model';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Router } from '@angular/router';
 

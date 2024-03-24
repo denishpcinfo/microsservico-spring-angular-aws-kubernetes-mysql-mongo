@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './components/profile.component';
-import { CpfPipe } from 'src/app/shared/pipes/cpf.pipe';
-import { TelefonePipe } from 'src/app/shared/pipes/telefone.pipe';
-
+import { TelefoneModule } from 'src/app/shared/pipes/telefone/telefone.module';
+import { CpfModule } from 'src/app/shared/pipes/cpf/cpf.module';
+import { FormsModule } from '@angular/forms';
+import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 
 @NgModule({
   declarations: [
-    ProfileComponent,
-    CpfPipe,
-    TelefonePipe
+    ProfileComponent
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    TelefoneModule,
+    CpfModule,
+    FormsModule
   ],
   exports:[
     ProfileComponent
