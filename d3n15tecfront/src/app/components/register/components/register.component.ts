@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
-import { AuthenticationResponse } from 'src/app/shared/models/AuthenticationResponse';
-import { RegisterRequest } from 'src/app/shared/models/RegisterRequest';
-import { TelefonePipe } from 'src/app/shared/pipes/telefone.pipe';
-import { CpfPipe } from 'src/app/shared/pipes/cpf.pipe';
+import { AuthenticationResponse } from 'src/app/shared/models/authenticationResponse.model';
+import { RegisterRequest } from 'src/app/shared/models/registerRequest.model';
+import { TelefonePipe } from 'src/app/shared/pipes/telefone/telefone.pipe';
+import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 
 @Component({
   selector: 'app-register',

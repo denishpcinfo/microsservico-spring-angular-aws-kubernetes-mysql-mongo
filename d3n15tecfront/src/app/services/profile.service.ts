@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../shared/models/user.model';
-import { AtualizaRequest } from '../shared/models/AtualizaRequest';
+import { AtualizaRequest } from '../shared/models/atualizaRequest.model';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({

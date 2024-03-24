@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
-import { AuthenticationRequest } from 'src/app/shared/models/AuthenticationRequest';
-import { AuthenticationResponse } from 'src/app/shared/models/AuthenticationResponse';
+import { AuthenticationRequest } from 'src/app/shared/models/authenticationRequest.model';
+import { AuthenticationResponse } from 'src/app/shared/models/authenticationResponse.model';
 
 @Component({
   selector: 'app-login',

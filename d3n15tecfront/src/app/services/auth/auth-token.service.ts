@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { jwtDecode } from "jwt-decode";
 import { AuthenticationService } from './authentication.service';
 

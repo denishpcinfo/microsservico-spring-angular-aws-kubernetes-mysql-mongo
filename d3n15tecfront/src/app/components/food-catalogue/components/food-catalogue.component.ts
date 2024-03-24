@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodItemService } from 'src/app/services/fooditem.service';
-import { FoodCataloguePage } from 'src/app/shared/models/FoodCataloguePage';
-import { FoodItem } from 'src/app/shared/models/FoodItem';
+import { FoodCataloguePage } from 'src/app/shared/models/foodCataloguePage.model';
+import { FoodItem } from 'src/app/shared/models/foodItem.model';
 
 @Component({
   selector: 'app-food-catalogue',
