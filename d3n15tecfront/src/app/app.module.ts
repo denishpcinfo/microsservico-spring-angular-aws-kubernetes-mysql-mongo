@@ -8,7 +8,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FoodCatalogueModule } from './components/food-catalogue/food-catalogue.module';
 import { OrderSummaryModule } from './components/order-summary/order-summary.module';
 import { FormsModule } from '@angular/forms';
-import { TamplateModule } from './components/tamplate/tamplate.module';
 import { BodyModule } from './components/body/body.module';
 import { FooterModule } from './components/footer/footer.module';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -22,6 +21,7 @@ import { LoginModule } from './components/login/login.module';
 import { ProfileModule } from './components/profile/profile.module';
 import { WelcomeModule } from './components/welcome/welcome.module';
 import { RegisterModule } from './components/register/register.module';
+import { DashboardModule } from './components/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,6 @@ import { RegisterModule } from './components/register/register.module';
     FoodCatalogueModule,
     OrderSummaryModule,
     FormsModule,
-    TamplateModule,
     BodyModule,
     FooterModule,
     NgxPaginationModule,
@@ -52,7 +51,8 @@ import { RegisterModule } from './components/register/register.module';
     LoginModule,
     ProfileModule,
     WelcomeModule,
-    RegisterModule
+    RegisterModule,
+    DashboardModule
   ],
   providers: [
     AuthTokenInterceptor,

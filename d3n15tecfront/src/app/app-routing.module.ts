@@ -9,6 +9,8 @@ import { OrderSummaryComponent } from './components/order-summary/component/orde
 import { FoodCatalogueComponent } from './components/food-catalogue/components/food-catalogue.component';
 import { RestaurantListingComponent } from './components/restaurant-listing/components/restaurant-listing.component';
 import { ProfileComponent } from './components/profile/components/profile.component';
+import { UsersComponent } from './components/users/components/users.component';
+import { DashboardComponent } from './components/dashboard/components/dashboard.component';
 
 const routes: Routes = [
   { 
@@ -52,7 +54,17 @@ const routes: Routes = [
       path: 'minha-conta',
       component: ProfileComponent,
       canActivate: [AuthGuard]
-    }]
+    },
+    {
+      path: 'usuarios',
+      component: UsersComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'dashboard',
+      component: DashboardComponent,
+      canActivate: [AuthGuard]
+    },]
   }
 ];
 
