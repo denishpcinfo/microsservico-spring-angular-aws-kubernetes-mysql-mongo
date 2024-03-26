@@ -8,10 +8,14 @@ import com.d3n15tecback.service.exception.DadoNaoInformadoException;
 import com.d3n15tecback.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -41,4 +45,11 @@ public class UserService {
         }
 
     }
+
+
+    public Page<User> findAllUsuarios(Pageable pageable) {
+        return userRepository.getAllUsuarios(pageable);
+    }
+
+
 }

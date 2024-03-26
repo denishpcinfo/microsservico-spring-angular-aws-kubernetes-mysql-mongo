@@ -61,6 +61,8 @@ public class SecurityConfiguration {
 
                 .requestMatchers("/api/profile/**").authenticated()
 
+                .requestMatchers("/api/users/**").authenticated()
+
                 .requestMatchers("/api/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
 
                 .requestMatchers(GET, "/api/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())

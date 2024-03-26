@@ -25,13 +25,15 @@
 
   <br>
 
-  <div class="col-md-12">
-    <pagination-controls
-      previousLabel=""
-      nextLabel=""
-      [responsive]="true"
-      (pageChange)="handlePageChange($event)"
-    ></pagination-controls>
+  <div class="d-flex justify-content-center p-2">
+    <div class="col-md-12">
+        <pagination-controls
+          previousLabel=""
+          nextLabel=""
+          [responsive]="true"
+          (pageChange)="handlePageChange($event)"
+        ></pagination-controls>
+      </div>
   </div>
 </main>
     

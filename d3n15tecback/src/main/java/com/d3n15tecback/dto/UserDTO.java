@@ -1,11 +1,7 @@
 package com.d3n15tecback.dto;
 
 import com.d3n15tecback.user.Role;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import java.time.LocalDate;
 
 @Data

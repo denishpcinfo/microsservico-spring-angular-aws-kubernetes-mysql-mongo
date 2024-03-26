@@ -12,9 +12,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     UsersRoutingModule,
     NgxPaginationModule
-  ],
-  exports:[
-    UsersComponent
   ]
 })
 export class UsersModule { }

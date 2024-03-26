@@ -7,41 +7,46 @@
             <!-- <div class="btn-popup pull-right">
                 <a class="btn btn-primary" >Criar Usuário</a>
             </div> -->
-            <div id="batchDelete" class="category-table custom-datatable transcation-datatable user-image">
+            <div class="category-table custom-datatable transcation-datatable user-image">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col" >Actions</th>
-                                <th scope="col" sortable="avatar" >Avatar</th>
-                                <th scope="col" sortable="fName" >Primeiro Nome</th>
-                                <th scope="col" sortable="lName" >Último Nome</th>
+                                <th scope="col" ></th>
+                                <th scope="col" sortable="firstname" >Primeiro Nome</th>
+                                <th scope="col" sortable="lastname" >Último Nome</th>
                                 <th scope="col" sortable="email" >E-mail</th>
-                                <th scope="col" sortable="last_login" >Último Login</th>
-                                <th scope="col" sortable="role" >Permissões</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr >
+                            <tr *ngFor="let item of tableItem  | paginate : {
+          itemsPerPage: pageSize,
+          currentPage: page,
+          totalItems: count
+        };
+        let i = index">
                                 <td>
-                                    <a href="javascript:void(0)"><i class='fa fa-edit f-12'></i></a>&nbsp;
-                                    <a href="javascript:void(0)"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                                <td scope="row">
-                                    <img  class="imgTable" style="width: 20px">
+                                    <a><i class='fa fa-edit f-12'></i></a>&nbsp;
+                                    <a><i class="fa fa-trash-o"></i></a>
                                 </td>
                                 <td>
-                                    {{"item.fName"}}
+                                    {{item.firstname}}
                                 </td>
-                                <td>{{"item.lName"}}</td>
-                                <td>{{"item.email"}}</td>
-                                <td>{{"item.last_login"}}</td>
-                                <td>{{"item.role"}}</td>
+                                <td>{{item.lastname}}</td>
+                                <td>{{item.email}}</td>
+                        
                             </tr>
                         </tbody>
                     </table> 
                     <div class="d-flex justify-content-center p-2">
-
+                        <div class="col-md-12">
+                            <pagination-controls
+                              previousLabel=""
+                              nextLabel=""
+                              [responsive]="true"
+                              (pageChange)="handlePageChange($event)"
+                            ></pagination-controls>
+                          </div>
                     </div>
                 </div>
             </div>

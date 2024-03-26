@@ -18,7 +18,10 @@ export class RestaurantListingComponent {
   pageSizes = [10, 20, 30];
 
   
-  constructor(private router: Router, private restaurantService: RestaurantService) { }
+  constructor(
+    private router: Router, 
+    private restaurantService: RestaurantService
+    ) { }
 
   ngOnInit() {
     this.getAllRestaurantsPage();
@@ -38,8 +41,6 @@ export class RestaurantListingComponent {
   onButtonClick(id: number) {
     this.router.navigate(['/food', id]);
   }
-
-
 
   getRequestParams(page: number, pageSize: number): any {
     let params: any = {};

@@ -138,6 +138,11 @@
   text-align: center;
 }
 
+.d-flex {
+  display: flex !important;
+  text-align: center
+}
+
 @media only screen and (max-width: 768px) {
   .header-container {
     flex-direction: column;

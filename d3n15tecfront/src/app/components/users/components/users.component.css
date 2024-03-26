@@ -100,4 +100,5 @@
 
 .d-flex {
     display: flex !important;
-}
+    text-align: center
+  }
