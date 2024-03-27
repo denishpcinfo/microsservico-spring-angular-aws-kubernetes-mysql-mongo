@@ -16,10 +16,15 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
   @Query(value = "select * " +
           "from usuario u " +
-          " order by ?#{#pageable} ",
-          countQuery = "select count(*) " +
+          "where u.email = :email",nativeQuery = true)
+  User getUsuario(String email);
+
+  @Query(value = "select * " +
                   "from usuario u " +
                   " order by ?#{#pageable}",
-          nativeQuery = true)
+                  countQuery =
+                  "select count(*) " +
+                  "from usuario u " +
+                  " order by ?#{#pageable}",nativeQuery = true)
   Page<User> getAllUsuarios(Pageable pageable);
 }

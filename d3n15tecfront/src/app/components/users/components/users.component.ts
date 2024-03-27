@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { UserResponse } from 'src/app/shared/models/user-response.model';
 import { User } from 'src/app/shared/models/user.model';
 
 @Component({
@@ -10,7 +11,7 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class UsersComponent {
 
-  public tableItem: any;
+  public tableItem: UserResponse[];
 
   page = 1;
   count = 0;

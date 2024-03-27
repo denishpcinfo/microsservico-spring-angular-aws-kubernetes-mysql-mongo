@@ -6,10 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -37,6 +34,7 @@ public class User implements UserDetails {
   @Column(unique = true, nullable = false)
   private String email;
 
+  @ToString.Exclude
   private String password;
 
   @Column(unique = true, nullable = false)
@@ -85,5 +83,21 @@ public class User implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
+  }
+
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", cpf='" + cpf + '\'' +
+            ", dataNascimento=" + dataNascimento +
+            ", telefoneCelular='" + telefoneCelular + '\'' +
+            ", role=" + role +
+            '}';
   }
 }
