@@ -34,10 +34,6 @@ export class ProfileComponent {
     .subscribe({
       next: (data) => {
         this.user = data;
-
-        console.log("this.user.password;");
-        console.log(this.user.password);
-
         this.user.telefoneCelular = new TelefonePipe().transform(this.user.telefoneCelular);
         this.user.cpf = new CpfPipe().transform(this.user.cpf);
       }

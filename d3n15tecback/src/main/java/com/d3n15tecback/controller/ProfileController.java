@@ -1,7 +1,6 @@
 package com.d3n15tecback.controller;
 
 import com.d3n15tecback.dto.UserDTO;
-import com.d3n15tecback.dto.UserResponseDTO;
 import com.d3n15tecback.repository.UserRepository;
 import com.d3n15tecback.service.UserService;
 import com.d3n15tecback.service.exception.AcaoNaoPermitidaException;
@@ -10,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,18 +21,14 @@ public class ProfileController {
     private final UserService userService;
 
     @GetMapping("/{item}")
-    public ResponseEntity<UserResponseDTO> getByUser(@PathVariable("item") String item) throws AcaoNaoPermitidaException {
-        var user = userRepository.getUsuario(item);
-        var userResponseDTOO = new UserResponseDTO();
-        userResponseDTOO = UserResponseDTO.convert(user);
-
-        if (user != null) {
-            return new ResponseEntity<>(userResponseDTOO, HttpStatus.OK);
+    public ResponseEntity<User> getByUser(@PathVariable("item") String item) throws AcaoNaoPermitidaException {
+        Optional<User> user = userRepository.findByEmail(item);
+        if (user.isPresent()) {
+            return new ResponseEntity<>(user.get(), HttpStatus.OK);
         }
         else {
             throw new AcaoNaoPermitidaException("Usuário não encontrado!!");
         }
-
     }
 
     @PutMapping("/atualizar-cadastro")

@@ -25,7 +25,6 @@ export class RestaurantService {
   }
 
   getAll(params: any): Observable<any> {
-    console.log(this.apiUrl + 'pageAllRestaurants')
     return this.http.get<any>(this.apiUrl + 'pageAllRestaurants', { params });
   }
 }

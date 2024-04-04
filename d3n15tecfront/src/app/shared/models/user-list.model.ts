@@ -1,4 +1,4 @@
-export class UserResponse {
+export interface UserList {
     id?: number;
     firstname?: string;
     lastname?: string;

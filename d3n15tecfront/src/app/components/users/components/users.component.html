@@ -1,39 +1,49 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h5>Detalhes Usuários</h5>
+            <h5><strong>Detalhes Usuários</strong></h5>
         </div>
         <div class="card-body">
             <!-- <div class="btn-popup pull-right">
                 <a class="btn btn-primary" >Criar Usuário</a>
             </div> -->
+
+            <input class="input-search" type="text" [(ngModel)]="searchString" placeholder="Filtre pelo Primeiro Nome"/>
+            
+            <br>
+
             <div class="category-table custom-datatable transcation-datatable user-image">
                 <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
+                    <table class="table table-striped mobile-3">
+                        <thead class="head-mobile">
                             <tr>
                                 <th scope="col" ></th>
-                                <th scope="col" sortable="firstname" >Primeiro Nome</th>
-                                <th scope="col" sortable="lastname" >Último Nome</th>
-                                <th scope="col" sortable="email" >E-mail</th>
+                                <th scope="col" sortable="firstname" class="width-mobile-first align-center-div" >Primeiro Nome
+                                </th>
+                                <th scope="col" sortable="lastname" class="mobile align-center-div">Último Nome</th>
+                                <th scope="col" sortable="cpf" class="align-center-div">CPF</th>
+                                <th scope="col" sortable="email" class="mobile-2 align-center-div">E-mail</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of tableItem  | paginate : {
-          itemsPerPage: pageSize,
-          currentPage: page,
-          totalItems: count
-        };
-        let i = index">
-                                <td>
-                                    <a><i class='fa fa-edit f-12'></i></a>&nbsp;
+                            <tr *ngFor="let item of tableItem | searchName: searchString | paginate : {
+                                itemsPerPage: pageSize,
+                                currentPage: page,
+                                totalItems: count
+                                };
+                                let i = index" class="tr-mobile tr-position-mobile ">
+                                <td class="td-mobile align-center-div">
+                                    <a>
+                                        <i class='fa fa-edit f-12'></i>
+                                    </a>&nbsp;
                                     <a><i class="fa fa-trash-o"></i></a>
                                 </td>
-                                <td>
+                                <td class="align-center-div">
                                     {{item.firstname}}
                                 </td>
-                                <td>{{item.lastname}}</td>
-                                <td>{{item.email}}</td>
+                                <td class="mobile align-center-div">{{item.lastname}}</td>
+                                <td class="align-center-div">{{item.cpf | cpf }}</td>
+                                <td class="mobile-2 align-center-div">{{item.email}}</td>
                         
                             </tr>
                         </tbody>
@@ -41,10 +51,10 @@
                     <div class="d-flex justify-content-center p-2">
                         <div class="col-md-12">
                             <pagination-controls
-                              previousLabel=""
-                              nextLabel=""
-                              [responsive]="true"
-                              (pageChange)="handlePageChange($event)"
+                            previousLabel=""
+                            nextLabel=""
+                            [responsive]="true"
+                            (pageChange)="handlePageChange($event)"
                             ></pagination-controls>
                           </div>
                     </div>
@@ -53,3 +63,4 @@
         </div>
     </div>
 </div>
+

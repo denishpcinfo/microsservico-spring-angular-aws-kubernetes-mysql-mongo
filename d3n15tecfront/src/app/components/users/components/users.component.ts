@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { UserResponse } from 'src/app/shared/models/user-response.model';
-import { User } from 'src/app/shared/models/user.model';
+import { OverlayPanel } from "primeng/overlaypanel";
+import { UserList } from 'src/app/shared/models/user-list.model';
 
 @Component({
   selector: 'app-users',
@@ -11,8 +10,12 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class UsersComponent {
 
-  public tableItem: UserResponse[];
+  @ViewChild('overlayPanel') overlayPanel: OverlayPanel;
 
+  public tableItem: UserList[] = [];
+  
+  searchString = '';
+  filter: any;
   page = 1;
   count = 0;
   pageSize = 10;
@@ -26,20 +29,15 @@ export class UsersComponent {
     this.getAllUSersPage();
   }
 
-
   getAllUSersPage(): void {
     const params = this.getRequestParams(this.page, this.pageSize);
 
     this.userService.getAll(params)
       .subscribe({
         next: (data) => {
-          console.log(data)
           const { allUsuarios, totalItems } = data;
           this.tableItem = allUsuarios;
           this.count = totalItems;
-          console.log("this.tableItem")
-          console.log(this.tableItem)
-        
         }
       });
   }
@@ -52,6 +50,7 @@ export class UsersComponent {
     if (pageSize) {
       params[`size`] = pageSize;
     }
+    params[`sort`] = "firstname";
     return params;
   }
 

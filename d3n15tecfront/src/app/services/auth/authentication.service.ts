@@ -25,11 +25,9 @@ export class AuthenticationService {
     return this.http.post<AuthenticationResponse>(`${this.baseUrl}/registrar`, registerRequest)
     .subscribe({
       next: (response) => {
-        if (this.authResponse) {
           this.authResponse = response;
           this.toastr.success('Conta criada com sucesso!');
-          this.router.navigateByUrl('/login', {skipLocationChange: true});
-        }
+          this.router.navigateByUrl('/login');
       },
       error: (erro) => {
         this.toastr.error(erro.error.titulo, `Erro ${erro.error.status}!`);
@@ -46,7 +44,7 @@ export class AuthenticationService {
           localStorage.setItem('token', this.authResponse.accessToken);
           localStorage.setItem('refreshToken', this.authResponse.refreshToken);
            this.toastr.success('Login realizado com sucesso!');
-          this.router.navigateByUrl('/home', {skipLocationChange: true});
+          this.router.navigateByUrl('/home');
         }
       },
       error: () => {

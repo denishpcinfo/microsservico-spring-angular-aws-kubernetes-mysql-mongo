@@ -22,8 +22,8 @@ import { ProfileModule } from './components/profile/profile.module';
 import { WelcomeModule } from './components/welcome/welcome.module';
 import { RegisterModule } from './components/register/register.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
-import { UsersComponent } from './components/users/components/users.component';
 import { UsersModule } from './components/users/users.module';
+import { SearchNameModule } from './shared/pipes/searchName/searchName.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import { UsersModule } from './components/users/users.module';
     LayoutModule,
     TelefoneModule,
     CpfModule,
+    SearchNameModule,
     LoginModule,
     ProfileModule,
     WelcomeModule,

@@ -13,8 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAll(params: any): Observable<any> {
-    console.log("this.apiUrl + 'todos-usuarios'")
-    console.log(this.apiUrl + 'todos-usuarios')
     return this.http.get<any>(this.apiUrl + 'todos-usuarios', { params });
   }
+
 }
