@@ -11,6 +11,7 @@ import { RestaurantListingComponent } from './components/restaurant-listing/comp
 import { ProfileComponent } from './components/profile/components/profile.component';
 import { UsersComponent } from './components/users/components/users.component';
 import { DashboardComponent } from './components/dashboard/components/dashboard.component';
+import { Role } from './shared/models/role';
 
 const routes: Routes = [
   { 
@@ -58,12 +59,14 @@ const routes: Routes = [
     {
       path: 'usuarios',
       component: UsersComponent,
-      canActivate: [AuthGuard]
+      canActivate: [AuthGuard],
+      data: {roles: [Role.ADMIN]}
     },
     {
       path: 'dashboard',
       component: DashboardComponent,
-      canActivate: [AuthGuard]
+      canActivate: [AuthGuard],
+      data: {roles: [Role.ADMIN]}
     },]
   }
 ];

@@ -13,8 +13,8 @@ import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 })
 export class RegisterComponent {
 
-  registerRequest: RegisterRequest = {};
-  authResponse: AuthenticationResponse = {};
+  public registerRequest: RegisterRequest = {};
+  public authResponse: AuthenticationResponse = {};
   public confirmPassword: any;
 
   constructor(
@@ -26,7 +26,7 @@ export class RegisterComponent {
 
     if (this.confirmPassword !== this.registerRequest.password){
       this.toastr.warning('Confirme a senha correta!');
-      return
+      return;
     }
 
     this.authService.register(this.registerRequest);

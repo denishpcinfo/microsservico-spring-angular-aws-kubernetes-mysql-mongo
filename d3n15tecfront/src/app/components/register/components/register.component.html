@@ -9,23 +9,13 @@
               </div>
 
               <div class="form-group margin-top">
-                  <label class="tamanho-fonte" for="firstname">Primeiro Nome:</label>
-                  <input type="text" name="firstname" #firstname="ngModel"
-                  [(ngModel)]="registerRequest.firstname" id="firstname"
+                  <label class="tamanho-fonte" for="nome">Nome:</label>
+                  <input type="text" name="nome" #nome="ngModel"
+                  [(ngModel)]="registerRequest.nome" id="nome"
                       class="form-control py-4 color-borda" required autofocus />
-                      <div class="alert-danger color-alert" *ngIf="!firstname.valid && f.submitted">
-                        Primeiro nome é obrigatório.
+                      <div class="alert-danger color-alert" *ngIf="!nome.valid && f.submitted">
+                        Nome é obrigatório.
                       </div>
-              </div>
-
-              <div class="form-group margin-top">
-                <label class="tamanho-fonte" for="lastname">Sobrenome:</label>
-                <input type="text" name="lastname" #lastname="ngModel"
-                [(ngModel)]="registerRequest.lastname" id="lastname"
-                    class="form-control py-4 color-borda" required />
-                    <div class="alert-danger color-alert" *ngIf="!lastname.valid && f.submitted">
-                      Sobrenome é obrigatório.
-                    </div>
               </div>
 
               <div class="form-group margin-top">

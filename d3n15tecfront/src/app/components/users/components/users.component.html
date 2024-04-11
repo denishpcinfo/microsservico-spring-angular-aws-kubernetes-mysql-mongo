@@ -8,8 +8,29 @@
                 <a class="btn btn-primary" >Criar Usuário</a>
             </div> -->
 
-            <input class="input-search" type="text" [(ngModel)]="searchString" placeholder="Filtre pelo Primeiro Nome"/>
+            <div class="check-box-busca">
+                <div class="check-box-busca-item">
+                    <p-checkbox  label="Buscar por Nome" name="checkedBuscaNome"
+                        [binary]="true" inputId="binary" [(ngModel)]="checkedBuscaNome" (click)="buscaNomeCheck(checkedBuscaNome)">
+                 </p-checkbox>
+                </div>
+
+                <div class="check-box-busca-item">
+                    <p-checkbox  label="Buscar por CPF" name="checkedBuscaCPF"
+                        [binary]="true" inputId="binary" [(ngModel)]="checkedBuscaCPF" (click)="buscaCPFCheck(checkedBuscaCPF)">
+                    </p-checkbox>
+                </div>
+                
+                <div class="check-box-busca-item-email">
+                    <p-checkbox  label="Buscar por Email" name="checkedBuscaEmail"
+                        [binary]="true" inputId="binary" [(ngModel)]="checkedBuscaEmail" (click)="buscaEmailCheck(checkedBuscaEmail)">
+                    </p-checkbox>
+                </div>
+
+            </div>
             
+            <input autocomplete="off" class="input-search" type="text" name="buscaNomeString" [(ngModel)]="buscaNomeString" 
+            [placeholder]="newPlaceHolder" (ngModelChange)= buscaNome(buscaNomeString)/>
             <br>
 
             <div class="category-table custom-datatable transcation-datatable user-image">
@@ -17,37 +38,45 @@
                     <table class="table table-striped mobile-3">
                         <thead class="head-mobile">
                             <tr>
-                                <th scope="col" ></th>
-                                <th scope="col" sortable="firstname" class="width-mobile-first align-center-div" >Primeiro Nome
+                                <th scope="col"></th>
+                                <th scope="col" sortable="nome" class="width-mobile-first align-center-div">Nome
+                                    <i *ngIf="iconasc5" class="fa fa-sort-down f-12 direction" (click)="ordenacaoNomeasc()"></i>
+                                    <i *ngIf="iconasc6" class="fa fa-sort-desc f-12 direction" (click)="ordenacaoNomedesc()"></i>
                                 </th>
-                                <th scope="col" sortable="lastname" class="mobile align-center-div">Último Nome</th>
-                                <th scope="col" sortable="cpf" class="align-center-div">CPF</th>
-                                <th scope="col" sortable="email" class="mobile-2 align-center-div">E-mail</th>
+                                <th scope="col" sortable="cpf" class="align-center-div" >CPF
+                                    <i *ngIf="iconasc1" class="fa fa-sort-down f-12 direction" (click)="ordenacaoCPFasc()"></i>
+                                    <i *ngIf="iconasc2" class="fa fa-sort-desc f-12 direction" (click)="ordenacaoCPFdesc()"></i>
+                                </th>
+                                <th scope="col" sortable="email" class="mobile-2 align-center-div">E-mail
+                                    <i *ngIf="iconasc3" class="fa fa-sort-down f-12 direction" (click)="ordenacaoEMAILasc()"></i>
+                                    <i *ngIf="iconasc4" class="fa fa-sort-desc f-12 direction" (click)="ordenacaoEMAILdesc()"></i>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of tableItem | searchName: searchString | paginate : {
+                            <tr *ngFor="let item of tableItem | paginate : {
                                 itemsPerPage: pageSize,
                                 currentPage: page,
                                 totalItems: count
                                 };
-                                let i = index" class="tr-mobile tr-position-mobile ">
+                                let i = index" class="tr-mobile tr-position-mobile quebra">
                                 <td class="td-mobile align-center-div">
                                     <a>
-                                        <i class='fa fa-edit f-12'></i>
+                                        <i class='fa fa-edit f-12' (click)="editarUsuario(item)"></i>
                                     </a>&nbsp;
-                                    <a><i class="fa fa-trash-o"></i></a>
+                                    <a>
+                                        <i class="fa fa-trash-o" (click)="excluirUser(item)"></i>
+                                    </a>
                                 </td>
                                 <td class="align-center-div">
-                                    {{item.firstname}}
+                                    {{item.nome}}
                                 </td>
-                                <td class="mobile align-center-div">{{item.lastname}}</td>
                                 <td class="align-center-div">{{item.cpf | cpf }}</td>
                                 <td class="mobile-2 align-center-div">{{item.email}}</td>
-                        
                             </tr>
                         </tbody>
                     </table> 
+                    <p><strong>Total:</strong> {{ count }} </p>
                     <div class="d-flex justify-content-center p-2">
                         <div class="col-md-12">
                             <pagination-controls
@@ -64,3 +93,8 @@
     </div>
 </div>
 
+<swal #sweetAlert  title='Deseja realmente excluir este usuário?' text="Esta ação não poderá ser desfeita!" type="question"
+[showCancelButton]="true" [focusCancel]="true" confirmButtonText="Excluir" cancelButtonText="Cancelar"
+(confirm)="delete()"></swal>
+
+<app-users-edit #editarPerfil> </app-users-edit>

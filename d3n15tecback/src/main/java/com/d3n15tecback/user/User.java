@@ -29,9 +29,7 @@ public class User implements UserDetails {
   @Column(unique=true, nullable=false)
   private Integer id;
 
-  private String firstname;
-
-  private String lastname;
+  private String nome;
 
   @Email
   @Column(unique = true, nullable = false)

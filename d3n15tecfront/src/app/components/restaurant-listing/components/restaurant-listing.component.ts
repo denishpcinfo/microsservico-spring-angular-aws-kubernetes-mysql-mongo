@@ -12,12 +12,11 @@ export class RestaurantListingComponent {
 
   public restaurantList: Restaurant[];
 
-  page = 1;
-  count = 0;
-  pageSize = 10;
-  pageSizes = [10, 20, 30];
+  public page = 1;
+  public count = 0;
+  public pageSize = 10;
+  public pageSizes = [10, 20, 30];
 
-  
   constructor(
     private router: Router, 
     private restaurantService: RestaurantService
@@ -33,9 +32,9 @@ export class RestaurantListingComponent {
 
 
   getRandomImage(): string {
-    const imageCount = 8; // Ajuste este número com base no número de imagens na sua pasta de ativos
+    const imageCount = 8;
     const randomIndex = this.getRandomNumber(1, imageCount);
-    return `${randomIndex}.jpg`; // Substitua pelo padrão de nome de arquivo da sua imagem
+    return `${randomIndex}.jpg`;
   }
 
   onButtonClick(id: number) {

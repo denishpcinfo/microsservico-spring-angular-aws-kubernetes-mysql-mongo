@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { jwtDecode } from "jwt-decode";
-import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthTokenService {
 
-  constructor( private router: Router,
-               private authenticationService: AuthenticationService ) { }
+  constructor( private router: Router ) { }
 
   public getToken(): string {
     try {

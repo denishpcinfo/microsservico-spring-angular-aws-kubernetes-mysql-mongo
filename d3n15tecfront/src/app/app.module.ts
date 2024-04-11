@@ -23,7 +23,9 @@ import { WelcomeModule } from './components/welcome/welcome.module';
 import { RegisterModule } from './components/register/register.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { UsersModule } from './components/users/users.module';
-import { SearchNameModule } from './shared/pipes/searchName/searchName.module';
+import { UsersEditModule } from './components/users-edit/users-edit.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -50,13 +52,15 @@ import { SearchNameModule } from './shared/pipes/searchName/searchName.module';
     LayoutModule,
     TelefoneModule,
     CpfModule,
-    SearchNameModule,
     LoginModule,
     ProfileModule,
     WelcomeModule,
     RegisterModule,
     DashboardModule,
-    UsersModule
+    UsersModule,
+    UsersEditModule,
+    ModalModule.forRoot(),
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     AuthTokenInterceptor,
@@ -65,6 +69,9 @@ import { SearchNameModule } from './shared/pipes/searchName/searchName.module';
       useClass: AuthTokenInterceptor,
       multi: true
     }
+  ],
+  exports: [
+    ModalModule
   ],
   bootstrap: [AppComponent]
 })

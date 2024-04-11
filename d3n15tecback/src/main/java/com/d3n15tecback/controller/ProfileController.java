@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -37,4 +38,10 @@ public class ProfileController {
         return null;
     }
 
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> deletar(@PathVariable("id") Long id) throws AcaoNaoPermitidaException {
+        userService.deletar(id);
+        return userService.getAllUsuariosBuscaNomeDepoisExcluir();
+    }
 }

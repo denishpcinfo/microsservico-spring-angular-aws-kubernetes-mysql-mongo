@@ -1,7 +1,6 @@
 export interface UserList {
     id?: number;
-    firstname?: string;
-    lastname?: string;
+    nome?: string;
     email?: string;
     cpf?: string;
     dataNascimento?: Date;

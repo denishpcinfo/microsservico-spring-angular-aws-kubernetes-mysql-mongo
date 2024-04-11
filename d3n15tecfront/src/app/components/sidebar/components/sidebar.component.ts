@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
+import { ProfileService } from 'src/app/services/profile.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,15 +15,24 @@ export class SidebarComponent implements OnInit {
   public closeBtn: any;
   public searchBtn: any;
   public abrir: boolean;
+  public user: User;
+  public item: any;
+  public isAdmin = false;
 
-  constructor( private router: Router) {
-  }
+  constructor( private router: Router,
+               private profileService: ProfileService,
+               private authTokenService: AuthTokenService, ) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.sidebar = document.querySelector(".sidebar");
     this.closeBtn = document.querySelector("#btn");
     this.searchBtn = document.querySelector(".bx-search");
     this.abrir = true;
+    
+    if(this.authTokenService.getToken != null){
+      this.item = this.authTokenService.decodePayloadJWT();
+    } 
+    this.getProfile();
   }
 
   public sair() {
@@ -36,5 +48,18 @@ export class SidebarComponent implements OnInit {
         this.sidebar.classList.toggle("closed");
         this.abrir = false;
       }
+  }
+
+  getProfile() {
+    this.user = new User();
+    this.profileService.getProfileId(this.item.sub)
+    .subscribe({
+      next: (data) => {
+        this.user = data;
+        if(this.user.role === "ADMIN"){
+          this.isAdmin = true;
+        }
+      }
+    })
   }
 }

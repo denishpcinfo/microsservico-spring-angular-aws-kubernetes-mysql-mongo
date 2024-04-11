@@ -10,9 +10,9 @@ import { AuthenticationResponse } from 'src/app/shared/models/authenticationResp
 })
 export class LoginComponent {
 
-  authRequest: AuthenticationRequest = {};
-  authResponse: AuthenticationResponse = {};
-  errorMessage: string = "";
+  public authRequest: AuthenticationRequest = {};
+  public authResponse: AuthenticationResponse = {};
+  public errorMessage: string = "";
   
   constructor(
     private authService: AuthenticationService

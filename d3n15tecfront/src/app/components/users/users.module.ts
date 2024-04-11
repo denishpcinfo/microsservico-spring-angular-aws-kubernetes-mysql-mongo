@@ -10,8 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { SearchNamePipe } from 'src/app/shared/pipes/searchName/searchName.pipe';
-import { SearchNameModule } from 'src/app/shared/pipes/searchName/searchName.module';
+import { UsersEditModule } from '../users-edit/users-edit.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,10 @@ import { SearchNameModule } from 'src/app/shared/pipes/searchName/searchName.mod
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    SearchNameModule
+    UsersEditModule,
+    SweetAlert2Module.forRoot(),
+    CheckboxModule
   ],
-  providers: [CpfPipe, SearchNamePipe]
+  providers: [CpfPipe]
 })
 export class UsersModule { }

@@ -1,7 +1,6 @@
 export interface AtualizaRequest {
   id?: number;
-  firstname?: string;
-  lastname?: string;
+  nome?: string;
   email?: string;
   password?: string;
   cpf?: string;

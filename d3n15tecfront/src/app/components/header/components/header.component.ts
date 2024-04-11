@@ -9,6 +9,6 @@ export class HeaderComponent {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 }

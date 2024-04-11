@@ -1,28 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileRoutingModule } from './profile-routing.module';
-import { ProfileComponent } from './components/profile.component';
+
+import { UsersEditRoutingModule } from './users-edit-routing.module';
+import { UsersEditComponent } from './components/users-edit.component';
 import { TelefoneModule } from 'src/app/shared/pipes/telefone/telefone.module';
 import { CpfModule } from 'src/app/shared/pipes/cpf/cpf.module';
 import { FormsModule } from '@angular/forms';
 import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
-import { UsersEditModule } from '../users-edit/users-edit.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {CheckboxModule} from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    UsersEditComponent
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule,
+    UsersEditRoutingModule,
     TelefoneModule,
     CpfModule,
     FormsModule,
-    UsersEditModule
+    ModalModule.forRoot(),
+    CheckboxModule
   ],
   exports:[
-    ProfileComponent
+    UsersEditComponent,
+    ModalModule
   ],
   providers: [CpfPipe]
 })
-export class ProfileModule { }
+export class UsersEditModule { }

@@ -11,10 +11,10 @@ import { FoodItem } from 'src/app/shared/models/foodItem.model';
 })
 export class FoodCatalogueComponent {
 
-  restaurantId: number;
-  foodItemResponse: FoodCataloguePage;
-  foodItemCart: FoodItem[] = [];
-  orderSummary: FoodCataloguePage;
+  public restaurantId: number;
+  public foodItemResponse: FoodCataloguePage;
+  public foodItemCart: FoodItem[] = [];
+  public orderSummary: FoodCataloguePage;
 
 
   constructor(private route: ActivatedRoute, 
@@ -43,10 +43,8 @@ export class FoodCatalogueComponent {
     food.quantity++;
     const index = this.foodItemCart.findIndex(item => item.id === food.id);
     if (index === -1) {
-      // Se o registro não existir, adicione-o ao array
       this.foodItemCart.push(food);
     } else {
-      // Se o registro existir, atualize-o no array
       this.foodItemCart[index] = food;
     }
   }
@@ -59,7 +57,6 @@ export class FoodCatalogueComponent {
       if (this.foodItemCart[index].quantity == 0) {
         this.foodItemCart.splice(index, 1);
       } else {
-        // Se o registro existir, atualize-o no array
         this.foodItemCart[index] = food;
       }
 

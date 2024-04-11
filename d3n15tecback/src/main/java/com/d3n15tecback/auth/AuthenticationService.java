@@ -29,8 +29,7 @@ public class AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) throws AcaoNaoPermitidaException {
 
         var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+                .nome(request.getNome())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .dataNascimento(request.getDataNascimento())

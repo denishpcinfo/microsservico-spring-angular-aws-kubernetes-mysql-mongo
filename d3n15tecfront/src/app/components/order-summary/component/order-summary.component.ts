@@ -10,10 +10,10 @@ import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
 })
 export class OrderSummaryComponent {
 
-  orderSummary?: OrderDTO;
-  obj: any;
-  total?: any;
-  showDialog: boolean = false;
+  public orderSummary?: OrderDTO;
+  public obj: any;
+  public total?: any;
+  public showDialog: boolean = false;
 
   constructor(private route: ActivatedRoute, private orderService: OrderService, private router: Router) { }
   

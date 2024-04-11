@@ -12,8 +12,4 @@ export class BodyComponent {
 
   constructor() {
   }
-
-  ngOnInit(): void {
-
-  }
 }

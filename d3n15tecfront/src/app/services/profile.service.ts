@@ -17,22 +17,23 @@ export class ProfileService {
   constructor(private http: HttpClient,
              private toastr: ToastrService ) { }
 
-  getProfileId(item: String) : Observable<any>{
+  getProfileId(item: String): Observable<any>{
     return this.http.get<User>(this.apiUrl + `/${item}`)
   }
-
 
   atualizar(atualizaRequest: AtualizaRequest) {
     return this.http.put<any>(`${this.apiUrl}/atualizar-cadastro`, atualizaRequest)
     .subscribe({
       next: (atualiza) => {
-        if (atualiza) {
           this.toastr.success('Cadastro atualizado com sucesso!');
-        }
       },
       error: (erro) => {
         this.toastr.error(erro.error.titulo, `Erro ${erro.error.status}!`);
       }
     });
+  }
+
+  deletar(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/` + id)
   }
 }
