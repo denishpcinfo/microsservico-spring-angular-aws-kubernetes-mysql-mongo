@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BodyRoutingModule } from './body-routing.module';
 import { BodyComponent } from './components/body.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -11,11 +12,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   imports: [
     CommonModule,
     BodyRoutingModule,
-    CarouselModule
+    CarouselModule,
+    BrowserAnimationsModule
   ],
   exports:[
-    BodyComponent,
-    CarouselModule
+    BodyComponent
   ]
 })
 export class BodyModule { }

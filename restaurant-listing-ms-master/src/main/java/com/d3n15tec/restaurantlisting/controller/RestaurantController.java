@@ -2,6 +2,7 @@ package com.d3n15tec.restaurantlisting.controller;
 
 
 import com.d3n15tec.restaurantlisting.dto.RestaurantDTO;
+import com.d3n15tec.restaurantlisting.entity.Restaurant;
 import com.d3n15tec.restaurantlisting.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,10 +50,10 @@ public class RestaurantController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
-            List<RestaurantDTO> restaurantList = new ArrayList<RestaurantDTO>();
+            List<Restaurant> restaurantList = new ArrayList<Restaurant>();
             Pageable paging = PageRequest.of(page, size);
 
-            Page<RestaurantDTO> pageRestalrants = restaurantService.findAllRestaurantsPage(paging);
+            Page<Restaurant> pageRestalrants = restaurantService.findAllRestaurantsPage(paging);
             restaurantList = pageRestalrants.getContent();
 
             Map<String, Object> response = new HashMap<>();
@@ -63,6 +64,13 @@ public class RestaurantController {
 
             return new ResponseEntity<>(response, HttpStatus.OK);
 
+    }
+
+
+    @GetMapping("/slaider")
+    public ResponseEntity<List<Restaurant>> fetchAllRestaurantsSlider(){
+        List<Restaurant> allRestaurants = restaurantService.findAllRestaurantsSlaider();
+        return new ResponseEntity<>(allRestaurants, HttpStatus.OK);
     }
 
 }

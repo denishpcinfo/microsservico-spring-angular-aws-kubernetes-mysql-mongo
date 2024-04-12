@@ -22,15 +22,19 @@ public class RestaurantService {
     @Autowired
     RestaurantRepo restaurantRepo;
 
-
     public List<RestaurantDTO> findAllRestaurants() {
         List<Restaurant> restaurants = restaurantRepo.findAll();
         List<RestaurantDTO> restaurantDTOList = restaurants.stream().map(RestaurantMapper.INSTANCE::mapRestaurantToRestaurantDTO).collect(Collectors.toList());
         return restaurantDTOList;
     }
 
-    public Page<RestaurantDTO> findAllRestaurantsPage(Pageable pageable) {
-        return restaurantRepo.findAll(pageable).map(RestaurantMapper.INSTANCE::mapRestaurantToRestaurantDTO);
+    public List<Restaurant> findAllRestaurantsSlaider() {
+        List<Restaurant> restaurants = restaurantRepo.buscarRestaurantSlider();
+        return restaurants;
+    }
+
+    public Page<Restaurant> findAllRestaurantsPage(Pageable pageable) {
+        return restaurantRepo.findAll(pageable);
     }
 
     public RestaurantDTO addRestaurantInDB(RestaurantDTO restaurantDTO) {

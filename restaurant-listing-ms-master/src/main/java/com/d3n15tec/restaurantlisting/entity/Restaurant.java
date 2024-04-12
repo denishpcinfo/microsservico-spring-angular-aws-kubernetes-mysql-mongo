@@ -19,9 +19,14 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String name;
+
     private String address;
+
     private String city;
+
     private String restaurantDescription;
 
+    private String urlSource;
 }

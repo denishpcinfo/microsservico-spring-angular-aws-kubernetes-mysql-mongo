@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderModule } from './components/header/header.module';
 import { RestaurantListingModule } from './components/restaurant-listing/restaurant-listing.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FoodCatalogueModule } from './components/food-catalogue/food-catalogue.module';
@@ -34,7 +33,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeaderModule,
     RestaurantListingModule,
     HttpClientModule,
     FoodCatalogueModule,

@@ -15,6 +15,14 @@
   font-size: 2em !important;
 }
 
+.margin-svg-side {
+  margin: 0px 0px 0px 5px;
+}  
+
+.size-font-fan-side {
+  font-size: 40px !important;
+} 
+
 .sidebar{
   position: fixed;
   left: 0;
@@ -177,6 +185,10 @@
 
 .sidebar li a:hover{
   background: #5fa2db;
+}
+
+.links_name {
+  margin: 0px 0px 0px 10px;
 }
 
 .sidebar li a .links_name{

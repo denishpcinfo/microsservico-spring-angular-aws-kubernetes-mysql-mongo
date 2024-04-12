@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RestaurantListingComponent {
 
-  public restaurantList: Restaurant[];
+  public restaurantList: Restaurant[] = [];
 
   public page = 1;
   public count = 0;
@@ -24,17 +24,6 @@ export class RestaurantListingComponent {
 
   ngOnInit() {
     this.getAllRestaurantsPage();
-  }
-  
-  getRandomNumber(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-
-  getRandomImage(): string {
-    const imageCount = 8;
-    const randomIndex = this.getRandomNumber(1, imageCount);
-    return `${randomIndex}.jpg`;
   }
 
   onButtonClick(id: number) {
