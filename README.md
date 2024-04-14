@@ -10,7 +10,6 @@ O arquivo "sql projeto microservice" na raiz do projeto, possui os SQLs para pop
 ![CI CD Flow2](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/fc9d43b0-950c-4ddb-b112-0d5549aace56)
 
 
-# Funcionando sem erros!
 ![Captura de tela de 2024-04-13 22-32-00](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/b52c5f62-ed83-4f2f-80d4-849fb5026cc6)
 
 
