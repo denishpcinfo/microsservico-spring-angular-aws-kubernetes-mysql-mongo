@@ -25,6 +25,10 @@ import { UsersModule } from './components/users/users.module';
 import { UsersEditModule } from './components/users-edit/users-edit.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import ptBr from "@angular/common/locales/pt";
+import { LOCALE_ID } from "@angular/core";
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -66,7 +70,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthTokenInterceptor,
       multi: true
-    }
+    },
+    { provide: LOCALE_ID, useValue: "pt-BR" }
   ],
   exports: [
     ModalModule

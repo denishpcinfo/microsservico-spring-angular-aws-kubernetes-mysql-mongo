@@ -1,8 +1,8 @@
-import { FoodItem } from "src/app/shared/models/foodItem.model";
 import { Restaurant } from "./restaurant.model";
+import { FoodItemPedido } from "./foodItemPedido.model";
 
 export interface OrderDTO{
-    foodItemsList?: FoodItem[];
+    foodItemsList?: FoodItemPedido[];
     userId?: number;
     restaurant?: Restaurant;
 }

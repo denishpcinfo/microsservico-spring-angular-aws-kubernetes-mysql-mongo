@@ -1,4 +1,4 @@
-export interface FoodItem {
+export interface FoodItemPedido {
     id?: number;
     itemName?: string;
     itemDescription?: string;
@@ -6,6 +6,7 @@ export interface FoodItem {
     price?: number;
     restaurantId?: number;
     quantidadeEstoque: number;
+    quantidadePedido: number;
 }
 
 

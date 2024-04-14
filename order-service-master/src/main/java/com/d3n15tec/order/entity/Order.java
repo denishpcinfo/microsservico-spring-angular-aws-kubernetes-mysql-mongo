@@ -19,6 +19,6 @@ public class Order {
     private Integer orderId;
     private List<FoodItemsDTO> foodItemsList;
     private Restaurant restaurant;
-    private UserDTO userDTO;
+    private Integer userId;
 
 }

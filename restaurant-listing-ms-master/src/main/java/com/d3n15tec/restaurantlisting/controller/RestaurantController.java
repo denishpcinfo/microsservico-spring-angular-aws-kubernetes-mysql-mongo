@@ -19,7 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Page;
 
 @RestController
-@RequestMapping("/restaurant")
+@RequestMapping("/restaurante")
 @CrossOrigin
 public class RestaurantController {
 
@@ -27,25 +27,25 @@ public class RestaurantController {
     RestaurantService restaurantService;
 
 
-    @GetMapping("/fetchAllRestaurants")
+    @GetMapping("/buscar-restaurantes")
     public ResponseEntity<List<RestaurantDTO>> fetchAllRestaurants(){
         List<RestaurantDTO> allRestaurants = restaurantService.findAllRestaurants();
         return new ResponseEntity<>(allRestaurants, HttpStatus.OK);
     }
 
-    @PostMapping("/addRestaurant")
+    @PostMapping("/add-restaurante")
     public ResponseEntity<RestaurantDTO> saveRestaurant(@RequestBody RestaurantDTO restaurantDTO) {
         RestaurantDTO restaurantAdded = restaurantService.addRestaurantInDB(restaurantDTO);
         return new ResponseEntity<>(restaurantAdded, HttpStatus.CREATED);
     }
 
-    @GetMapping("fetchById/{id}")
+    @GetMapping("buscar-por-id/{id}")
     public ResponseEntity<RestaurantDTO> findRestaurantById(@PathVariable Integer id) {
        return restaurantService.fetchRestaurantById(id);
     }
 
 
-    @GetMapping("/pageAllRestaurants")
+    @GetMapping("/buscar-todos-restaurantes")
     public ResponseEntity<Map<String, Object>> findPageAllRestaurants(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {

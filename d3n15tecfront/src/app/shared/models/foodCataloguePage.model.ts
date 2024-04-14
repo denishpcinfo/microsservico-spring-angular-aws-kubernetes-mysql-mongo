@@ -1,7 +1,7 @@
-import { FoodItem } from "./foodItem.model";
+import { FoodItemPedido } from "./foodItemPedido.model";
 import { Restaurant } from "./restaurant.model";
 
 export interface FoodCataloguePage{
-    foodItemsList:FoodItem[];
-    restaurant:Restaurant;
+    foodItemsList:FoodItemPedido[];
+    restaurant: Restaurant;
 }

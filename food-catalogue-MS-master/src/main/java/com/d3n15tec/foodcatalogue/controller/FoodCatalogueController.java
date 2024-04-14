@@ -10,20 +10,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/foodCatalogue")
+@RequestMapping("/catalogo-food")
 @CrossOrigin
 public class FoodCatalogueController {
 
     @Autowired
     FoodCatalogueService foodCatalogueService;
 
-    @PostMapping("/addFoodItem")
+    @PostMapping("/add-food")
     public ResponseEntity<FoodItemDTO> addFoodItem(@RequestBody FoodItemDTO foodItemDTO){
         FoodItemDTO foodItemSaved = foodCatalogueService.addFoodItem(foodItemDTO);
         return new ResponseEntity<>(foodItemSaved, HttpStatus.CREATED);
     }
 
-    @GetMapping("/fetchRestaurantAndFoodItemsById/{restaurantId}")
+    @GetMapping("/buscar-restaurante-food/{restaurantId}")
     public ResponseEntity<FoodCataloguePage> fetchRestauDetailsWithFoodMenu(@PathVariable Integer restaurantId){
         FoodCataloguePage foodCataloguePage = foodCatalogueService.fetchFoodCataloguePageDetails(restaurantId);
         return new ResponseEntity<>(foodCataloguePage, HttpStatus.OK);

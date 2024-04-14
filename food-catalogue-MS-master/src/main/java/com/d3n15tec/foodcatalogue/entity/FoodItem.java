@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -22,11 +23,14 @@ public class FoodItem {
 
     private boolean isVeg;
 
-    private Long price;
+    private BigDecimal price;
 
     private Integer restaurantId;
 
     @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
-    private Integer quantity;
+    private Integer quantidadeEstoque;
+
+    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Integer quantidadePedido;
 
 }

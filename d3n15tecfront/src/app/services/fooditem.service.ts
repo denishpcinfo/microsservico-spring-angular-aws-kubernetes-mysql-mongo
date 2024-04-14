@@ -9,11 +9,12 @@ import { API_URL_FC, K8ExternalIp } from 'src/app/constants/url';
 })
 export class FoodItemService {
 
-    private apiUrl = API_URL_FC+'/foodCatalogue/fetchRestaurantAndFoodItemsById/';
+    private apiUrl = API_URL_FC+'/catalogo-food/buscar-restaurante-food/';
 
     constructor(private http: HttpClient) { }
 
     getFoodItemsByRestaurant(id:number): Observable<any> {
+      
         return this.http.get<any>(`${this.apiUrl+id}`)
           .pipe(
             catchError(this.handleError)

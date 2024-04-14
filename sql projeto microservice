@@ -1,0 +1,386 @@
+-- sql banco userdb
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(23, '72335068000132', '2024-03-30', 'nome1@gmail.com', 'NOME1', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'ADMIN', '11999999999');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(1, '54208879084', '2024-03-20', 'nome2@gmail.com', 'NOME2', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999991');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(2, '01028724063', '2024-03-21', 'nome3@gmail.com', 'NOME3', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999992');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(3, '72082390020', '2024-03-22', 'nome4@gmail.com', 'NOME4', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999993');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(5, '62308221054', '2024-03-24', 'nome6@gmail.com', 'NOME6', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999995');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(6, '02999860048', '2024-03-25', 'nome7@gmail.com', 'NOME7', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999996');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(7, '93046194080', '2024-03-26', 'nome8@gmail.com', 'NOME8', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999997');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(8, '17281582064', '2024-03-27', 'nome9@gmail.com', 'NOME9', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999998');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(9, '80655680098', '2024-03-28', 'nome10@gmail.com', 'NOME10', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999911');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(10, '39179611052', '2024-03-28', 'nome11@gmail.com', 'NOME11', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999912');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(11, '32537591054', '2024-03-01', 'nome12@gmail.com', 'NOME12', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999913');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(12, '64248283034', '2024-03-02', 'nome13@gmail.com', 'NOME13', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999914');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(13, '41198193026', '2024-03-03', 'nome14@gmail.com', 'NOME14', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999915');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(14, '80460617001', '2024-03-04', 'nome15@gmail.com', 'NOME15', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999916');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(15, '34529581080', '2024-03-05', 'nome16@gmail.com', 'NOME16', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999917');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(16, '72239333057', '2024-03-06', 'nome17@gmail.com', 'NOME17', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999918');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(17, '69807680000', '2024-03-07', 'nome18@gmail.com', 'NOME18', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999919');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(18, '79911711080', '2024-03-08', 'nome19@gmail.com', 'NOME19', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999920');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(19, '78987744000', '2024-03-09', 'nome20@gmail.com', 'NOME20', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999921');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(20, '02774730040', '2024-03-30', 'nome21@gmail.com', 'NOME21', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999922');
+
+INSERT INTO userdb.usuario
+(id, cpf, data_nascimento, email, nome, password, `role`, telefone_celular)
+VALUES(21, '34556296013', '2024-03-30', 'nome22@gmail.com', 'NOME22', '$2a$10$1bdTJL3hTzAAQweHzsN8tusav/Nb6wEj0oI7DFi9sMbVc22ePRdam', 'USER', '11999999933');
+
+
+-- sql banco restaurantdb
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(23, 'Rua 1', 'São Paulo', 'Restaurante 1', 'Japonês', 'assets/restaurant-pics/1.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(1, 'Rua 2', 'São Paulo', 'Restaurante 2', 'Mexicano', 'assets/restaurant-pics/2.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(2, 'Rua 21', 'Rio de Janeiro', 'Restaurante 3', 'Churrascaria', 'assets/restaurant-pics/3.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(3, 'Rua 3', 'Rio de Janeiro', 'Restaurante 4', 'Churrascaria', 'assets/restaurant-pics/4.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(4, 'Rua 4', 'Rio de Janeiro', 'Restaurante 5', 'Mexicano', 'assets/restaurant-pics/5.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(5, 'Rua 5', 'Belo Horizonte', 'Restaurante 6', 'Churrascaria', 'assets/restaurant-pics/6.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(6, 'Rua 6', 'Rio de Janeiro', 'Restaurante 7', 'Todo tipo de comida', '/assets/restaurant-pics/7.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(7, 'Rua 7', 'Rio de Janeiro', 'Restaurante 8', 'Mexicano', '/assets/restaurant-pics/8.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(8, 'Rua 8', 'Rio de Janeiro', 'Restaurante 9', 'Japonês', '/assets/restaurant-pics/1.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(9, 'Rua 9', 'Rio de Janeiro', 'Restaurante 9', 'Churrascaria', '/assets/restaurant-pics/2.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(10, 'Rua 10', 'Rio de Janeiro', 'Restaurante 10', 'Churrascaria', '/assets/restaurant-pics/3.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(11, 'Rua 11', 'Rio de Janeiro', 'Restaurante 11', 'Todo tipo de comida!', '/assets/restaurant-pics/4.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(12, 'Rua 12', 'Belo Horizonte', 'Restaurante 12', 'Mexicano', '/assets/restaurant-pics/5.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(13, 'Rua 13', 'São Paulo', 'Restaurante 13', 'Japonês', '/assets/restaurant-pics/6.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(15, 'Rua 14', 'Belo Horizonte', 'Restaurante 15', 'Churrascaria', '/assets/restaurant-pics/7.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(16, 'Rua 15', 'São Paulo', 'Restaurante 16', 'Mexicano', '/assets/restaurant-pics/8.png');
+
+INSERT INTO restaurantdb.restaurant
+(id, address, city, name, restaurant_description, url_source)
+VALUES(17, 'Rua 16', 'Belo Horizonte', 'Restaurante 17', 'Japonês', '/assets/restaurant-pics/1.png');
+
+-- sql banco foodcataloguedb
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(1000, false, 'descricao comida 1', 'nome comida 1', 10.01, 10, 23);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(1, false, 'descricao comida 2', 'nome comida 2', 11.02, 10, 1);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(2, true, 'descricao comida 3', 'nome comida 3', 12.03, 11, 2);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(3, true, 'descricao comida 4', 'nome comida 4', 10.99, 10, 3);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(4, false, 'descricao comida 5', 'nome comida 5', 10.05, 10, 4);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(5, false, 'descricao comida 6', 'nome comida 6', 100.01, 10, 5);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(6, false, 'descricao comida 7', 'nome comida 7', 107.01, 10, 6);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(7, false, 'descricao comida 8', 'nome comida 8', 105.01, 10, 7);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(8, false, 'descricao comida 9', 'nome comida 9', 104.01, 10, 7);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(9, false, 'descricao comida 10', 'nome comida 10', 10.07, 10, 7);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(10, false, 'descricao comida 11', 'nome comida 11', 10.04, 10, 7);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(11, false, 'descricao comida 12', 'nome comida 12', 10.02, 10, 8);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(12, false, 'descricao comida 13', 'nome comida 13', 10.09, 10, 9);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(13, false, 'descricao comida 14', 'nome comida 14', 10.06, 10, 10);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(14, false, 'descricao comida 15', 'nome comida 15', 10.07, 10, 11);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(15, false, 'descricao comida 16', 'nome comida 16', 100.01, 2, 12);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(16, false, 'descricao comida 17', 'nome comida 17', 104.01, 10, 13);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(17, false, 'descricao comida 18', 'nome comida 18', 10.01, 1, 14);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(18, false, 'descricao comida 19', 'nome comida 19', 104.01, 10, 15);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(19, false, 'descricao comida 20', 'nome comida 21', 10.01, 1, 16);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(20, false, 'descricao comida 21', 'nome comida 20', 10.01, 1, 17);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(21, true, 'descricao comida 22', 'nome comida 22', 10.01, 12, 1);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(22, false, 'descricao comida 23', 'nome comida 23', 10.01, 10, 2);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(73, false, 'descricao comida 24', 'nome comida 24', 10.01, 10, 3);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(24, false, 'descricao comida 25', 'nome comida 25', 107.01, 10, 23);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(25, false, 'descricao comida 26', 'nome comida 26', 10.01, 10, 4);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(26, false, 'descricao comida 27', 'nome comida 27', 10.01, 10, 5);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(27, false, 'descricao comida 28', 'nome comida 28', 10.00, 10, 6);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(28, false, 'descricao comida 29', 'nome comida 29', 10.00, 10, 7);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(29, false, 'descricao comida 30', 'nome comida 30', 10.00, 10, 8);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(30, false, 'descricao comida 31', 'nome comida 31', 1110.01, 10, 9);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(31, true, 'descricao comida 32', 'nome comida 32', 10.01, 11, 10);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(32, true, 'descricao comida 33', 'nome comida 33', 1010.01, 10, 11);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(33, true, 'descricao comida 34', 'nome comida 34', 10.01, 10, 12);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(34, false, 'descricao comida 35', 'nome comida 35', 10.01, 10, 13);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(35, false, 'descricao comida 36', 'nome comida 36', 10.01, 10, 14);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(36, false, 'descricao comida 37', 'nome comida 37', 100.01, 10, 15);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(37, true, 'descricao comida 38', 'nome comida 38', 1099.01, 10, 16);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(38, false, 'descricao comida 39', 'nome comida 39', 10.01, 24, 17);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(39, true, 'descricao comida 40', 'nome comida 40', 10.01, 23, 1);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(40, false, 'descricao comida 41', 'nome comida 41', 1047.01, 22, 23);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(41, true, 'descricao comida 42', 'nome comida 42', 10.01, 21, 2);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(42, false, 'descricao comida 43', 'nome comida 43', 10.01, 20, 3);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(43, false, 'descricao comida 44', 'nome comida 44', 1014.01, 20, 4);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(44, false, 'descricao comida 45', 'nome comida 45', 10.01, 16, 5);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(45, true, 'descricao comida 46', 'nome comida 46', 10.01, 15, 6);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(46, false, 'descricao comida 47', 'nome comida 47', 10.01, 4, 7);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(47, true, 'descricao comida 48', 'nome comida 48', 10.01, 5, 8);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(48, false, 'descricao comida 49', 'nome comida 49', 104.01, 10, 9);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(49, false, 'descricao comida 50', 'nome comida 50', 10.01, 15, 10);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(50, true, 'descricao comida 51', 'nome comida 51', 10.01, 12, 10);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(51, true, 'descricao comida 52', 'nome comida 52', 10.00, 10, 11);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(52, true, 'descricao comida 53', 'nome comida 53', 10.00, 17, 12);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(53, true, 'descricao comida 54', 'nome comida 54', 10.00, 14, 13);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(54, true, 'descricao comida 55', 'nome comida 55', 10.00, 13, 14);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(55, false, 'descricao comida 56', 'nome comida 56', 10.00, 102, 15);
+
+INSERT INTO foodcataloguedb.food_item
+(id, is_veg, item_description, item_name, price, quantidade_estoque, restaurant_id)
+VALUES(56, true, 'descricao comida 57', 'nome comida 57', 10.01, 101, 16);

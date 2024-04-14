@@ -15,7 +15,9 @@ export class OrderSummaryComponent {
   public total?: any;
   public showDialog: boolean = false;
 
-  constructor(private route: ActivatedRoute, private orderService: OrderService, private router: Router) { }
+  constructor(private route: ActivatedRoute, 
+              private orderService: OrderService, 
+              private router: Router) { }
   
   ngOnInit() {
     const data = this.route.snapshot.queryParams['data'];
@@ -23,11 +25,12 @@ export class OrderSummaryComponent {
     this.obj = JSON.parse(data);
     this.obj.userId=1;
     this.orderSummary = this.obj;
+    this.total = 0;
 
-    this.total = 
-    this.orderSummary.foodItemsList.reduce((accumulator, currentValue) => {
-      return accumulator + (currentValue.quantity * currentValue.price);
-    }, 0);
+    for(let orderPedido of this.orderSummary.foodItemsList){
+      let totalPedido = (orderPedido.price * orderPedido.quantidadePedido);
+      this.total = totalPedido + this.total;
+    }
 
   }
 

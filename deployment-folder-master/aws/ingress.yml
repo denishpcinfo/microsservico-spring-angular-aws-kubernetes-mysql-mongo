@@ -27,7 +27,7 @@ spec:
                 port:
                   number: 9091
 
-          - path: /foodCatalogue
+          - path: /catalogo-food
             pathType: Prefix
             backend:
               service:

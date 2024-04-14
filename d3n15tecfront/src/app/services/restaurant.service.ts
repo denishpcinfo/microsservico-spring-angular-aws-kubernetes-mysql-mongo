@@ -10,13 +10,13 @@ import { Restaurant } from '../shared/models/restaurant.model';
 })
 export class RestaurantService {
 
-  private apiUrl = API_URL_RL +'/restaurant/'; 
+  private apiUrl = API_URL_RL +'/restaurante/'; 
   public Restaurantes;
 
   constructor(private http: HttpClient) { }
 
   getAllRestaurants(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}` + 'fetchAllRestaurants')
+    return this.http.get<any>(`${this.apiUrl}` + 'buscar-restaurantes')
       .pipe(
         catchError(this.handleError)
       );
@@ -27,7 +27,7 @@ export class RestaurantService {
   }
 
   getAll(params: any): Observable<any> {
-    return this.http.get<any>(this.apiUrl + 'pageAllRestaurants', { params });
+    return this.http.get<any>(this.apiUrl + 'buscar-todos-restaurantes', { params });
   }
 
 

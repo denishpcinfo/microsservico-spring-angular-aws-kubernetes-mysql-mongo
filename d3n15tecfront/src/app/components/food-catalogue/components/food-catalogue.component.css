@@ -2,6 +2,18 @@
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
+div{
+  border: 0;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .restaurant-details {
     text-align: center;
     margin: 20px auto;
@@ -54,6 +66,7 @@
     cursor: pointer;
     width: 30px;
     height: 30px;
+    padding: 0px;
   }
   
   .minus-button:hover,
@@ -102,7 +115,12 @@
   }
   
   
-
+.div-qtda-pedido{
+  margin: 7px 90px 0px 0px;
+  width: 10px;
+  display: flex;
+  flex-direction: row;
+}
 
 
 

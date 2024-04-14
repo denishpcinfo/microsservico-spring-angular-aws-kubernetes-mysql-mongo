@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FoodItemService } from 'src/app/services/fooditem.service';
 import { FoodCataloguePage } from 'src/app/shared/models/foodCataloguePage.model';
 import { FoodItem } from 'src/app/shared/models/foodItem.model';
+import { FoodItemPedido } from 'src/app/shared/models/foodItemPedido.model';
 
 @Component({
   selector: 'app-food-catalogue',
@@ -13,8 +14,12 @@ export class FoodCatalogueComponent {
 
   public restaurantId: number;
   public foodItemResponse: FoodCataloguePage;
-  public foodItemCart: FoodItem[] = [];
+  public foodItemCart: FoodItemPedido[] = [];
   public orderSummary: FoodCataloguePage;
+  public nomeRestaurante: string;
+  public descricaoRestaurante: string;
+
+  public cardapioRestaurante: FoodItemPedido[] = [];
 
 
   constructor(private route: ActivatedRoute, 
@@ -22,54 +27,38 @@ export class FoodCatalogueComponent {
               private router: Router) { }
 
   ngOnInit() {
-
     this.route.paramMap.subscribe(params => {
-      this.restaurantId = +params.get('id');
+      this.restaurantId = + params.get('id');
     });
-
     this.getFoodItemsByRestaurant(this.restaurantId);
-    
   }
 
   getFoodItemsByRestaurant(restaurant: number) {
     this.foodItemService.getFoodItemsByRestaurant(restaurant).subscribe(
       data => {
         this.foodItemResponse = data;
+        this.nomeRestaurante = data.restaurant.name;
+        this.descricaoRestaurante = data.restaurant.restaurantDescription;
+        this.cardapioRestaurante = data.foodItemsList;
       }
     )
   }
 
-  increment(food: any) {
-    food.quantity++;
-    const index = this.foodItemCart.findIndex(item => item.id === food.id);
-    if (index === -1) {
-      this.foodItemCart.push(food);
-    } else {
-      this.foodItemCart[index] = food;
-    }
+  increment(index: any) {
+    this.cardapioRestaurante[index].quantidadePedido++;
   }
 
-  decrement(food: any) {
-    if (food.quantity > 0) {
-      food.quantity--;
-
-      const index = this.foodItemCart.findIndex(item => item.id === food.id);
-      if (this.foodItemCart[index].quantity == 0) {
-        this.foodItemCart.splice(index, 1);
-      } else {
-        this.foodItemCart[index] = food;
-      }
-
+  decrement(index: any) {
+    if (this.cardapioRestaurante[index].quantidadePedido > 0){
+      this.cardapioRestaurante[index].quantidadePedido--;
     }
   }
 
   onCheckOut() {
-    this.foodItemCart;
-    this.orderSummary = {
-      foodItemsList: [],
-      restaurant: null
-    }
-    this.orderSummary.foodItemsList = this.foodItemCart;
+    this.foodItemCart = this.cardapioRestaurante;
+    this.orderSummary = { foodItemsList: [] = [], restaurant: null }
+    const novoArray = this.foodItemCart.filter((item) => item.quantidadePedido > 0);
+    this.orderSummary.foodItemsList = novoArray;
     this.orderSummary.restaurant = this.foodItemResponse.restaurant;
     this.router.navigate(['/pedidos'], { queryParams: { data: JSON.stringify(this.orderSummary) } });
   }

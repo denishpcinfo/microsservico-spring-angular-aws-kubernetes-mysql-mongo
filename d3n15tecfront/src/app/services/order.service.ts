@@ -9,16 +9,9 @@ import {  API_URL_Order, K8ExternalIp } from 'src/app/constants/url';
 
 export class OrderService {
 
-  private apiUrl = API_URL_Order +'/order/saveOrder';
+  private apiUrl = API_URL_Order +'/pedido/salvar-pedido';
 
   constructor(private http: HttpClient) { }
-
- httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':'text/plain',
-      'Access-Control-Allow-Origin': 'http://localhost:4200'
-    })
-  };
 
   saveOrder(data: any):Observable<any>  {
     return this.http.post<any>(this.apiUrl, data);
