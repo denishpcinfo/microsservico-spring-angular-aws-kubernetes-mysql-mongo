@@ -1,6 +1,6 @@
 # Projeto de Microsserviço Kubernetes, Docker, Eureka, Spring 3.1.6 e 2.7.12, Maven, Angular 16, My SQL, Mongo, AWS, Jenkins Pipeline, Argo CD e Github.
 
-# O arquivo "sql projeto microservice" na raiz do projeto, possui os SQLs para popular os bancos.
+O arquivo "sql projeto microservice" na raiz do projeto, possui os SQLs para popular os bancos.
 
 ![arquitetura](https://github.com/denishpcinfo/microsservico/assets/17712719/20352f92-cc9a-4670-94f5-ef3ba256e3b6)
 
