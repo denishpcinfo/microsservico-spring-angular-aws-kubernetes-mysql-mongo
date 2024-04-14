@@ -2,14 +2,12 @@
 
 O arquivo "sql projeto microservice" na raiz do projeto, possui os SQLs para popular os bancos.
 
-![294773985-20352f92-cc9a-4670-94f5-ef3ba256e3b6](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/c09d1f08-831e-407f-a038-1d9a8214f5cc)
+![294773985-20352f92-cc9a-4670-94f5-ef3ba256e3b6](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/6a96ddf8-ccbb-40ea-9a02-566154ab3d9e)
 
 
 # Pipeline
 
 ![CI CD Flow2](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/fc9d43b0-950c-4ddb-b112-0d5549aace56)
-
-
 
 
 # Funcionando sem erros!
