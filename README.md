@@ -17,6 +17,10 @@ Pipeline
 
 
 Funcionando sem erros!
+![Captura de tela de 2024-04-13 22-08-08](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/4117eb6a-0064-4f42-bfde-7a585ee5b7a3)
+
+
+
 ![Captura de tela de 2024-04-13 21-43-48](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/2d4ce536-80fb-4d81-a66a-e3cd5a1af3e4)
 
 
