@@ -1,3 +1,5 @@
+hash password = 123456
+
 -- sql banco userdb
 
 INSERT INTO userdb.usuario
