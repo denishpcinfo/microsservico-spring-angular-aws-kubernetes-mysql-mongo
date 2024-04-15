@@ -1,4 +1,4 @@
-# Projeto de Microsserviço com Spring Cloud, Kubernetes, Docker(Docker Hub), Eureka, Spring (3.1.6 e 2.7.12), Maven, Angular 16, My SQL, MongoDB, AWS(EC2, EKS), Jenkins CD, Argo DC e Github(Git Hooks).
+# Projeto de Microsserviço com Spring Cloud, Kubernetes, Docker(Docker Hub), Eureka, Spring (3.1.6 e 2.7.12), Maven, Angular 16, My SQL, MongoDB, AWS(IAM, EC2, EKS e RDS), Jenkins CD, Argo DC e Github(Git Hooks).
 
 O arquivo "sql projeto microservice" na raiz do projeto, possui os SQLs para popular os bancos.
 
