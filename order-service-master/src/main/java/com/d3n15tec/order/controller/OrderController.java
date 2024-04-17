@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/pedido")
+@RequestMapping("/api/pedido")
 @CrossOrigin
 public class OrderController {
 

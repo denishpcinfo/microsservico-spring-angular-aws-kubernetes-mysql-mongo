@@ -9,7 +9,7 @@ import { API_URL_FC, K8ExternalIp } from 'src/app/constants/url';
 })
 export class FoodItemService {
 
-    private apiUrl = API_URL_FC+'/catalogo-food/buscar-restaurante-food/';
+    private apiUrl = API_URL_FC + '/catalogo-food/buscar-restaurante-food/';
 
     constructor(private http: HttpClient) { }
 

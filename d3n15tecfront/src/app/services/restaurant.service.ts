@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, startWith } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { API_URL_RL, K8ExternalIp } from 'src/app/constants/url';
 import { Restaurant } from '../shared/models/restaurant.model';
 
@@ -10,7 +10,7 @@ import { Restaurant } from '../shared/models/restaurant.model';
 })
 export class RestaurantService {
 
-  private apiUrl = API_URL_RL +'/restaurante/'; 
+  private apiUrl = API_URL_RL + '/restaurante/'; 
   public Restaurantes;
 
   constructor(private http: HttpClient) { }

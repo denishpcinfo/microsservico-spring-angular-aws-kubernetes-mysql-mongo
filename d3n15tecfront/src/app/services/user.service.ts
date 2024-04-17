@@ -8,7 +8,7 @@ import { API_URL_UD, K8ExternalIp } from 'src/app/constants/url';
 })
 export class UserService {
 
-  private apiUrl = API_URL_UD +'/api/users/'; 
+  private apiUrl = API_URL_UD + '/users/'; 
 
   constructor(private http: HttpClient) { }
 

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: cloudgateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://d3n15-tec-eureka-user:d3n15123456789@localhost:8761/eureka/

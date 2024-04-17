@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { User } from '../shared/models/user.model';
 import { AtualizaRequest } from '../shared/models/atualizaRequest.model';
 import { ToastrService } from 'ngx-toastr';
+import { API_URL_UD } from '../constants/url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  private apiUrl = 'http://localhost:9093/api/profile'
+  private apiUrl = API_URL_UD + '/profile'
 
   atualizaRequest: AtualizaRequest = {};
 

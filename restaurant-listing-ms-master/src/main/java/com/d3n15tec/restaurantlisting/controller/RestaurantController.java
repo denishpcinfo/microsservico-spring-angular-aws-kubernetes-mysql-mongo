@@ -19,7 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Page;
 
 @RestController
-@RequestMapping("/restaurante")
+@RequestMapping("/api/restaurante")
 @CrossOrigin
 public class RestaurantController {
 
