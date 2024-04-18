@@ -13,9 +13,9 @@ spring:
     name: ORDER-SERVICE
   data:
     mongodb:
-      uri:  mongodb://localhost:27017/orderdb
       host: localhost
       port: 27017
-      database: orderdb
-      repositories:
-        enabled: true
+      database: pedidodb
+      authentication-database: admin
+      username: admin
+      password: eusou100

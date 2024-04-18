@@ -1,4 +1,4 @@
-version: '3.5'
+version: '3.8'
 services:
   mysql:
     container_name: d3n15micro
@@ -10,4 +10,20 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./backup.sql:/backupuserdb.sql
+      - mysql_data:/var/lib/mysql
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: eusou100
+      MONGO_INITDB_DATABASE: pedidodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/pedidodb
+
+volumes:
+  mysql_data:
+  mongo_data:
