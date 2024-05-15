@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit {
 
   constructor( private router: Router,
                private profileService: ProfileService,
-               private authTokenService: AuthTokenService, ) { }
+               private authTokenService: AuthTokenService ) { }
 
   ngOnInit(){
     this.sidebar = document.querySelector(".sidebar");

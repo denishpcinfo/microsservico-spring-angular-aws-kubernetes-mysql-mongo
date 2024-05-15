@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -12,7 +14,8 @@ import java.util.List;
 public class OrderDTOFromFE {
 
     private List<FoodItemsDTO> foodItemsList;
-    private Integer userId;
     private Restaurant restaurant;
-
+    private UserDTO user;
+    private LocalDateTime dataPedido;
+    private BigDecimal valorTotal;
 }

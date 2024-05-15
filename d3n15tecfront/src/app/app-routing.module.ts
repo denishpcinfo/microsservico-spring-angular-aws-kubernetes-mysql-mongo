@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/components/profile.compon
 import { UsersComponent } from './components/users/components/users.component';
 import { DashboardComponent } from './components/dashboard/components/dashboard.component';
 import { Role } from './shared/models/role';
+import { OrderSummaryListComponent } from './components/order-summary-list/component/order-summary-list.component';
 
 const routes: Routes = [
   { 
@@ -36,6 +37,12 @@ const routes: Routes = [
     component: LayoutComponent, 
     canActivate: [AuthGuard], 
     children: [  
+    {
+      path: 'lista-pedidos',
+      component: OrderSummaryListComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.ADMIN]}
+    }, 
     {
       path: 'pedidos',
       component: OrderSummaryComponent,

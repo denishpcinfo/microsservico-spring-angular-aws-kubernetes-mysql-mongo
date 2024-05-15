@@ -28,6 +28,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import ptBr from "@angular/common/locales/pt";
 import { LOCALE_ID } from "@angular/core";
 import { registerLocaleData } from '@angular/common';
+import { OrderSummaryListModule } from './components/order-summary-list/order-summary-list.module';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -62,7 +63,8 @@ registerLocaleData(ptBr);
     UsersModule,
     UsersEditModule,
     ModalModule.forRoot(),
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    OrderSummaryListModule
   ],
   providers: [
     AuthTokenInterceptor,

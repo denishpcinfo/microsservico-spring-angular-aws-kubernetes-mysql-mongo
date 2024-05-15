@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 import { OrderService } from 'src/app/services/order.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
+import { User } from 'src/app/shared/models/user.model';
+import { TelefonePipe } from 'src/app/shared/pipes/telefone/telefone.pipe';
+import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 
 @Component({
   selector: 'app-order-summary',
@@ -14,16 +19,24 @@ export class OrderSummaryComponent {
   public obj: any;
   public total?: any;
   public showDialog: boolean = false;
+  public item: any;
+  public user: User;
 
   constructor(private route: ActivatedRoute, 
               private orderService: OrderService, 
-              private router: Router) { }
+              private router: Router,
+              private authTokenService: AuthTokenService,
+              private profileService: ProfileService) {
+  
+    if(authTokenService.getToken != null){
+      this.item = authTokenService.decodePayloadJWT();
+    }              
+  }
   
   ngOnInit() {
     const data = this.route.snapshot.queryParams['data'];
-
+    this.getProfile();
     this.obj = JSON.parse(data);
-    this.obj.userId=1;
     this.orderSummary = this.obj;
     this.total = 0;
 
@@ -34,7 +47,26 @@ export class OrderSummaryComponent {
 
   }
 
+  getProfile() {
+    this.user = new User();
+    this.profileService.getProfileId(this.item.sub)
+    .subscribe({
+      next: (data) => {
+        this.user = data;
+      }
+    })
+  }
+
   saveOrder() {
+    console.log("this.user")
+    console.log(this.user)
+
+    this.orderSummary.user = this.user;
+    this.orderSummary.valorTotal = this.total;
+
+    console.log("this.orderSummary")
+    console.log(this.orderSummary)
+
     this.orderService.saveOrder(this.orderSummary)
       .subscribe(
         response => {

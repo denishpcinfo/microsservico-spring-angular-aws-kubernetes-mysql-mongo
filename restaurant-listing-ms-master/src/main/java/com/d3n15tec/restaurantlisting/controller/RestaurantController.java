@@ -39,7 +39,7 @@ public class RestaurantController {
         return new ResponseEntity<>(restaurantAdded, HttpStatus.CREATED);
     }
 
-    @GetMapping("buscar-por-id/{id}")
+    @GetMapping("/buscar-por-id/{id}")
     public ResponseEntity<RestaurantDTO> findRestaurantById(@PathVariable Integer id) {
        return restaurantService.fetchRestaurantById(id);
     }

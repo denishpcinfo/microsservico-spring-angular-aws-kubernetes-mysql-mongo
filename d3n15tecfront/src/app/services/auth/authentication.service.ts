@@ -5,6 +5,7 @@ import { AuthenticationResponse } from 'src/app/shared/models/authenticationResp
 import { AuthenticationRequest } from 'src/app/shared/models/authenticationRequest.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { API_URL_UD } from 'src/app/constants/url';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthenticationService {
   authResponse: AuthenticationResponse = {};
 
   
-  private baseUrl = 'http://localhost:9093/api/autenticacao'
+  private baseUrl = API_URL_UD + '/autenticacao'
 
   constructor( private http: HttpClient,
                private toastr: ToastrService, 

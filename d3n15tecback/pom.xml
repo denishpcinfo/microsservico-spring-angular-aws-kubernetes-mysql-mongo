@@ -11,7 +11,7 @@
 	<groupId>com.</groupId>
 	<artifactId>d3n15tecback</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>d3n15tecweb</name>
+	<name>USER-SERVICE</name>
 	<description>Project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -78,6 +78,7 @@
 			<artifactId>swagger-annotations-jakarta</artifactId>
 			<version>2.2.9</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>

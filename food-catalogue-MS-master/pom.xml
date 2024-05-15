@@ -11,7 +11,7 @@
 	<groupId>com.d3n15tec</groupId>
 	<artifactId>foodcatalogue</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>FoodCatalogueMicroservice</name>
+	<name>FOOD-CATALOGUE-SERVICE</name>
 	<description>Demo project for Spring Boot Food catalogue Microservice</description>
 	<properties>
 		<java.version>11</java.version>

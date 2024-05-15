@@ -1,3 +1,6 @@
+server:
+  port: 8761
+
 spring:
   application:
     name: eurekaserver
@@ -7,9 +10,6 @@ spring:
     user:
       name: d3n15-tec-eureka-user
       password: d3n15123456789
-
-server:
-  port: 8761
 
 eureka:
   client:
