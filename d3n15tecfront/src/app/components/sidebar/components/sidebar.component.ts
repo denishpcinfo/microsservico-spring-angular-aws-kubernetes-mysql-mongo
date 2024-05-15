@@ -50,6 +50,7 @@ export class SidebarComponent implements OnInit {
       }
   }
 
+  
   getProfile() {
     this.user = new User();
     this.profileService.getProfileId(this.item.sub)

@@ -13,6 +13,7 @@ import { CpfModule } from 'src/app/shared/pipes/cpf/cpf.module';
 import { ButtonModule } from 'primeng/button';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
+import { SidebarModule } from '../sidebar/sidebar.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
     HttpClientModule,
     UsersEditModule,
     SweetAlert2Module.forRoot(),
-    CheckboxModule
+    CheckboxModule,
+    SidebarModule
   ],
   providers: [CpfPipe]
 })

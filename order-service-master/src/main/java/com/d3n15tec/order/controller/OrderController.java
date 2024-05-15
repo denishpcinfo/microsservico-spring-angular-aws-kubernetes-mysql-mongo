@@ -34,7 +34,6 @@ public class OrderController {
 
     @GetMapping("/todos")
     public ResponseEntity<Map<String, Object>> fetchAllPedidos(
-            @RequestParam("item") String item,
             @RequestParam(name = "page", required = false) int page,
             @RequestParam("size") int size,
             @RequestParam("sort") String sort,

@@ -43,8 +43,8 @@ public class OrderService {
         return orderToBeSaved;
     }
 
-    public UserDTO fetchUserDetailsFromUserId(String email) {
-       return restTemplate.getForObject("http://USER-SERVICE/profile/" + email, UserDTO.class);
+    private UserDTO fetchUserDetailsFromUserId(Integer userId) {
+        return restTemplate.getForObject("http://USER-SERVICE/profile/" + userId, UserDTO.class);
     }
 
     public Map<String, Object> buscarPorData(int page, int size, String sort, String busca){

@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/shared/models/user.model';
 import { OrderService } from 'src/app/services/order.service';
 import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
-import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 
 @Component({
   selector: 'app-order-summary-list',
@@ -54,20 +53,14 @@ export class OrderSummaryListComponent {
   public checkedBuscaNomeCliente = false;
   public checkedBuscaData = true;
   public newPlaceHolder = "Busque por número do pedido";
-  public item: any;
 
   constructor( 
     private orderService: OrderService,
     private profileService: ProfileService,
     private toastr: ToastrService,
-    private authTokenService: AuthTokenService
   ) {}
 
   ngOnInit() {
-    if(this.authTokenService.getToken != null){
-      this.item = this.authTokenService.decodePayloadJWT();
-    } 
-
     this.ordenacaoDataAsc();
   }
 
@@ -108,11 +101,6 @@ export class OrderSummaryListComponent {
   }
 
   getRequestParams(page: number, pageSize: number): any {
-    
-    console.log("this.item.sub;");
-    console.log(this.item.sub);
-
-    this.params[`item`] = this.item.sub;
 
     this.params[`page`] = 0;
     if (page) {

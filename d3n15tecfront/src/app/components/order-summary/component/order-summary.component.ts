@@ -58,14 +58,8 @@ export class OrderSummaryComponent {
   }
 
   saveOrder() {
-    console.log("this.user")
-    console.log(this.user)
-
     this.orderSummary.user = this.user;
     this.orderSummary.valorTotal = this.total;
-
-    console.log("this.orderSummary")
-    console.log(this.orderSummary)
 
     this.orderService.saveOrder(this.orderSummary)
       .subscribe(
