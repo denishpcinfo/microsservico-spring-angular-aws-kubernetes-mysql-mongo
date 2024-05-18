@@ -18,6 +18,7 @@ export class SidebarComponent implements OnInit {
   public user: User;
   public item: any;
   public isAdmin = false;
+  public isUser = false;
 
   constructor( private router: Router,
                private profileService: ProfileService,
@@ -59,6 +60,8 @@ export class SidebarComponent implements OnInit {
         this.user = data;
         if(this.user.role === "ADMIN"){
           this.isAdmin = true;
+        }else if(this.user.role === "USER"){
+          this.isUser = true;
         }
       }
     })

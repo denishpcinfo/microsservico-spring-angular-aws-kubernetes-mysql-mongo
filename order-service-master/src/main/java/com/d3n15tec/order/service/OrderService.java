@@ -10,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -516,6 +514,9 @@ public class OrderService {
         return buscarPorData(page, size, sort, busca);
     }
 
+    public Page<Order> getAllPedidosUserEmail(String email, Pageable paging) {
+        return orderRepo.getAllPedidosUserEmail(email, paging);
+    }
 
     public Page<Order> getAllUsuariosBuscaDataAsc(Pageable pageable) {
         return orderRepo.findAll(pageable);
@@ -529,7 +530,365 @@ public class OrderService {
         return orderRepo.findByOrderId(paging, Integer.valueOf(busca));
     }
 
+    public Page<Order> findByOrderIdAndUserEmail(String busca, String email, Pageable paging ) {
+        return orderRepo.findByOrderIdAndUserEmail(Integer.valueOf(busca), email, paging );
+    }
+
+    public Page<Order> findByRestaurantNameAndUserEmail(String restaurantName, String email, Pageable paging ) {
+        return orderRepo.findByRestaurantNameAndUserEmail(restaurantName, email, paging );
+    }
+
     public Page<Order> findByUserDTONome(String busca, Pageable paging) {
         return orderRepo.findByUserDTONome(busca, paging);
+    }
+
+    public Map<String, Object> buscarPorDataUser(String email, int page, int size, String sort, String busca){
+
+        Map<String, Object> response = new HashMap<>();
+        List<Order> allPedidos = new ArrayList<Order>();
+        Page<Order> allPedidosPage = null;
+
+        if(sort.equals("data asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "dataPedido");
+            allPedidosPage = getAllPedidosUserEmail(email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("data desc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "dataPedido");
+            allPedidosPage = getAllPedidosUserEmail(email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+
+        if(sort.equals("pedido asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "orderId");
+            allPedidosPage = getAllPedidosUserEmail(email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("pedido desc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "orderId");
+            allPedidosPage = getAllPedidosUserEmail(email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+
+        if(sort.equals("nomeRestaurante asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "restaurant.name");
+            allPedidosPage = findByRestaurantName(busca, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("nomeRestaurante desc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "restaurant.name");
+            allPedidosPage = getAllUsuariosBuscaDataAsc(paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+
+        if(sort.equals("nomeCliente asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "user.nome");
+            allPedidosPage = getAllUsuariosBuscaDataAsc(paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("nomeCliente desc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "user.nome");
+            allPedidosPage = getAllUsuariosBuscaDataAsc(paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+
+        return buscarPorData(page, size, sort, busca);
+    }
+
+    public Map<String, Object> buscarPorNumeroPedidoUser(String email, int page, int size, String sort, String busca){
+
+        Map<String, Object> response = new HashMap<>();
+        List<Order> allPedidos = new ArrayList<Order>();
+        Page<Order> allPedidosPage = null;
+
+        if(sort.equals("data asc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "orderId");
+            allPedidosPage = findByOrderIdAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("data desc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "orderId");
+            allPedidosPage = findByOrderIdAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("pedido asc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "orderId");
+            allPedidosPage = findByOrderIdAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("pedido desc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "orderId");
+            allPedidosPage = findByOrderIdAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }
+
+        if(sort.equals("nomeRestaurante asc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "restaurant.name");
+            allPedidosPage = findByOrderIdAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("nomeRestaurante desc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "restaurant.name");
+            allPedidosPage = findByOrderIdAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+        if(sort.equals("nomeCliente asc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "user.nome");
+            allPedidosPage = findByOrderIdAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("nomeCliente desc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "user.nome");
+            allPedidosPage = findByOrderIdAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+
+        return buscarPorDataUser(email, page, size, sort, busca);
+    }
+
+    public Map<String, Object> buscarPorNomeRestauranteUser(String email, int page, int size, String sort, String busca){
+
+        Map<String, Object> response = new HashMap<>();
+        List<Order> allPedidos = new ArrayList<Order>();
+        Page<Order> allPedidosPage = null;
+
+        if(sort.equals("data asc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "dataPedido");
+            allPedidosPage = findByRestaurantNameAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("data desc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "dataPedido");
+            allPedidosPage = findByRestaurantNameAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+
+        if(sort.equals("pedido asc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "orderId");
+            allPedidosPage = findByRestaurantNameAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("pedido desc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "orderId");
+            allPedidosPage = findByRestaurantNameAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+
+        if(sort.equals("nomeRestaurante asc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "restaurant.name");
+            allPedidosPage = findByRestaurantNameAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("nomeRestaurante desc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "restaurant.name");
+            allPedidosPage = findByRestaurantNameAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+
+        if(sort.equals("nomeCliente asc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "user.nome");
+            allPedidosPage = findByRestaurantNameAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+
+        }else if(sort.equals("nomeCliente desc") && !busca.equals("")){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "user.nome");
+            allPedidosPage = findByRestaurantNameAndUserEmail(busca, email, paging);
+
+            if(allPedidosPage.getContent() != null){
+                allPedidos = allPedidosPage.getContent();
+            }
+            response.put("allPedidos", allPedidos);
+            response.put("currentPage", allPedidosPage.getNumber());
+            response.put("totalItems", allPedidosPage.getTotalElements());
+            response.put("totalPages", allPedidosPage.getTotalPages());
+            return response;
+        }
+        return buscarPorDataUser(email, page, size, sort, busca);
     }
 }

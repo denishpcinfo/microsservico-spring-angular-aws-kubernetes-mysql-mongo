@@ -61,7 +61,7 @@ export class OrderSummaryListComponent {
   ) {}
 
   ngOnInit() {
-    this.ordenacaoDataAsc();
+    this.ordenacaoDataDesc();
   }
 
   getAllPedidosPage(): void {

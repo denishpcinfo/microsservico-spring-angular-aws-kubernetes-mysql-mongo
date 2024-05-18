@@ -1,1 +1,107 @@
-<p>order-summary-list-user works!</p>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5><strong>Meus Pedidos </strong></h5>
+        </div>
+        <div class="card-body">
+            <!-- <div class="btn-popup pull-right">
+                <a class="btn btn-primary" >Criar Usuário</a>
+            </div> -->
+
+            <div class="check-box-busca">
+                
+                <div class="check-box-busca-item">
+                    <p-checkbox  label="Buscar por Número do Pedido" name="checkedBuscaNumeroPedido"
+                        [binary]="true" inputId="binary" [(ngModel)]="checkedBuscaNumeroPedido" (click)="buscaNumeroPedidoCheck(checkedBuscaNumeroPedido)">
+                    </p-checkbox>
+                </div>
+
+                <div class="check-box-busca-item">
+                    <p-checkbox  label="Buscar por Nome do Restaurante" name="checkedBuscaNomeRestaurante"
+                        [binary]="true" inputId="binary" [(ngModel)]="checkedBuscaNomeRestaurante" (click)="buscaNomeRestauranteCheck(checkedBuscaNomeRestaurante)">
+                 </p-checkbox>
+                </div>
+
+            </div>
+            
+            <input *ngIf="!checkedBuscaData" autocomplete="off" class="input-search" type="text" name="buscaNomeString" [(ngModel)]="buscaNomeString" 
+            [placeholder]="newPlaceHolder" (ngModelChange)= buscaNome(buscaNomeString)/>
+            <br>
+
+            <div class="category-table custom-datatable transcation-datatable user-image">
+                <div class="table-responsive">
+                    <table class="table table-striped mobile-3">
+                        <thead class="head-mobile">
+                            <tr>
+                                <th scope="col" sortable="nome" class="width-mobile-first align-center-div">Data
+                                    <i *ngIf="iconasc3" class="fa fa-sort-down f-12 direction" (click)="ordenacaoDataAsc()"></i>
+                                    <i *ngIf="iconasc4" class="fa fa-sort-desc f-12 direction" (click)="ordenacaoDataDesc()"></i>
+                                </th>
+
+                                <th scope="col" sortable="data" class="align-center-div" >Número Pedido
+                                    <i *ngIf="iconasc1" class="fa fa-sort-down f-12 direction" (click)="ordenacaoNumeroPedidoAsc()"></i>
+                                    <i *ngIf="iconasc2" class="fa fa-sort-desc f-12 direction" (click)="ordenacaoNumeroPedidoDesc()"></i>
+                                </th>
+
+                                <th scope="col" sortable="email" class="mobile-2 align-center-div">Restaurante
+                                    <i *ngIf="iconasc5" class="fa fa-sort-down f-12 direction" (click)="ordenacaoRestauranteAsc()"></i>
+                                    <i *ngIf="iconasc6" class="fa fa-sort-desc f-12 direction" (click)="ordenacaoRestauranteDesc()"></i>
+                                </th>
+
+                                <th scope="col" sortable="email" class="mobile-2 align-center-div">Cliente </th>
+
+                                <th scope="col" sortable="email" class="mobile-2 align-center-div">Valor Pedido </th>
+
+                                <th scope="col" sortable="email" class="mobile-2 align-center-div">Status Pedido </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of tableItemPedido | paginate : {
+                                itemsPerPage: pageSize,
+                                currentPage: page,
+                                totalItems: count
+                                };
+                                let i = index" class="tr-mobile tr-position-mobile quebra">
+
+                                <td class="align-center-div">
+                                    {{item.dataPedido | date:'dd/MM/yyyy HH:mm:ss':'-300'}}
+                                </td>
+
+                                <td class="align-center-div">
+                                    {{item.orderId}}
+                                </td>
+
+                                <td class="align-center-div">
+                                    {{item.restaurant.name }}
+                                </td>
+
+                                <td class="align-center-div">
+                                    {{item.user.nome }}
+                                </td>
+
+                                <td class="align-center-div">
+                                    {{item.valorTotal | currency:'BRL':true:'1.2-2' }}
+                                </td>
+
+                                <td class="align-center-div">
+                                    {{item.statusPedido }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                    <p><strong>Total:</strong> {{ count }} </p>
+                    <div class="d-flex justify-content-center p-2">
+                        <div class="col-md-12">
+                            <pagination-controls
+                            previousLabel=""
+                            nextLabel=""
+                            [responsive]="true"
+                            (pageChange)="handlePageChange($event)"
+                            ></pagination-controls>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

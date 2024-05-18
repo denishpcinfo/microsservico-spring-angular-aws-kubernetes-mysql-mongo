@@ -13,6 +13,7 @@ import { UsersComponent } from './components/users/components/users.component';
 import { DashboardComponent } from './components/dashboard/components/dashboard.component';
 import { Role } from './shared/models/role';
 import { OrderSummaryListComponent } from './components/order-summary-list/component/order-summary-list.component';
+import { OrderSummaryListUserComponent } from './components/order-summary-list-user/component/order-summary-list-user.component';
 
 const routes: Routes = [
   { 
@@ -43,6 +44,12 @@ const routes: Routes = [
       canActivate: [AuthGuard],
       data: {roles: [Role.ADMIN]}
     }, 
+    {
+      path: 'meus-pedidos',
+      component: OrderSummaryListUserComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.USER]}
+    },  
     {
       path: 'pedidos',
       component: OrderSummaryComponent,

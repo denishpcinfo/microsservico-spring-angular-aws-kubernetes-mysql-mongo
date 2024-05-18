@@ -57,4 +57,26 @@ public class OrderController {
         return new ResponseEntity<>(orderService.buscarPorData(page, size, sort, busca), HttpStatus.OK);
     }
 
+    @GetMapping("/todos-meus-pedidos")
+    public ResponseEntity<Map<String, Object>> fetchAllPedidosUsuario(
+            @RequestParam("email") String email,
+            @RequestParam(name = "page", required = false) int page,
+            @RequestParam("size") int size,
+            @RequestParam("sort") String sort,
+            @RequestParam(name = "busca", required = false) String busca,
+            @RequestParam(name = "global", required = false) String global){
+
+        if(global.equals("data")){
+            return new ResponseEntity<>(orderService.buscarPorDataUser(email, page, size, sort, busca), HttpStatus.OK);
+
+        } else if(global.equals("numeroPedido")){
+            return new ResponseEntity<>(orderService.buscarPorNumeroPedidoUser(email, page, size, sort, busca), HttpStatus.OK);
+
+        } else if(global.equals("nomeRestaurante")){
+            return new ResponseEntity<>(orderService.buscarPorNomeRestauranteUser(email, page, size, sort, busca), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(orderService.buscarPorDataUser(email, page, size, sort, busca), HttpStatus.OK);
+    }
+
 }

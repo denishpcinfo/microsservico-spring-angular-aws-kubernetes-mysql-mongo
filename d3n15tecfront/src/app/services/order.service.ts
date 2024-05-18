@@ -20,4 +20,8 @@ export class OrderService {
   getAll(params: any): Observable<any> {
     return this.http.get<any>(this.apiUrl + 'todos', { params });
   }
+
+  getAllUser(params: any): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'todos-meus-pedidos', { params });
+  }
 }

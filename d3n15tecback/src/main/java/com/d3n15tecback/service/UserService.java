@@ -56,10 +56,6 @@ public class UserService {
 
     }
 
-    public Page<User> findAllUsuarios(Pageable pageable) {
-        return userRepository.getAllUsuarios(pageable);
-    }
-
     public Page<User> getAllUsuariosBuscaNome(Pageable pageable, String busca) {
         return userRepository.getAllUsuariosBuscaNome(pageable, busca);
     }
@@ -98,5 +94,325 @@ public class UserService {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
 
+    }
+
+
+    public Map<String, Object> buscarPorNome(int page, int size, String sort, String busca){
+
+        List<User> allUsuarios = new ArrayList<User>();
+        Page<User> allUsuariosPage = null;
+        Map<String, Object> response = new HashMap<>();
+
+            if(sort.equals("cpf asc") && busca != null){
+                Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "cpf");
+                allUsuariosPage = getAllUsuariosBuscaNome(paging, busca);
+
+
+                if(allUsuariosPage.getContent() != null){
+                    allUsuarios = allUsuariosPage.getContent();
+                }
+                response.put("allUsuarios", allUsuarios);
+                response.put("currentPage", allUsuariosPage.getNumber());
+                response.put("totalItems", allUsuariosPage.getTotalElements());
+                response.put("totalPages", allUsuariosPage.getTotalPages());
+                return response;
+
+            }if(sort.equals("cpf desc") && (!busca.equals(null))){
+                Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "cpf");
+                allUsuariosPage = getAllUsuariosBuscaNome(paging, busca);
+
+                if(allUsuariosPage.getContent() != null){
+                    allUsuarios = allUsuariosPage.getContent();
+                }
+                response.put("allUsuarios", allUsuarios);
+                response.put("currentPage", allUsuariosPage.getNumber());
+                response.put("totalItems", allUsuariosPage.getTotalElements());
+                response.put("totalPages", allUsuariosPage.getTotalPages());
+                return response;
+
+            }if(sort.equals("email asc") && busca != null){
+                Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "email");
+                allUsuariosPage = getAllUsuariosBuscaNome(paging, busca);
+
+                if(allUsuariosPage.getContent() != null){
+                    allUsuarios = allUsuariosPage.getContent();
+                }
+                response.put("allUsuarios", allUsuarios);
+                response.put("currentPage", allUsuariosPage.getNumber());
+                response.put("totalItems", allUsuariosPage.getTotalElements());
+                response.put("totalPages", allUsuariosPage.getTotalPages());
+                return response;
+
+            }
+            if(sort.equals("email desc") && (!busca.equals(null))){
+                Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "email");
+                allUsuariosPage = getAllUsuariosBuscaNome(paging, busca);
+
+                if(allUsuariosPage.getContent() != null){
+                    allUsuarios = allUsuariosPage.getContent();
+                }
+                response.put("allUsuarios", allUsuarios);
+                response.put("currentPage", allUsuariosPage.getNumber());
+                response.put("totalItems", allUsuariosPage.getTotalElements());
+                response.put("totalPages", allUsuariosPage.getTotalPages());
+                return response;
+
+            }
+            if(sort.equals("nome asc") && busca != null){
+                Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "nome");
+                allUsuariosPage = getAllUsuariosBuscaNome(paging, busca);
+
+                if(allUsuariosPage.getContent() != null){
+                    allUsuarios = allUsuariosPage.getContent();
+                }
+                response.put("allUsuarios", allUsuarios);
+                response.put("currentPage", allUsuariosPage.getNumber());
+                response.put("totalItems", allUsuariosPage.getTotalElements());
+                response.put("totalPages", allUsuariosPage.getTotalPages());
+                return response;
+
+            }
+            if(sort.equals("nome desc") && (!busca.equals(null))){
+                Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "nome");
+                allUsuariosPage = getAllUsuariosBuscaNome(paging, busca);
+
+                if(allUsuariosPage.getContent() != null){
+                    allUsuarios = allUsuariosPage.getContent();
+                }
+                response.put("allUsuarios", allUsuarios);
+                response.put("currentPage", allUsuariosPage.getNumber());
+                response.put("totalItems", allUsuariosPage.getTotalElements());
+                response.put("totalPages", allUsuariosPage.getTotalPages());
+                return response;
+
+            }
+            if(sort.equals("nome") && (!busca.equals(null))){
+                Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, sort);
+                allUsuariosPage = getAllUsuariosBuscaNome(paging, busca);
+
+                if(allUsuariosPage.getContent() != null){
+                    allUsuarios = allUsuariosPage.getContent();
+                }
+                response.put("allUsuarios", allUsuarios);
+                response.put("currentPage", allUsuariosPage.getNumber());
+                response.put("totalItems", allUsuariosPage.getTotalElements());
+                response.put("totalPages", allUsuariosPage.getTotalPages());
+                return response;
+            }
+
+        return buscarPorNome(page, size, sort, busca);
+    }
+
+
+    public Map<String, Object> buscarPorCpf(int page, int size, String sort, String busca){
+
+        List<User> allUsuarios = new ArrayList<User>();
+        Page<User> allUsuariosPage = null;
+        Map<String, Object> response = new HashMap<>();
+
+        if(sort.equals("cpf asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "cpf");
+            allUsuariosPage = getAllUsuariosBuscaCPF(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }if(sort.equals("cpf desc") && (!busca.equals(null))){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "cpf");
+            allUsuariosPage = getAllUsuariosBuscaCPF(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }if(sort.equals("email asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "email");
+            allUsuariosPage = getAllUsuariosBuscaCPF(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("email desc") && (!busca.equals(null))){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "email");
+            allUsuariosPage = getAllUsuariosBuscaCPF(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("nome asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "nome");
+            allUsuariosPage = getAllUsuariosBuscaCPF(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("nome desc") && (!busca.equals(null))){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "nome");
+            allUsuariosPage = getAllUsuariosBuscaCPF(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("nome") && (!busca.equals(null))){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, sort);
+            allUsuariosPage = getAllUsuariosBuscaCPF(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+        }
+
+        return buscarPorNome(page, size, sort, busca);
+    }
+
+
+    public Map<String, Object> buscarPorEmail(int page, int size, String sort, String busca){
+
+        List<User> allUsuarios = new ArrayList<User>();
+        Page<User> allUsuariosPage = null;
+        Map<String, Object> response = new HashMap<>();
+
+        if(sort.equals("cpf asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "cpf");
+            allUsuariosPage = getAllUsuariosBuscaEmail(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }if(sort.equals("cpf desc") && (!busca.equals(null))){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "cpf");
+            allUsuariosPage = getAllUsuariosBuscaEmail(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }if(sort.equals("email asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "email");
+            allUsuariosPage = getAllUsuariosBuscaEmail(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("email desc") && (!busca.equals(null))){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "email");
+            allUsuariosPage = getAllUsuariosBuscaEmail(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("nome asc") && busca != null){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "nome");
+            allUsuariosPage = getAllUsuariosBuscaEmail(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("nome desc") && (!busca.equals(null))){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "nome");
+            allUsuariosPage = getAllUsuariosBuscaEmail(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+        if(sort.equals("nome") && (!busca.equals(null))){
+            Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, sort);
+            allUsuariosPage = getAllUsuariosBuscaEmail(paging, busca);
+
+            if(allUsuariosPage.getContent() != null){
+                allUsuarios = allUsuariosPage.getContent();
+            }
+            response.put("allUsuarios", allUsuarios);
+            response.put("currentPage", allUsuariosPage.getNumber());
+            response.put("totalItems", allUsuariosPage.getTotalElements());
+            response.put("totalPages", allUsuariosPage.getTotalPages());
+            return response;
+
+        }
+
+        return buscarPorNome(page, size, sort, busca);
     }
 }

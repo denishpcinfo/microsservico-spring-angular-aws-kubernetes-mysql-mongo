@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OrderSummaryListUserComponent } from './component/order-summary-list-user.component';
 
 const routes: Routes = [
-  { path: 'lista-pedidos-user', component: OrderSummaryListUserComponent }
+  { path: 'meus-pedidos', component: OrderSummaryListUserComponent }
 ];
 
 @NgModule({
