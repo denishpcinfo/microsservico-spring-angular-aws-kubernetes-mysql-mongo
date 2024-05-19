@@ -1,6 +1,5 @@
 package com.d3n15tec.restaurantlisting.mapper;
 
-
 import com.d3n15tec.restaurantlisting.dto.RestaurantDTO;
 import com.d3n15tec.restaurantlisting.entity.Restaurant;
 import org.mapstruct.Mapper;

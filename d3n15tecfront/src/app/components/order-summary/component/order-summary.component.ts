@@ -5,8 +5,7 @@ import { OrderService } from 'src/app/services/order.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
 import { User } from 'src/app/shared/models/user.model';
-import { TelefonePipe } from 'src/app/shared/pipes/telefone/telefone.pipe';
-import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order-summary',
@@ -20,13 +19,16 @@ export class OrderSummaryComponent {
   public total?: any;
   public showDialog: boolean = false;
   public item: any;
-  public user: User;
+  public user: any;
+  public isAdmin = false;
+  public isUser = false;
 
   constructor(private route: ActivatedRoute, 
               private orderService: OrderService, 
               private router: Router,
               private authTokenService: AuthTokenService,
-              private profileService: ProfileService) {
+              private profileService: ProfileService,
+              private toastr: ToastrService) {
   
     if(authTokenService.getToken != null){
       this.item = authTokenService.decodePayloadJWT();
@@ -50,14 +52,20 @@ export class OrderSummaryComponent {
   getProfile() {
     this.user = new User();
     this.profileService.getProfileId(this.item.sub)
-    .subscribe({
-      next: (data) => {
+    .subscribe(
+      (data: any[]) => {
         this.user = data;
+        if(this.user.role === "ADMIN"){
+          this.isAdmin = true;
+        }else if(this.user.role === "USER"){
+          this.isUser = true;
+        }
       }
-    })
+    )
   }
 
   saveOrder() {
+
     this.orderSummary.user = this.user;
     this.orderSummary.valorTotal = this.total;
 
@@ -67,14 +75,20 @@ export class OrderSummaryComponent {
             this.showDialog = true;
         },
         error => {
-          console.error('Falha ao salvar dados:', error);
+          this.toastr.error('Erro ao salvar o pedido!', error);
         }
       );
   }
 
   closeDialog() {
     this.showDialog = false;
-    this.router.navigate(['/']);
+
+    if(this.isAdmin){
+      this.router.navigate(['/lista-pedidos']);
+    }else if(this.isUser){
+      this.router.navigate(['/meus-pedidos']);
+    }
+
   }
 
 }

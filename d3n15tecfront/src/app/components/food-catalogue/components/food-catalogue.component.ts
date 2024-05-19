@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodItemService } from 'src/app/services/fooditem.service';
 import { FoodCataloguePage } from 'src/app/shared/models/foodCataloguePage.model';
-import { FoodItem } from 'src/app/shared/models/foodItem.model';
 import { FoodItemPedido } from 'src/app/shared/models/foodItemPedido.model';
 
 @Component({

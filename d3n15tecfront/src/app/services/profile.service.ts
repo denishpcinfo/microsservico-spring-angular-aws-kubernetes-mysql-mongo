@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../shared/models/user.model';
 import { AtualizaRequest } from '../shared/models/atualizaRequest.model';
 import { ToastrService } from 'ngx-toastr';
 import { API_URL_UD } from '../constants/url';
@@ -18,14 +17,14 @@ export class ProfileService {
   constructor(private http: HttpClient,
              private toastr: ToastrService ) { }
 
-  getProfileId(item: String): Observable<any>{
-    return this.http.get<User>(this.apiUrl + `/${item}`)
+  getProfileId(item: String): Observable<any[]>{
+    return this.http.get<any[]>(this.apiUrl + `/${item}`)
   }
 
   atualizar(atualizaRequest: AtualizaRequest) {
     return this.http.put<any>(`${this.apiUrl}/atualizar-cadastro`, atualizaRequest)
     .subscribe({
-      next: (atualiza) => {
+      next: () => {
           this.toastr.success('Cadastro atualizado com sucesso!');
       },
       error: (erro) => {

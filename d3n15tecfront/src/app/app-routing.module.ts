@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/dashboard/components/dashboard.
 import { Role } from './shared/models/role';
 import { OrderSummaryListComponent } from './components/order-summary-list/component/order-summary-list.component';
 import { OrderSummaryListUserComponent } from './components/order-summary-list-user/component/order-summary-list-user.component';
+import { RoleGuard } from './services/auth/role.guard';
 
 const routes: Routes = [
   { 
@@ -41,46 +42,44 @@ const routes: Routes = [
     {
       path: 'lista-pedidos',
       component: OrderSummaryListComponent,
-      canActivate: [AuthGuard],
-      data: {roles: [Role.ADMIN]}
+      canActivate: [RoleGuard],
+      data: {roles: [Role.ADMIN, Role.MANAGER]}
     }, 
     {
       path: 'meus-pedidos',
       component: OrderSummaryListUserComponent,
-      canActivate: [AuthGuard],
+      canActivate: [RoleGuard],
       data: {roles: [Role.USER]}
     },  
     {
       path: 'pedidos',
-      component: OrderSummaryComponent,
-      canActivate: [AuthGuard]
+      component: OrderSummaryComponent
     },
     {
       path: 'restaurantes',
-      component: RestaurantListingComponent,
-      canActivate: [AuthGuard]
+      component: RestaurantListingComponent
     },   
     {
       path: 'food/:id',
-      component: FoodCatalogueComponent,
-      canActivate: [AuthGuard]
+      component: FoodCatalogueComponent
     },   
     {
       path: 'minha-conta',
       component: ProfileComponent,
-      canActivate: [AuthGuard]
+      canActivate: [RoleGuard],
+      data: {roles: [Role.ADMIN, Role.MANAGER, Role.USER]}
     },
     {
       path: 'usuarios',
       component: UsersComponent,
-      canActivate: [AuthGuard],
-      data: {roles: [Role.ADMIN]}
+      canActivate: [RoleGuard],
+      data: {roles: [Role.ADMIN, Role.MANAGER]}
     },
     {
       path: 'dashboard',
       component: DashboardComponent,
-      canActivate: [AuthGuard],
-      data: {roles: [Role.ADMIN]}
+      canActivate: [RoleGuard],
+      data: {roles: [Role.ADMIN, Role.MANAGER]}
     },]
   }
 ];

@@ -17,7 +17,7 @@ export class ProfileComponent {
   editarPerfil: UsersEditComponent;
 
   public item: any;
-  public user: User;
+  public user: any;
   public confirmPassword: any;
 
   constructor( private authTokenService: AuthTokenService,
@@ -35,13 +35,13 @@ export class ProfileComponent {
   getProfile() {
     this.user = new User();
     this.profileService.getProfileId(this.item.sub)
-    .subscribe({
-      next: (data) => {
+    .subscribe(
+      (data: any[]) => {
         this.user = data;
         this.user.telefoneCelular = new TelefonePipe().transform(this.user.telefoneCelular);
         this.user.cpf = new CpfPipe().transform(this.user.cpf);
       }
-    })
+    )
   }
 
   onCpfChange(cpf) {

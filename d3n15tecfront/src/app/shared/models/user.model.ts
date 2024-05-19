@@ -1,10 +1,13 @@
 export class User {
-    id?: number;
-    nome?: string;
-    email?: string;
-    password?: string;
-    cpf?: string;
-    dataNascimento?: Date;
-    telefoneCelular?: string;
-    role?: string;
-} {}
+    constructor(
+        public id?: number,
+        public nome?: string,
+        public email?: string,
+        public password?: string,
+        public cpf?: string,
+        public dataNascimento?: Date,
+        public telefoneCelular?: string,
+        public role?: string
+    ) {}
+
+} 

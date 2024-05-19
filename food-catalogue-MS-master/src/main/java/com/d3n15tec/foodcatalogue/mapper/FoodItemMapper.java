@@ -1,6 +1,5 @@
 package com.d3n15tec.foodcatalogue.mapper;
 
-
 import com.d3n15tec.foodcatalogue.dto.FoodItemDTO;
 import com.d3n15tec.foodcatalogue.entity.FoodItem;
 import org.mapstruct.Mapper;

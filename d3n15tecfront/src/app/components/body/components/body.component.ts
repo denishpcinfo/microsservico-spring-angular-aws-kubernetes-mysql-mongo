@@ -2,9 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurant } from 'src/app/shared/models/restaurant.model';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { User } from 'src/app/shared/models/user.model';
-import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
-import { ProfileService } from 'src/app/services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-body',
@@ -16,10 +14,12 @@ export class BodyComponent implements OnInit {
   public restaurantes: Restaurant[] = [];
   public stick: boolean = false;
   public limit: number = 5;
-  public user: User;
+  public user: any;
   public item: any;
+  public roleUser: any;
   public isAdmin = false;
   public isUser = false;
+  public isManager = false;
   public customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -89,17 +89,12 @@ export class BodyComponent implements OnInit {
   }
 
   constructor(private restaurantService: RestaurantService,
-              private profileService: ProfileService,
-              private authTokenService: AuthTokenService ) { }
+              private router: Router ) { }
 
   ngOnInit() {
     this.buscarRestaurantesSlider();
     this.onWindowScroll();
-
-    if(this.authTokenService.getToken != null){
-      this.item = this.authTokenService.decodePayloadJWT();
-    } 
-    this.getProfile();
+    this.permissaoUser();
   }
 
 
@@ -121,18 +116,24 @@ export class BodyComponent implements OnInit {
     );
   }
 
-  getProfile() {
-    this.user = new User();
-    this.profileService.getProfileId(this.item.sub)
-    .subscribe({
-      next: (data) => {
-        this.user = data;
-        if(this.user.role === "ADMIN"){
-          this.isAdmin = true;
-        }else if(this.user.role === "USER"){
-          this.isUser = true;
-        }
-      }
-    })
+  permissaoUser(){
+    this.roleUser = this.getRole();
+    
+    if(this.roleUser === "ADMIN"){
+      this.isAdmin = true;
+    }else if(this.roleUser === "USER"){
+      this.isUser = true;
+    }else if(this.roleUser === "MANAGER"){
+      this.isManager = true;
+    }
+  }
+
+  getRole(){
+    try {
+      return localStorage.getItem('ROLE');
+    } catch (Error) {
+      this.router.navigate(["/login"]);
+      return null;
+    }
   }
 }

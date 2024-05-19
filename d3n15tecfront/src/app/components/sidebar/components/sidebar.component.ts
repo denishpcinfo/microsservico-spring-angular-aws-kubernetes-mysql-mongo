@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
   public closeBtn: any;
   public searchBtn: any;
   public abrir: boolean;
-  public user: User;
+  public user: any;
   public item: any;
   public isAdmin = false;
   public isUser = false;
@@ -55,8 +55,8 @@ export class SidebarComponent implements OnInit {
   getProfile() {
     this.user = new User();
     this.profileService.getProfileId(this.item.sub)
-    .subscribe({
-      next: (data) => {
+    .subscribe(
+      (data: any[]) => {
         this.user = data;
         if(this.user.role === "ADMIN"){
           this.isAdmin = true;
@@ -64,6 +64,6 @@ export class SidebarComponent implements OnInit {
           this.isUser = true;
         }
       }
-    })
+    )
   }
 }

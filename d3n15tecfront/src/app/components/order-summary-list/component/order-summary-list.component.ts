@@ -57,7 +57,7 @@ export class OrderSummaryListComponent {
   constructor( 
     private orderService: OrderService,
     private profileService: ProfileService,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {

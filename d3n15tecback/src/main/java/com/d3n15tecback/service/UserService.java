@@ -27,6 +27,15 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    public User getUser(String item) throws AcaoNaoPermitidaException {
+        Optional<User> user = userRepository.findByEmail(item);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new AcaoNaoPermitidaException("Usuário não encontrado!");
+        }
+    }
+
     public UserDTO atualizarUser(UserDTO userNovo) throws AcaoNaoPermitidaException {
         User usuario = new User();
         User usuario1 = new User();

@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,14 +21,8 @@ public class ProfileController {
     private final UserService userService;
 
     @GetMapping("/{item}")
-    public ResponseEntity<User> getByUser(@PathVariable("item") String item) throws AcaoNaoPermitidaException {
-        Optional<User> user = userRepository.findByEmail(item);
-        if (user.isPresent()) {
-            return new ResponseEntity<>(user.get(), HttpStatus.OK);
-        }
-        else {
-            throw new AcaoNaoPermitidaException("Usuário não encontrado!!");
-        }
+    public ResponseEntity<User> getUser(@PathVariable("item") String item) throws AcaoNaoPermitidaException {
+        return new ResponseEntity<>(userService.getUser(item), HttpStatus.OK);
     }
 
     @PutMapping("/atualizar-cadastro")

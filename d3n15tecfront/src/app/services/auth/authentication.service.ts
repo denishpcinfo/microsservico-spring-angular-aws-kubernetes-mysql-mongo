@@ -44,6 +44,7 @@ export class AuthenticationService {
         if (this.authResponse) {
           localStorage.setItem('token', this.authResponse.accessToken);
           localStorage.setItem('refreshToken', this.authResponse.refreshToken);
+          localStorage.setItem('ROLE', this.authResponse.user.role);
            this.toastr.success('Login realizado com sucesso!');
           this.router.navigateByUrl('/home');
         }
@@ -56,10 +57,11 @@ export class AuthenticationService {
 
 
   refreshToken() {
-  const refreshToken = 'Bearer ' + localStorage.getItem('refreshToken');
-  const httpOptions = {
+    const refreshToken = 'Bearer ' + localStorage.getItem('refreshToken');
+    const httpOptions = {
     headers: new HttpHeaders({ 'RefreshToken': refreshToken,
                               'Authorization': refreshToken })};
+                              
     return this.http.post<AuthenticationResponse>(`${this.baseUrl}/refresh-token`, {}, httpOptions)
   }
 
