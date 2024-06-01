@@ -1,0 +1,326 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+.row{
+text-align: center;
+}
+
+.font-padrao {
+    text-align: center;
+    font-size: xxx-large;
+    margin: 0px 0px 60px 0px;
+}
+
+.margin-senha-left{
+    margin: 0% 0% 11% 0%;
+    padding: 0px 15px 0px 0px;
+}
+  
+.margin-senha-right{
+    margin: 0% 0% 11% 0%;
+    padding: 0px 0px 0px 15px;
+}
+
+h2 {
+    font-size: x-large;
+}
+
+.position-on{
+    display: flex;
+    flex-direction: row;
+}
+
+.margin-h4{
+    margin: 0px 0px 38px 8px;
+    padding: 3px 0px 0px 0px;
+    word-break: break-all;
+}
+
+.tamanho-fonte{
+    font-family: 'Titillium Web', sans-serif;
+    font-size:22px;
+    color: black;
+    margin: 0% 0% 2% 0%;
+    font-size: x-large;
+}
+
+.color {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+}
+
+.text-centralizado{
+    margin: 0% 0% 0% -30%;
+}
+
+.margin-top{
+    margin: 0% 0% 8% 0%;
+}
+
+.margin-group-double{
+    display: flex;
+}
+  
+.margin-input-cpf{
+    padding: 0px 15px 0px 0px;
+}
+
+.margin-input-data{
+    padding: 0px 0px 0px 15px;
+  }
+
+.color-borda {
+    font-family: 'Titillium Web', sans-serif;
+    border:2px solid #000000 !important;
+    cursor: pointer;
+}
+
+.margin-input-footer{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.check-box-senha{
+    margin: 0px 0px 30px 0px;
+}
+
+@media only screen and (max-width: 359px) {
+
+    .card-body {
+        flex: 1 1 auto;
+        padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+        color: var(--bs-card-color);
+        width: 80%;
+        margin: 0px 0px 0px 70px;
+    }
+
+    .tamanho-fonte {
+        font-size: medium;
+    }
+
+    .margin-h4 {
+        margin: 0px 0px 20px 8px;
+        padding: 3px 0px 0px 0px;
+        word-break: break-all;
+        font-size: medium;
+    }
+
+    .font-padrao {
+        text-align: center;
+        font-size: x-large;
+        margin: 0px 0px 30px 0px
+    }
+
+    .margin-h4-senha{
+        margin: 0px 0px 20px 8px;
+        padding: 3px 0px 0px 0px;
+        word-break: break-all;
+        font-size: larger;
+        width: 70%;
+    }
+
+    .position-on {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .margin-group-double{
+        display: block;
+    }
+
+    .margin-input-cpf {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .margin-senha-left{
+        margin: 0% 0% 11% 0%;
+        padding: 0px 0px 0px 0px;
+    }
+      
+    .margin-senha-right{
+        margin: 0% 0% 11% 0%;
+        padding: 0px 0px 0px 0px;
+      
+    }
+
+}
+
+@media only screen and (min-width:360px) and (max-width: 600px) {
+
+    .card-body {
+        flex: 1 1 auto;
+        padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+        color: var(--bs-card-color);
+        width: 110%;
+        margin: 0px 0px 0px 10px;
+    }
+    
+    .margin-h4-senha{
+        margin: 0px 0px 38px 8px;
+        padding: 3px 0px 0px 0px;
+        word-break: break-all;
+        font-size: larger;
+        width: 70%;
+    }
+
+    .margin-h4{
+        margin: 0px 0px 38px 8px;
+        padding: 3px 0px 0px 0px;
+        word-break: break-all;
+        font-size: larger;
+    }
+
+    .position-div {
+        flex: 0 0 auto;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0% 0% 0% 19px;
+    }
+
+    .font-padrao {
+        text-align: center;
+        font-size: xx-large;
+        margin: 0px 0px 40px 0px;
+    }
+
+    .text-centralizado{
+        margin: 0% 0% 0% -7%
+    }
+
+    .tamanho-fonte {
+        font-size: larger;
+    }
+
+    .position-on {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .margin-group-double{
+        display: block;
+    }
+
+    .margin-input-cpf {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .margin-senha-left{
+        margin: 0% 0% 11% 0%;
+        padding: 0px 0px 0px 0px;
+    }
+      
+    .margin-senha-right{
+        margin: 0% 0% 11% 0%;
+        padding: 0px 0px 0px 0px;
+      
+    }
+}
+
+
+@media only screen and (min-width:601px) and (max-width: 992px) {
+    
+    .card-body {
+        flex: 1 1 auto;
+        padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+        color: var(--bs-card-color);
+        width: 90%;
+        margin: 0px 0px 0px 10px;
+    }
+    
+    .margin-h4-senha{
+        margin: 0px 0px 38px 8px;
+        padding: 3px 0px 0px 0px;
+        word-break: break-all;
+        font-size: larger;
+        width: 70%;
+    }
+
+    .margin-h4{
+        margin: 0px 0px 38px 8px;
+        padding: 3px 0px 0px 0px;
+        word-break: break-all;
+        font-size: larger;
+    }
+
+    .font-padrao {
+        text-align: center;
+        font-size: xx-large;
+        margin: 0px 0px 40px 0px;
+    }
+
+    .text-centralizado{
+        margin: 0% 0% 0% -15%
+    }
+
+    .tamanho-fonte {
+        font-size: larger;
+    }
+
+    .position-div {
+        flex: 0 0 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0% 0% 0% 70px
+    }
+
+    .margin-group-double{
+        display: block;
+    }
+
+    .margin-input-cpf {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .margin-senha-left{
+        margin: 0% 0% 11% 0%;
+        padding: 0px 0px 0px 0px;
+    }
+      
+    .margin-senha-right{
+        margin: 0% 0% 11% 0%;
+        padding: 0px 0px 0px 0px;
+      
+    }
+}
+
+@media only screen and (min-width:993px) {
+
+    .card-body {
+        flex: 1 1 auto;
+        padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+        color: var(--bs-card-color);
+        width: 100%;
+        margin: 0px 0px 0px 50px;
+    }
+
+    .position-div {
+        flex: 0 0 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0% 0% 0% 0%;
+    }
+
+    .margin-h4-senha{
+        margin: 0px 0px 38px 8px;
+        padding: 3px 0px 0px 0px;
+        font-size: x-large;
+        width: 90%;
+    }
+    
+    .margin-top{
+        margin: 0% 0% 1% 0%;
+    }
+}
+

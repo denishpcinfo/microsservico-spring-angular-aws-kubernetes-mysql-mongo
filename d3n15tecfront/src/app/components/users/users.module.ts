@@ -13,6 +13,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { UsersEditModule } from '../users-edit/users-edit.module';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { CheckboxModule } from 'primeng/checkbox';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { CheckboxModule } from 'primeng/checkbox';
     HttpClientModule,
     UsersEditModule,
     SweetAlert2Module.forRoot(),
-    CheckboxModule
+    CheckboxModule,
+    MatButtonModule, 
+    MatTooltipModule
   ],
   providers: [CpfPipe]
 })

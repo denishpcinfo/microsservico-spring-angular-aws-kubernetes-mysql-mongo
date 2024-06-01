@@ -1,7 +1,7 @@
 export enum StatusPedido {
-    PEDIDO_REALIZADO = "Pedido realizado",
-    PREPARANDO_PEDIDO = "Preparando pedido",
-    PEDIDO_RETIRADO_ENTREGADOR = "Pedido retirado pelo entregador",
-    PEDIDO_ENTREGUE = "Pedido entregue",
-    PEDIDO_CANCELADO = "Pedido cancelado"
+    "Pedido realizado" = 0,
+    "Preparando pedido" = 1,
+    "Pedido retirado pelo entregador" = 2,
+    "Pedido entregue" = 3,
+    "Pedido cancelado" = 4
 }

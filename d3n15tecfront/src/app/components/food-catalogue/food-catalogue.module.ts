@@ -4,6 +4,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { FoodCatalogueRoutingModule } from './food-catalogue-routing.module';
 import { FoodCatalogueComponent } from './components/food-catalogue.component'; 
 import { LOCALE_ID } from "@angular/core";
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { LOCALE_ID } from "@angular/core";
   imports: [
     CommonModule,
     FoodCatalogueRoutingModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    MatButtonModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "pt-BR" }]
 })

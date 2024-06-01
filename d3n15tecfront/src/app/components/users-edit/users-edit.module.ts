@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {CheckboxModule} from 'primeng/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {CheckboxModule} from 'primeng/checkbox';
     CpfModule,
     FormsModule,
     ModalModule.forRoot(),
-    CheckboxModule
+    CheckboxModule,
+    MatButtonModule
   ],
   exports:[
     UsersEditComponent,

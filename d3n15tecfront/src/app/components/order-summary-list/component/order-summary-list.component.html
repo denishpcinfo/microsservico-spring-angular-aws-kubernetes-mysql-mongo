@@ -4,9 +4,6 @@
             <h5><strong>Lista de Pedidos </strong></h5>
         </div>
         <div class="card-body">
-            <!-- <div class="btn-popup pull-right">
-                <a class="btn btn-primary" >Criar Usuário</a>
-            </div> -->
 
             <div class="check-box-busca">
                 
@@ -72,13 +69,12 @@
                                 totalItems: count
                                 };
                                 let i = index" class="tr-mobile tr-position-mobile quebra">
+
                                 <td class="td-mobile align-center-div">
-                                    <a>
+                                    <button mat-raised-button
+                                        matTooltip="Editar pedido">
                                         <i class='fa fa-edit f-12' (click)="editarPedido(item)"></i>
-                                    </a>&nbsp;
-                                    <a>
-                                        <i class="fa fa-trash-o" (click)="excluirPedido(item)"></i>
-                                    </a>
+                                    </button>
                                 </td>
 
                                 <td class="align-center-div">
@@ -124,8 +120,4 @@
     </div>
 </div>
 
-<swal #sweetAlert  title='Deseja realmente excluir este usuário?' text="Esta ação não poderá ser desfeita!" type="question"
-[showCancelButton]="true" [focusCancel]="true" confirmButtonText="Excluir" cancelButtonText="Cancelar"
-(confirm)="delete()"></swal>
-
-<app-users-edit #editarPerfil> </app-users-edit>
+<app-order-edit #editarPedidoModal> </app-order-edit>

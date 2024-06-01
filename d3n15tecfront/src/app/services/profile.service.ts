@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AtualizaRequest } from '../shared/models/atualizaRequest.model';
+import { AtualizaRequest } from '../shared/models/atualiza-request.model';
 import { ToastrService } from 'ngx-toastr';
 import { API_URL_UD } from '../constants/url';
 

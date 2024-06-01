@@ -1,11 +1,12 @@
-<div class="order-summary">
+<div class="order-head">
+  <div class="order-summary">
     <h1>Resumo do pedido</h1>
     <table>
       <thead>
         <tr>
-          <th>Prato</th>
-          <th>Quantidade</th>
-          <th>Preço</th>
+          <th class="tr-food"><b>Prato</b></th>
+          <th class="tr-food" ><b>Quantidade</b></th>
+          <th class="tr-food"><b>Preço</b></th>
         </tr>
       </thead>
       <tbody>
@@ -22,15 +23,15 @@
         </tr>
       </tfoot>
     </table>
-    <button class="checkout-button" (click)="saveOrder()">Faça a encomenda</button>
+    <button mat-raised-button class="checkout-button" (click)="saveOrder()">Comprar</button>
   </div>
-  
+</div>
   
   <div class="dialog-container" *ngIf="showDialog">
     <div class="dialog-box">
       <h2>Pedido feito!</h2>
       <p>Seu pedido foi realizado com sucesso.</p>
-      <button class="close-button" (click)="closeDialog()">Fechar</button>
+      <button mat-raised-button class="close-button" (click)="closeDialog()">Fechar</button>
     </div>
   </div>
   

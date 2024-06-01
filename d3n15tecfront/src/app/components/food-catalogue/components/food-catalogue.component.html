@@ -1,17 +1,8 @@
 
 <div class="restaurant-details">
-    <div class="restaurant-header">
-        <h1>{{nomeRestaurante}}</h1>
-        <button class="checkout-button" (click)="onCheckOut()" >
-            <i class="fa fa-cart-plus"></i>
-            Add Carrinho
-        </button>
-    </div>
 
-    <p>Tipo do restaurante:</p>
-    <h4>{{descricaoRestaurante}}</h4>
-
-    <h2>Menu {{nomeRestaurante}}</h2>
+    <h2>Restaurante: <b>{{nomeRestaurante}}</b></h2>
+    <h4><b>{{descricaoRestaurante}}</b></h4>
     <div class="food-list">
         <div class="food-item" *ngFor="let food of cardapioRestaurante let i = index">
             <div class="food-details">
@@ -25,11 +16,20 @@
                 <div class="div-qtda-pedido" >
                     <p>Quantidade prato:</p>
                 </div>
-                <button class="minus-button" *ngIf="food.quantidadeEstoque > 0" (click)="decrement(i)">-</button>
+                <button mat-raised-button class="minus-button" *ngIf="food.quantidadeEstoque > 0" (click)="decrement(i)">-</button>
                 <div class="quantity-label">{{ food.quantidadePedido }}</div>
-                <button class="plus-button" (click)="increment(i)">+</button>
+                <button mat-raised-button class="plus-button" (click)="increment(i)">+</button>
             </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="restaurant-header">
+            <button mat-raised-button class="checkout-button" (click)="onCheckOut()" >
+                <i class="fa fa-cart-plus"></i>
+                Comprar
+            </button>
+        </div>
     </div>
-
 </div>

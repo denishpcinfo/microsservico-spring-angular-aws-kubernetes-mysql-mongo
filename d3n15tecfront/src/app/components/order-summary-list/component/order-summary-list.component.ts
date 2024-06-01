@@ -1,11 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
-import { UsersEditComponent } from '../../users-edit/components/users-edit.component';
-import { ProfileService } from 'src/app/services/profile.service';
-import { ToastrService } from 'ngx-toastr';
-import { User } from 'src/app/shared/models/user.model';
 import { OrderService } from 'src/app/services/order.service';
-import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
+import { OrderDTO } from 'src/app/shared/models/order-DTO.model';
+import { OrderEditComponent } from '../../order-edit/components/order-edit.component';
+import { PedidoEditar } from 'src/app/shared/models/pedido-editar.model';
 
 @Component({
   selector: 'app-order-summary-list',
@@ -14,11 +11,8 @@ import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
 })
 export class OrderSummaryListComponent {
 
-  @ViewChild("editarPerfil", { static: true })
-  editarPerfil: UsersEditComponent;
-
-  @ViewChild('sweetAlert', { static: true }) 
-  sweetAlert: SwalComponent;
+  @ViewChild("editarPedidoModal", { static: true })
+  editarPedidoModal: OrderEditComponent;
 
   public tableItemPedido: OrderDTO[] = [];
   public buscaNomeString = null;
@@ -55,9 +49,7 @@ export class OrderSummaryListComponent {
   public newPlaceHolder = "Busque por número do pedido";
 
   constructor( 
-    private orderService: OrderService,
-    private profileService: ProfileService,
-    private toastr: ToastrService
+    private orderService: OrderService
   ) {}
 
   ngOnInit() {
@@ -76,28 +68,8 @@ export class OrderSummaryListComponent {
       });
   }
 
-  editarPedido(item: User) {
-    this.editarPerfil.showModal(item);
-  }
-
-  excluirPedido(usuarioExcluir: User){
-    this.idUserExcluir = usuarioExcluir.id;
-    this.sweetAlert.fire();
-  }
-
-  delete(){
-    this.profileService.deletar(this.idUserExcluir).subscribe({
-      next: (data) => {
-        this.toastr.success('Pedido deletado com sucesso!');
-        const { allPedidos, totalItems } = data;
-        this.tableItemPedido = allPedidos;
-        this.count = totalItems;
-        this.checkedBuscaNome = true;
-      },
-      error: (erro) => {
-        this.toastr.error(erro.error.titulo, `Erro ${erro.error.status}!`);
-      }
-    });
+  editarPedido(pedido: PedidoEditar) {
+    this.editarPedidoModal.showModal(pedido);
   }
 
   getRequestParams(page: number, pageSize: number): any {

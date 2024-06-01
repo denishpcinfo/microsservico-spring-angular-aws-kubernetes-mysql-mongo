@@ -71,4 +71,9 @@ public class OrderController {
         return new ResponseEntity<>(orderService.buscarPorDataUser(email, page, size, sort, busca), HttpStatus.OK);
     }
 
+    @PutMapping("/atualizar-pedido")
+    public ResponseEntity<Order> atualizarOrder(@RequestBody Order orderDetails){
+        Order orderSavedInDB = orderService.atualizarOrderInDb(orderDetails);
+        return new ResponseEntity<>(orderSavedInDB, HttpStatus.CREATED);
+    }
 }

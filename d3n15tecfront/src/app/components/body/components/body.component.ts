@@ -24,37 +24,36 @@ export class BodyComponent implements OnInit {
     loop: true,
     autoplay: true,
     center: true,
-
     dots: false,
-    autoHeight: false,
-    autoWidth: false,
+    autoHeight: true,
+    autoWidth: true,
     touchDrag: true,
     autoplayHoverPause: true,
     navSpeed: 300,
     responsive: {
       1500: {
-        items: 1,
-        margin: -1500,
+        items: 5,
+        margin: 0,
       },
       1024: {
-          items: 1,
-          margin: -1200,
+        items: 4,
+        margin: 0,
       },
       767: {
-          items: 1,
-          margin: -570
+        items: 3,
+        margin: 10,
       },
       576: {
-          items: 1,
-          margin: 0
+        items: 3,
+        margin: 5,
       },
       480: {
-          items: 1,
-          margin: 0
+        items: 2,
+        margin: 1,
       },
       0: {
-          items: 1,
-          margin: 0
+        items: 1,
+        margin: 0,
       }
     }
   }
@@ -68,22 +67,31 @@ export class BodyComponent implements OnInit {
     autoWidth: false,
     touchDrag: true,
     autoplayHoverPause: true,
+    navSpeed: 300,
     responsive: {
       1500: {
-        items: 1,
-        margin: -1500,
+        items: 5,
+        margin: 10,
       },
       1024: {
-          items: 1,
-          margin: -1200,
+        items: 4,
+        margin: 0,
       },
       767: {
-          items: 1,
-          margin: -570
+        items: 3,
+        margin: 10,
+      },
+      576: {
+        items: 3,
+        margin: 5,
+      },
+      480: {
+        items: 2,
+        margin: 1,
       },
       0: {
-          items: 1,
-          margin: 0
+        items: 1,
+        margin: 0,
       }
     }
   }
@@ -135,5 +143,9 @@ export class BodyComponent implements OnInit {
       this.router.navigate(["/login"]);
       return null;
     }
+  }
+
+  onButtonClick(id) {
+    this.router.navigate(['/food', id]);
   }
 }

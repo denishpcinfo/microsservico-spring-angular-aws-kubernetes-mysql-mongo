@@ -30,6 +30,7 @@ import { LOCALE_ID } from "@angular/core";
 import { registerLocaleData } from '@angular/common';
 import { OrderSummaryListModule } from './components/order-summary-list/order-summary-list.module';
 import { OrderSummaryListUserModule } from './components/order-summary-list-user/order-summary-list-user.module';
+import { OrderEditModule } from './components/order-edit/order-edit.module';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -66,7 +67,8 @@ registerLocaleData(ptBr);
     ModalModule.forRoot(),
     SweetAlert2Module.forRoot(),
     OrderSummaryListModule,
-    OrderSummaryListUserModule
+    OrderSummaryListUserModule,
+    OrderEditModule
   ],
   providers: [
     AuthTokenInterceptor,

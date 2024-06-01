@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
-import { AuthenticationResponse } from 'src/app/shared/models/authenticationResponse.model';
-import { RegisterRequest } from 'src/app/shared/models/registerRequest.model';
+import { AuthenticationResponse } from 'src/app/shared/models/authentication-response.model';
+import { RegisterRequest } from 'src/app/shared/models/register-request.model';
 import { TelefonePipe } from 'src/app/shared/pipes/telefone/telefone.pipe';
 import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 

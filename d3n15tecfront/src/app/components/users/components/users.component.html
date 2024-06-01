@@ -61,12 +61,15 @@
                                 };
                                 let i = index" class="tr-mobile tr-position-mobile quebra">
                                 <td class="td-mobile align-center-div">
-                                    <a>
-                                        <i class='fa fa-edit f-12' (click)="editarUsuario(item)"></i>
-                                    </a>&nbsp;
-                                    <a>
-                                        <i class="fa fa-trash-o" (click)="excluirUser(item)"></i>
-                                    </a>
+                                    <button mat-raised-button
+                                        matTooltip="Editar usuário">
+                                        <i class='fa fa-edit' (click)="editarUsuario(item)"></i>
+                                    </button>
+
+                                    <button mat-raised-button
+                                        matTooltip="Excluir usuário">
+                                        <i class='fa fa-trash-o' (click)="excluirUser(item)"></i>
+                                    </button>
                                 </td>
                                 <td class="align-center-div">
                                     {{item.nome}}

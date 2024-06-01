@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import { RegisterRequest } from 'src/app/shared/models/registerRequest.model';
-import { AuthenticationResponse } from 'src/app/shared/models/authenticationResponse.model';
-import { AuthenticationRequest } from 'src/app/shared/models/authenticationRequest.model';
+import { RegisterRequest } from 'src/app/shared/models/register-request.model';
+import { AuthenticationResponse } from 'src/app/shared/models/authentication-response.model';
+import { AuthenticationRequest } from 'src/app/shared/models/authentication-request.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { API_URL_UD } from 'src/app/constants/url';

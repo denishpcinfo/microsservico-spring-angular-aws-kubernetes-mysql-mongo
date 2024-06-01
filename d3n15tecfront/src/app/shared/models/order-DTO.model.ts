@@ -1,6 +1,6 @@
 import { Restaurant } from "./restaurant.model";
-import { FoodItemPedido } from "./foodItemPedido.model";
-import { UserDTO } from "./userDTO.model";
+import { FoodItemPedido } from "./food-item-pedido.model";
+import { UserDTO } from "./user-DTO.model";
 import { StatusPedido } from "./enums/status-pedido.model";
 
 export interface OrderDTO{

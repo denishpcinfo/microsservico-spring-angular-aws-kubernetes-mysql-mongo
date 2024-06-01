@@ -2,6 +2,14 @@
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
+div{
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.order-head{
+  padding-top: 30px;
+}
+
 .order-summary {
     max-width: 800px;
     margin: 0 auto;
@@ -115,3 +123,21 @@
     cursor: pointer;
   }
   
+  .tr-food{
+    text-align: center !important;
+  }
+  
+
+  @media screen and (max-width: 800px) and (min-width: 300px) {
+    .order-head{
+      margin: 30px 30px 0px 100px;
+      padding-top: 30px;
+    }
+  }
+
+  @media screen and (max-width: 1000px) and (min-width: 801px) {
+    .order-head{
+      margin: 30px 30px 0px 100px;
+      padding-top: 30px;
+    }
+  }

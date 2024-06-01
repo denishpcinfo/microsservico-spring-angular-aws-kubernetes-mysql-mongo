@@ -1,8 +1,10 @@
-export interface Restaurant {
-    id?: any;
-    name?: string;
-    address?: string ;
-    city?: string;
-    restaurantDescription?: string,
-    urlSource?: string;
+export class Restaurant {
+    constructor(
+    public id?: any,
+    public name?: string,
+    public address?: string,
+    public city?: string,
+    public restaurantDescription?: string,
+    public urlSource?: string
+    ){}
 }

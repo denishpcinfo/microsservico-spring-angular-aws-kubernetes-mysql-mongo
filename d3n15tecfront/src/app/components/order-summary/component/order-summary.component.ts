@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
+import { OrderDTO } from 'src/app/shared/models/order-DTO.model';
 import { User } from 'src/app/shared/models/user.model';
 import { ToastrService } from 'ngx-toastr';
 

@@ -1,8 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastrService } from 'ngx-toastr';
 import { OrderService } from 'src/app/services/order.service';
-import { OrderDTO } from 'src/app/shared/models/orderDTO.model';
+import { OrderDTO } from 'src/app/shared/models/order-DTO.model';
 import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 
 @Component({

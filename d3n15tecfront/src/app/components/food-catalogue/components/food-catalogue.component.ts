@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { FoodItemService } from 'src/app/services/fooditem.service';
-import { FoodCataloguePage } from 'src/app/shared/models/foodCataloguePage.model';
-import { FoodItemPedido } from 'src/app/shared/models/foodItemPedido.model';
+import { FoodCataloguePage } from 'src/app/shared/models/food-catalogue-page.model';
+import { FoodItemPedido } from 'src/app/shared/models/food-item-pedido.model';
 
 @Component({
   selector: 'app-food-catalogue',
@@ -23,7 +24,8 @@ export class FoodCatalogueComponent {
 
   constructor(private route: ActivatedRoute, 
               private foodItemService: FoodItemService, 
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -56,7 +58,12 @@ export class FoodCatalogueComponent {
   onCheckOut() {
     this.foodItemCart = this.cardapioRestaurante;
     this.orderSummary = { foodItemsList: [] = [], restaurant: null }
+
     const novoArray = this.foodItemCart.filter((item) => item.quantidadePedido > 0);
+    if(novoArray.length == 0){
+      this.toastr.warning('Adicione algum item!');
+      return;
+    } 
     this.orderSummary.foodItemsList = novoArray;
     this.orderSummary.restaurant = this.foodItemResponse.restaurant;
     this.router.navigate(['/pedidos'], { queryParams: { data: JSON.stringify(this.orderSummary) } });

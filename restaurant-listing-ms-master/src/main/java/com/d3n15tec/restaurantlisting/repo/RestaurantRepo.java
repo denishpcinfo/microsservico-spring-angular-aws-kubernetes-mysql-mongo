@@ -14,7 +14,7 @@ import java.util.List;
 public interface RestaurantRepo extends JpaRepository<Restaurant, Integer> {
     Page<Restaurant> findAll(Pageable pageable);
 
-    @Query(value = "SELECT * FROM restaurantdb.restaurant limit 0, 5 ", nativeQuery = true)
+    @Query(value = "SELECT * FROM restaurantdb.restaurant order by restaurantdb.restaurant.name asc limit 0, 5 ", nativeQuery = true)
     List<Restaurant> buscarRestaurantSlider();
 
 }
