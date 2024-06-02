@@ -186,10 +186,8 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="banner-contain">
-            <h2>2024</h2>
-            <h3>d3n15 Tec</h3>
-            <h4>Bora matar a fome!</h4>
+          <div class="banner-contain slideInLeft">
+            <h4 class="tresd " >Bora matar a fome!</h4>
           </div>
         </div>
       </div>
@@ -200,17 +198,17 @@
 <br>
 <div id="prices-section-container">
   <div id="prices-title-description">
-    <h1> Melhores preços </h1>
+    <h1><b> Melhores preços </b></h1>
     <hr id="title-text-separator" />
     <h2>
         O restaurante que você precisa na palma da sua mão!
-        Os melhores planos para voçê, com os melhores restaurantes e seus menus.
+        Os melhores planos para voçê, com os melhores restaurantes.
     </h2>
   </div>
   <div id="all-prices-container">
     <div id="price-container-one" class="price-container">
       <h1> Starter Pack </h1>
-      <h2> R$ 55 </h2>
+      <h2> R$ 55,00 </h2>
       <p> Pagamento mensal </p>
       <hr />
       <ul>
@@ -224,7 +222,7 @@
     </div>
     <div id="price-container-two" class="price-container">
       <h1> Premium Pack </h1>
-      <h2> R$ 85 </h2>
+      <h2> R$ 85,00 </h2>
       <p> Pagamento mensal </p>
       <hr/>
       <ul>
@@ -238,7 +236,7 @@
     </div>
     <div id="price-container-three" class="price-container">
       <h1> Professional Pack </h1>
-      <h2> R$ 120 </h2>
+      <h2> R$ 120,00 </h2>
       <p> Pagamento mensal </p>
       <hr />
       <ul>
@@ -274,7 +272,7 @@
 <div class="div-carrossel-style">
   <div class="features-container-restaurantes-2">
     <div class="features-description-restaurantes">
-      <h1> Escolha o seu <span id="blue-text"> restaurante favorito! </span> </h1>
+      <h1> Escolha o seu <span id="blue-text"><b> restaurante favorito! </b></span> </h1>
       <hr id="title-text-separator" />
     </div>
   </div>
@@ -284,11 +282,14 @@
       <owl-carousel-o [options]="customOptions">
         <ng-container *ngFor="let slide of restaurantes | slice:0:5">
           <ng-template class="slide" carouselSlide [id]="slide.id" >
+            <br>
             <div class="an-box">
               <div class="box" id="feature-1">
-                <h3 id="feature-title"> {{slide.name}} </h3>
-                <h2>{{slide.restaurantDescription}} </h2>
-                <p>Local: {{slide.city}} </p>
+                <h3 id="feature-title"> <b>{{slide.name}} </b></h3>
+                <h2> <b>{{slide.restaurantDescription}} </b></h2>
+                <img height="200px" width="300px" [src]="slide.urlSource">
+                <br>
+                <p><b>Local: {{slide.city}} </b></p>
                 <button mat-raised-button id="feature-button" (click)="onButtonClick(slide.id)"> 
                   Comprar 
                 </button>

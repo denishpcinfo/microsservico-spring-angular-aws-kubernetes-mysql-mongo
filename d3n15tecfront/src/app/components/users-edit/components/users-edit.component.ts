@@ -48,6 +48,8 @@ export class UsersEditComponent implements OnInit {
    this.user = item;
    this.user.password = null;
    this.checked = false;
+   this.user.telefoneCelular = new TelefonePipe().transform(this.user.telefoneCelular);
+   this.user.cpf = new CpfPipe().transform(this.user.cpf);
    this.editarPerfilModal.show(); 
   }
 

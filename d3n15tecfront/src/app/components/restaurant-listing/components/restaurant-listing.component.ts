@@ -14,8 +14,8 @@ export class RestaurantListingComponent {
 
   public page = 1;
   public count = 0;
-  public pageSize = 10;
-  public pageSizes = [10, 20, 30];
+  public pageSize = 12;
+  public pageSizes = [12, 24, 36];
 
   constructor(
     private router: Router, 

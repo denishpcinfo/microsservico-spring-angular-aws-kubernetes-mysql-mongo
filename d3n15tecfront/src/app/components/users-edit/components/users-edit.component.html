@@ -3,7 +3,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title tamanho-fonte" id="editarPerfil">Alterar cadastro</h5>
-          <button mat-raised-button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="fecharModalEditUser()"></button>
+          <button mat-raised-button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="fecharModalEditUser()">
+            <i class='fa fa-close f-12'></i>
+          </button>
         </div>
         <div class="modal-body">
             <form (ngSubmit)="enviar()" class="form-horizontal" #form="ngForm" >
@@ -74,7 +76,7 @@
                 <br>
                 <br>
                 <div class="form-group margin-input-footer">
-                    <button mat-raised-button type="submit" class="btn color">
+                    <button mat-raised-button type="submit" class="color">
                         Salvar
                       </button>
 

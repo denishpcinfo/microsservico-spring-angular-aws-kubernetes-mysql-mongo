@@ -2,6 +2,25 @@
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
+div{
+  border: 0;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  vertical-align: baseline;
+}
+
+.card .card-header {
+  background-color: #ffffff;
+  border-bottom: none;
+  padding: 30px 0px 15px 100px;
+  border-bottom: 1px solid #f8f8f9;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: bold;
+  font-family: 'Titillium Web', sans-serif;
+ }
 
 .my-gap{
   margin: 25px 25px 25px 100px;
@@ -52,6 +71,12 @@
 
   .star {
     color: orange;
+  }
+
+  .color-borda {
+    font-family: 'Titillium Web', sans-serif;
+    border:2px solid #00a7e1 !important;
+    cursor: pointer;
   }
 
   .order-btn {

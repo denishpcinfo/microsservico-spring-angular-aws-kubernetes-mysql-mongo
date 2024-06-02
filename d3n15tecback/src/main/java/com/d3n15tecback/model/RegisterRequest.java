@@ -1,4 +1,4 @@
-package com.d3n15tecback.auth;
+package com.d3n15tecback.model;
 
 import com.d3n15tecback.user.Role;
 import lombok.AllArgsConstructor;

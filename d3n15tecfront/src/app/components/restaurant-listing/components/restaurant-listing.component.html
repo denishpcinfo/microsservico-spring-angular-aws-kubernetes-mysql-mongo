@@ -1,5 +1,9 @@
 
 <main class="main-content my-gap" >
+  <div class="card-header">
+    <h5><strong>Lista de Restaurantes </strong></h5>
+  </div>
+<br>
 
   <div class="restaurant-grid">
     <div class="restaurant-card" *ngFor="let restaurant of restaurantList | paginate : {
@@ -18,7 +22,9 @@
           <span class="rating"><i class="fa fa-star"></i>4.5</span>
           <span class="rating-count">(500+)</span>
         </div>
-        <button mat-raised-button class="btn color color-borda" (click)="onButtonClick(restaurant.id)">Comprar</button>
+        <button mat-raised-button class="color color-borda" (click)="onButtonClick(restaurant.id)">
+          <b> Comprar </b>
+        </button>
       </div>
     </div>
   </div>

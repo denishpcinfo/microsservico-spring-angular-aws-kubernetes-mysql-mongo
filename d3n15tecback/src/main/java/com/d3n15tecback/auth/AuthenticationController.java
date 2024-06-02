@@ -1,5 +1,8 @@
 package com.d3n15tecback.auth;
 
+import com.d3n15tecback.model.AuthenticationRequest;
+import com.d3n15tecback.model.AuthenticationResponse;
+import com.d3n15tecback.model.RegisterRequest;
 import com.d3n15tecback.service.exception.AcaoNaoPermitidaException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

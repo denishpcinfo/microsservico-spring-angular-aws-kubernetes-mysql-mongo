@@ -2,6 +2,14 @@
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
+div{
+    border: 0;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    vertical-align: baseline;
+}
 
 .font-padrao {
     text-align: center;

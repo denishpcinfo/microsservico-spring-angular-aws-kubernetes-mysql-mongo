@@ -45,28 +45,28 @@ public class OrderService {
         Integer newOrderID = orderDetails.getOrderId();
         LocalDateTime dataAtual = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
 
-        if(orderDetails.getStatusPedido() == StatusPedido.PEDIDO_REALIZADO.getDescricao()){
+        if(orderDetails.getStatusPedido().equals(StatusPedido.PEDIDO_REALIZADO.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PEDIDO_REALIZADO.getDescricao(), orderDetails.getValorTotal());
             orderToBeSaved = orderRepo.save(orderToBeSaved);
             return orderToBeSaved;
         }
 
-        if(orderDetails.getStatusPedido() == StatusPedido.PREPARANDO_PEDIDO.getDescricao()){
+        if(orderDetails.getStatusPedido().equals(StatusPedido.PREPARANDO_PEDIDO.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PREPARANDO_PEDIDO.getDescricao(), orderDetails.getValorTotal());
             orderToBeSaved = orderRepo.save(orderToBeSaved);
             return orderToBeSaved;
         }
 
-        if(orderDetails.getStatusPedido() == StatusPedido.PEDIDO_RETIRADO_ENTREGADOR.getDescricao()){
+        if(orderDetails.getStatusPedido().equals(StatusPedido.PEDIDO_RETIRADO_ENTREGADOR.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PEDIDO_RETIRADO_ENTREGADOR.getDescricao(), orderDetails.getValorTotal());
             orderToBeSaved = orderRepo.save(orderToBeSaved);
             return orderToBeSaved;
         }
 
-        if(orderDetails.getStatusPedido() == StatusPedido.PEDIDO_ENTREGUE.getDescricao()){
+        if(orderDetails.getStatusPedido().equals(StatusPedido.PEDIDO_ENTREGUE.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PEDIDO_ENTREGUE.getDescricao(), orderDetails.getValorTotal());
             orderToBeSaved = orderRepo.save(orderToBeSaved);

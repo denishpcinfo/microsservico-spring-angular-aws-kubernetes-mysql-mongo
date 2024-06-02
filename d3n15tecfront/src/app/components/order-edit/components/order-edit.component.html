@@ -3,7 +3,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title tamanho-fonte" id="editarPedido">Alterar pedido</h5>
-          <button mat-raised-button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="fecharModalEditPedido()"></button>
+          <button mat-raised-button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="fecharModalEditPedido()">
+            <i class='fa fa-close f-12'></i>
+          </button>
         </div>
         <div class="modal-body">
             <form (ngSubmit)="enviar()" class="form-horizontal" #form="ngForm" >

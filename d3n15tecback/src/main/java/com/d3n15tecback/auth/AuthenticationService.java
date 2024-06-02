@@ -2,6 +2,9 @@ package com.d3n15tecback.auth;
 
 import com.d3n15tecback.config.JwtService;
 import com.d3n15tecback.helper.UsuarioHelper;
+import com.d3n15tecback.model.AuthenticationRequest;
+import com.d3n15tecback.model.AuthenticationResponse;
+import com.d3n15tecback.model.RegisterRequest;
 import com.d3n15tecback.repository.UserRepository;
 import com.d3n15tecback.service.exception.AcaoNaoPermitidaException;
 import com.d3n15tecback.service.exception.DadoNaoInformadoException;
@@ -80,16 +83,16 @@ public class AuthenticationService {
                 .build();
     }
 
-    public void refreshToken(
-            HttpServletRequest requisicao,
-            HttpServletResponse response
-    ) throws IOException, AcaoNaoPermitidaException {
+    public void refreshToken(HttpServletRequest requisicao, HttpServletResponse response) throws IOException, AcaoNaoPermitidaException {
+
         final String authHeaderRefresh = requisicao.getHeader("refreshtoken");
         final String refreshToken;
         final String userEmail;
+
         if (authHeaderRefresh == null || !authHeaderRefresh.startsWith("Bearer ")) {
             return;
         }
+
         refreshToken = authHeaderRefresh.substring(7);
 
         if(jwtService.extractUsername(refreshToken) != null){

@@ -61,7 +61,7 @@ export class FoodCatalogueComponent {
 
     const novoArray = this.foodItemCart.filter((item) => item.quantidadePedido > 0);
     if(novoArray.length == 0){
-      this.toastr.warning('Adicione algum item!');
+      this.toastr.warning('Adicione algum item ao pedido!');
       return;
     } 
     this.orderSummary.foodItemsList = novoArray;

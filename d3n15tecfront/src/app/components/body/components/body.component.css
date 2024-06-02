@@ -2,6 +2,14 @@
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
+div{
+  border: 0;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  vertical-align: baseline;
+}
 
 .margin-svg{
   margin: 0px 5px 5px 0px;
@@ -96,18 +104,6 @@ a {
     display: block;
 }
 
-div{
-    border: 0;
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 100%;
-    font-style: inherit;
-    font-weight: inherit;
-    margin: 0;
-    outline: 0;
-    padding: 0;
-    vertical-align: baseline;
-}
-
 ul {
     list-style: none;
     margin: 0;
@@ -125,6 +121,37 @@ ul {
 
 nav{
     display: block;
+}
+
+.slideInLeft {
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes slideInLeft {
+  0% {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  }
+  }
+  @keyframes slideInLeft {
+  0% {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  }
 }
 
 #mega-menu-wrap-top-menu {
@@ -367,10 +394,12 @@ input {
 }
 
 .main-navigation {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
+  padding: 5px 0px 8px 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  box-shadow: 0px 5px 15px #b9b9b9;
 }
 
 #mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-megamenu.mega-menu-item {
@@ -1013,7 +1042,7 @@ div{
 
 #feature-1 {
   width: 250px;
-  height: 400px;
+  height: 450px;
   text-align: center;
 
   display: flex;  .restaurant-image {
@@ -1064,7 +1093,7 @@ div{
 }
 
 #feature-title {
-  margin-top: 5%;
+  margin-top: 45px;
 }
 
 #feature p {
@@ -1078,9 +1107,9 @@ div{
   color: #5fa2db;
   text-align: center;
   border-radius: 6px;
-  margin: 10% 0% 30% 0%;
+  margin: 0% 0% 30% 0%;
   height: 40px;
-  width: 100px;
+  width: 110px;
   font-weight: bold;
   font-size: larger;
 }
@@ -1604,6 +1633,7 @@ footer p {
   text-align: center;
   margin: auto;
   margin-top: 10px;
+  margin-bottom: 30px;
   padding: 1%;
   display: flex;
   width: 60%;

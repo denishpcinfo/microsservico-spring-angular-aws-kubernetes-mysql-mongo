@@ -31,7 +31,6 @@ public class ProfileController {
         return null;
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> deletar(@PathVariable("id") Long id) throws AcaoNaoPermitidaException {
         userService.deletar(id);
