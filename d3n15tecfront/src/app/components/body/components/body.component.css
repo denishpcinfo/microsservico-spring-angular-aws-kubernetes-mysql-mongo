@@ -1573,19 +1573,6 @@ footer p {
 		color: #fff;
 		padding: 20px 10px;
 		text-align: left;
-		h5{
-			margin: 0 0 15px;
-			font-size: 18px;
-			line-height: 18px;
-			span{
-				color: red;
-				float:right;
-				padding-right: 20px;
-			}
-		}
-		p{
-			font-size: 14px;
-		}
 	}
 	.item {
 			text-align: center;
