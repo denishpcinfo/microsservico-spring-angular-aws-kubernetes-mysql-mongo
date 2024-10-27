@@ -1,12 +1,10 @@
-# Stage 1: Build the Angular app
-FROM node:16 as build
+FROM node:20 as build
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve the Angular app using Nginx
 FROM nginx:alpine
 COPY --from=build /app/dist/d3n15tecfront /usr/share/nginx/html
 EXPOSE 80
