@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: orderapp
-          image: denishpcinfo/order-service:4
+          image: denishpcinfo/order-service:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 9094

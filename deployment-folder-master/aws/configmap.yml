@@ -11,9 +11,8 @@ data:
 
   
   restaurantdb: restaurantdb
-  mysql-server: mysql-service    # The name of mysql service
+  mysql-server: mysql-service    
   mysql-user-username: root
-  citizen_database_url: jdbc:mysql://mysql-service:3306/citizendb
   foodcataloguedb_url: jdbc:mysql://mysql-service:3306/foodcataloguedb
   userdb_url: jdbc:mysql://mysql-service:3306/userdb
   foodcataloguedb: foodcataloguedb

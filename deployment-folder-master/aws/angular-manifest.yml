@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: angularapp
 spec:
-  replicas: 1  # Adjust the number of replicas as per your requirements
+  replicas: 1
   selector:
     matchLabels:
       app: angularapp
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: angular-app-container
-          image: denishpcinfo/food-delivery-app-fe:4
+          image: denishpcinfo/food-delivery-app-fe:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 80

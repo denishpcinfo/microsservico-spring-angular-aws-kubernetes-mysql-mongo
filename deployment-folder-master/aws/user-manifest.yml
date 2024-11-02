@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: userapp
-          image: denishpcinfo/user-service:latest
+          image: denishpcinfo/user-service:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 9093
