@@ -13,6 +13,8 @@ O arquivo "sql projeto microservice" na raiz do projeto, possui os SQLs para pop
 # Micro Serviços
 ![Captura de tela de 2024-04-17 20-55-04](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/b42f335a-59b2-4aae-94ba-2c5c99de43cb)
 
+# Kubernetes
+![Captura de tela de 2024-11-06 13-22-18](https://github.com/user-attachments/assets/912b797a-fb1d-488d-8bae-64af98ce5980)
 
 # Pedido salvo MongoDB
 ![Captura de tela de 2024-04-13 22-32-00](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/b52c5f62-ed83-4f2f-80d4-849fb5026cc6)
