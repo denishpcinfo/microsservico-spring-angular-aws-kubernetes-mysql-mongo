@@ -5,7 +5,6 @@ import { FoodCatalogueRoutingModule } from './food-catalogue-routing.module';
 import { FoodCatalogueComponent } from './components/food-catalogue.component'; 
 import { LOCALE_ID } from "@angular/core";
 import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -15,8 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CommonModule,
     FoodCatalogueRoutingModule,
     CurrencyMaskModule,
-    MatButtonModule,
-    MatTooltipModule
+    MatButtonModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "pt-BR" }]
 })

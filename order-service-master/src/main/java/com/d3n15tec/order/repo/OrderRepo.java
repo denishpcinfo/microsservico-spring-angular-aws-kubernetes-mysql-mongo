@@ -25,5 +25,6 @@ public interface OrderRepo extends MongoRepository<Order, Integer>{
 
  @Query("{ 'user.email' : { $regex: ?0, $options: 'i' } }")
  Page<Order> getAllPedidosUserEmail(String email, Pageable pageable);
+
  }
 

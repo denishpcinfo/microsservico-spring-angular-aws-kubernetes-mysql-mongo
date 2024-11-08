@@ -1,19 +1,19 @@
 server:
-#  port: 0
   port: 9092
 
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: eureka-0
   client:
     service-url:
-      defaultZone: http://d3n15-tec-eureka-user:d3n15123456789@localhost:8761/eureka/
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      defaultZone: http://localhost:8761/eureka/
 
 spring:
   application:
     name: FOOD-CATALOGUE-SERVICE
   datasource:
-    url: jdbc:mysql://localhost:3306/foodcataloguedb
+    url: jdbc:mysql://localhost:3306/foodcataloguedb?useSSL=false&serverTimezone=UTC
     password: eusou100
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver

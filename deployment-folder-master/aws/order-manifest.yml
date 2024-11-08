@@ -27,7 +27,7 @@ spec:
                   name: configmap
                   key: orderdb_url
             - name: SPRING_DATA_MONGODB_DATABASE
-              value: "orderdb"
+              value: pedidodb
 
 ---
 apiVersion: v1

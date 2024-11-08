@@ -13,7 +13,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 import { SidebarModule } from '../sidebar/sidebar.module';
 import { OrderEditModule } from '../order-edit/order-edit.module';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
@@ -33,8 +32,7 @@ import {MatButtonModule} from '@angular/material/button';
     OrderEditModule,
     CheckboxModule,
     SidebarModule,
-    MatButtonModule, 
-    MatTooltipModule
+    MatButtonModule
   ],
   providers: [CpfPipe]
 })

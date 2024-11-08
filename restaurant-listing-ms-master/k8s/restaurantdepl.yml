@@ -1,11 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment # Kubernetes resource kind we are creating
+kind: Deployment
 metadata:
   name: restaurantapp
   labels:
     app: restaurantapp
 spec:
-  replicas: 2 # Number of replicas that will be created for this deployment
+  replicas: 2
   selector:
     matchLabels:
       app: restaurantapp
@@ -16,17 +16,17 @@ spec:
     spec:
       containers:
         - name: restaurantapp
-          image: denishpcinfo/restaurant:latest # Image that will be used to containers in the cluster
+          image: denishpcinfo/restaurant:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 9091 #
 
-          env: # Environment variables supplied to the Pod
-            - name: SPRING_DATASOURCE_USERNAME # Name of the environment variable
-              valueFrom: # Get the value of environment variable from kubernetes secrets
+          env:
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom: 
                 secretKeyRef:
                   name: mysql-secret
-                  key: mysql-username
+                  key: mysql-username-rest-food
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:

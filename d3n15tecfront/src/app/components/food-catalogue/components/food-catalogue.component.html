@@ -16,11 +16,11 @@
                 <div class="div-qtda-pedido" >
                     <p><b>Quantidade prato: </b></p>
                 </div>
-                <button mat-raised-button class="minus-button" *ngIf="food.quantidadeEstoque > 0" (click)="decrement(i)" matTooltip="Retirar">
+                <button mat-raised-button class="minus-button" *ngIf="food.quantidadeEstoque > 0" (click)="decrement(i)">
                     <b> - </b>
                 </button>
                 <div class="quantity-label">{{ food.quantidadePedido }}</div>
-                <button mat-raised-button class="plus-button" (click)="increment(i)" matTooltip="Adicionar">
+                <button mat-raised-button class="plus-button" (click)="increment(i)">
                     <b> + </b>
                 </button>
             </div>
