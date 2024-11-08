@@ -14,7 +14,7 @@ spring:
     name: USER-SERVICE
   datasource:
     url: jdbc:mysql://localhost:3306/userdb?useTimezone=true&serverTimezone=UTC
-    username: admin
+    username: root
     password: eusou100
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
