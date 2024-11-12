@@ -3,18 +3,9 @@ kind: ConfigMap
 metadata:
   name: configmap
 data:
-  # restaurantdb_url: jdbc:mysql://mysql-db-instance.c2sqiztf28ne.eu-west-2.rds.amazonaws.com:3306/restaurantdb
-  # foodcataloguedb_url: jdbc:mysql://mysql-db-instance.c2sqiztf28ne.eu-west-2.rds.amazonaws.com:3306/foodcataloguedb
-  # userdb_url: jdbc:mysql://mysql-db-instance.c2sqiztf28ne.eu-west-2.rds.amazonaws.com:3306/userdb
-  # orderdb_url: mongodb+srv://admin:denishpcinfo@atlas-cluster.mqdj7js.mongodb.net/?retryWrites=true&w=majority
-  # eureka_service_address: http://eureka-0.eureka-service:8761/eureka
-
-  
-  restaurantdb: restaurantdb
-  mysql-server: mysql-service    
-  mysql-user-username: root
-  foodcataloguedb_url: jdbc:mysql://mysql-service:3306/foodcataloguedb
-  userdb_url: jdbc:mysql://mysql-service:3306/userdb
-  foodcataloguedb: foodcataloguedb
-  userdb: userdb
+  restaurantdb_url: jdbc:mysql://restaurantdb.cdmg6w0804tc.us-east-2.rds.amazonaws.com:3306/restaurantdb?useSSL=false&serverTimezone=UTC
+  foodcataloguedb_url: jdbc:mysql://foodcataloguedb.cdmg6w0804tc.us-east-2.rds.amazonaws.com/foodcataloguedb?useSSL=false&serverTimezone=UTC
+  userdb_url: jdbc:mysql://userdb.cdmg6w0804tc.us-east-2.rds.amazonaws.com/userdb?useSSL=false&serverTimezone=UTC
+  orderdb_url: mongodb+srv://admin:eusou100@pedidodb.27xpu.mongodb.net/?retryWrites=true&w=majority&appName=pedidodb
+  eureka_service_address: http://eureka-0.eureka-service:8761/eureka
   

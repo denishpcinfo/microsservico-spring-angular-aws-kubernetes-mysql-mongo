@@ -659,7 +659,7 @@ public class OrderService {
 
         }else if(sort.equals("nomeRestaurante desc") && busca != null){
             Pageable paging = PageRequest.of(page, size, Sort.Direction.DESC, "restaurant.name");
-            allPedidosPage = getAllPedidosUserEmail(email, paging);
+            allPedidosPage = getAllUsuariosBuscaDataAsc(paging);
 
             if(allPedidosPage.getContent() != null){
                 allPedidos = allPedidosPage.getContent();

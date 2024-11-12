@@ -19,7 +19,7 @@ spec:
                 port:
                   number: 80
 
-          - path: /restaurant
+          - path: /api/restaurante
             pathType: Prefix
             backend:
               service:
@@ -27,7 +27,7 @@ spec:
                 port:
                   number: 9091
 
-          - path: /catalogo-food
+          - path: /api/catalogo-food
             pathType: Prefix
             backend:
               service:
@@ -35,7 +35,7 @@ spec:
                 port:
                   number: 9092
 
-          - path: /order
+          - path: /api/pedido
             pathType: Prefix
             backend:
               service:
@@ -44,7 +44,7 @@ spec:
                   number: 9094
 
 
-          - path: /user
+          - path: /api
             pathType: Prefix
             backend:
               service:

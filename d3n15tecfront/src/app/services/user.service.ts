@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { API_URL_UD, K8ExternalIp } from 'src/app/constants/url';
+import { API_URL_UD } from 'src/app/constants/url';
 import { User } from '../shared/models/user.model';
 import { ProfileService } from './profile.service';
 import { AuthTokenService } from './auth/auth-token.service';

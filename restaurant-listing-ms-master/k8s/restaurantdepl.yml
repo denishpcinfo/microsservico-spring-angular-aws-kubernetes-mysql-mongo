@@ -26,7 +26,7 @@ spec:
               valueFrom: 
                 secretKeyRef:
                   name: mysql-secret
-                  key: mysql-username-rest-food
+                  key: mysql-username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:

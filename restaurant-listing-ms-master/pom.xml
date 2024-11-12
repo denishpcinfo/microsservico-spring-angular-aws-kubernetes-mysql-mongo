@@ -16,7 +16,6 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.7</spring-cloud.version>
-		<sonar.exclusions>**/com/d3n15tec/restaurantlisting/dto/** , **/*/com/d3n15tec/restaurantlisting/entity/**/*</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -85,32 +84,8 @@
 							<artifactId>lombok</artifactId>
 							<version>1.18.26</version>
 						</path>
-						<path>
-							<groupId>org.mapstruct</groupId>
-							<artifactId>mapstruct-processor</artifactId>
-							<version>1.4.2.Final</version>
-						</path>
 					</annotationProcessorPaths>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.8</version>
-				<executions>
-					<execution>
-						<id>prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

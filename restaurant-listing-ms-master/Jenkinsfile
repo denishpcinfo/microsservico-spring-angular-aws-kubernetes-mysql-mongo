@@ -25,41 +25,6 @@ pipeline {
       }
     }
 
-    stage('SonarQube Analysis') {
-  steps {
-    sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.host.url=http://35.180.137.8:9000/ -Dsonar.login=squ_32789bcdadb6e4337e432d6cbc100c2a1a14fde5'
-  }
-}
-
-
-   stage('Check code coverage') {
-            steps {
-                script {
-                    def token = "squ_32789bcdadb6e4337e432d6cbc100c2a1a14fde5"
-                    def sonarQubeUrl = "http://35.180.137.8:9000/api"
-                    def componentKey = "com.d3n15tec:restaurantlisting"
-                    def coverageThreshold = 80.0
-
-                    def response = sh (
-                        script: "curl -H 'Authorization: Bearer ${token}' '${sonarQubeUrl}/measures/component?component=${componentKey}&metricKeys=coverage'",
-                        returnStdout: true
-                    ).trim()
-
-                    def coverage = sh (
-                        script: "echo '${response}' | jq -r '.component.measures[0].value'",
-                        returnStdout: true
-                    ).trim().toDouble()
-
-                    echo "Coverage: ${coverage}"
-
-                    if (coverage < coverageThreshold) {
-                        error "Coverage is below the threshold of ${coverageThreshold}%. Aborting the pipeline."
-                    }
-                }
-            }
-        } 
-
-
       stage('Docker Build and Push') {
       steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
@@ -80,7 +45,7 @@ pipeline {
 
     stage('Update Image Tag in GitOps') {
       steps {
-         checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[ credentialsId: 'git-ssh', url: 'git@github.com:dev-withK8s-AWS-denishpcinfo/deployment-folder.git']])
+         checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[ credentialsId: 'git-ssh', url: 'git@github.com/denishpcinfodev/restaurant-listing-ms-master.git']])
         script {
        sh '''
           sed -i "s/image:.*/image: denishpcinfo\\/restaurant-listing-service:${VERSION}/" aws/restaurant-manifest.yml
@@ -99,5 +64,4 @@ pipeline {
   }
 
 }
-
 

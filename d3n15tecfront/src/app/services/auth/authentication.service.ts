@@ -15,7 +15,6 @@ export class AuthenticationService {
   authRequest: AuthenticationRequest = {};
   authResponse: AuthenticationResponse = {};
 
-  
   private baseUrl = API_URL_UD + '/autenticacao'
 
   constructor( private http: HttpClient,

@@ -148,4 +148,8 @@ export class BodyComponent implements OnInit {
   onButtonClick(id) {
     this.router.navigate(['/food', id]);
   }
+
+  onButtonRouteMinhaConta() {
+    this.router.navigate(['/minha-conta']);
+  }
 }

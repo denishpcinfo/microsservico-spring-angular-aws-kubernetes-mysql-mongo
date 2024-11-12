@@ -559,7 +559,6 @@ spec:
     subresources:
       status: {}
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -802,11 +801,11 @@ spec:
     spec:
       containers:
       - args:
-        - --cluster-name=aws-eks-cluster
+        - --cluster-name=aws-eks-cluster-d3n15-tec
         - --ingress-class=alb
-        - --aws-vpc-id=vpc-078228c09d13712e1 
-        - --aws-region=eu-west-2
-        image: denishpcinfo/aws-load-balancer:v2.4.7
+        - --aws-vpc-id=vpc-08a8329b7a605dd75
+        - --aws-region=us-east-2
+        image: public.ecr.aws/eks/aws-load-balancer-controller:v2.4.7
         livenessProbe:
           failureThreshold: 2
           httpGet:

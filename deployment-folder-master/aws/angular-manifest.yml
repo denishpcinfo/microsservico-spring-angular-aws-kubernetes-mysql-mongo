@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: angular-app-container
-          image: denishpcinfo/app-d3n15tecfront:0.0.1
+          image: denishpcinfo/app-d3n15tecfront:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80

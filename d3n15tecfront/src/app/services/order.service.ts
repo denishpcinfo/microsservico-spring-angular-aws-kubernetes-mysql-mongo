@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {  API_URL_ORDER, K8ExternalIp } from 'src/app/constants/url'; 
+import {  API_URL_ORDER } from 'src/app/constants/url'; 
 import { PedidoEditar } from '../shared/models/pedido-editar.model';
 import { ToastrService } from 'ngx-toastr';
 
