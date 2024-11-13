@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: aws-ingress
-  #namespace: argocd
+  namespace: argocd
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
@@ -18,7 +18,15 @@ spec:
                 name: angular-service
                 port:
                   number: 80
-
+          
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 9093
+          
           - path: /api/restaurante
             pathType: Prefix
             backend:
@@ -44,13 +52,7 @@ spec:
                   number: 9094
 
 
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: user-service
-                port:
-                  number: 9093
+
 
 
          

@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: default
   source:
-    repoURL: 'git@github.com:dev-withK8s-AWS-denishpcinfo/deployment-folder.git'
+    repoURL: 'git@github.com:denishpcinfodev/deployment-folder-master.git'
     path: ./aws
     targetRevision: HEAD
     directory:
