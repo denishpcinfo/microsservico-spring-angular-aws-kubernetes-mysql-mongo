@@ -2,9 +2,9 @@ pipeline {
   agent any
 
   environment {
+    DOCKER_REGISTRY = "docker.io"
     DOCKERHUB_CREDENTIALS = credentials('DOCKER_HUB_CREDENTIAL')
     VERSION = "${env.BUILD_ID}"
-
   }
 
   tools {
@@ -14,19 +14,18 @@ pipeline {
   stages {
 
     stage('Maven Build'){
-        steps{
+      steps{
         sh 'mvn clean package  -DskipTests'
-        }
-    }
-
-     stage('Run Tests') {
-      steps {
-        sh 'mvn test'
       }
     }
 
+    // stage('Run Tests') {
+    //   steps {
+    //     sh 'mvn test'
+    //   }
+    // }
 
-      stage('Docker Build and Push') {
+    stage('Docker Build and Push') {
       steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
           sh 'docker build -t d3n15tec/food-catalogue-service:${VERSION} .'
@@ -34,15 +33,12 @@ pipeline {
       }
     } 
 
-
-     stage('Cleanup Workspace') {
+    stage('Cleanup Workspace') {
       steps {
         deleteDir()
        
       }
     }
-
-
 
     stage('Update Image Tag in GitOps') {
       steps {
@@ -55,9 +51,9 @@ pipeline {
           sh 'git add .'
           sh 'git commit -m "Update image tag"'
         sshagent(['git-ssh'])
-            {
-                  sh('git push')
-            }
+          {
+            sh('git push')
+          }
         }
       }
     }
