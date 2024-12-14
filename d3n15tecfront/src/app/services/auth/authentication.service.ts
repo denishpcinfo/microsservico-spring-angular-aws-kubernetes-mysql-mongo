@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { RegisterRequest } from 'src/app/shared/models/register-request.model';
 import { AuthenticationResponse } from 'src/app/shared/models/authentication-response.model';
@@ -6,14 +6,16 @@ import { AuthenticationRequest } from 'src/app/shared/models/authentication-requ
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { API_URL_UD } from 'src/app/constants/url';
+import { Subject, takeUntil } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class AuthenticationService implements OnDestroy {
 
   authRequest: AuthenticationRequest = {};
   authResponse: AuthenticationResponse = {};
+  private destroy$ = new Subject<void>();
 
   private baseUrl = API_URL_UD + '/autenticacao'
 
@@ -21,8 +23,14 @@ export class AuthenticationService {
                private toastr: ToastrService, 
                private router: Router  ) { }
 
+  ngOnDestroy() {
+  this.destroy$.next();
+  this.destroy$.complete();
+  }
+
   register(registerRequest: RegisterRequest) {
     return this.http.post<AuthenticationResponse>(`${this.baseUrl}/registrar`, registerRequest)
+    .pipe(takeUntil(this.destroy$))
     .subscribe({
       next: (response) => {
           this.authResponse = response;
@@ -37,6 +45,7 @@ export class AuthenticationService {
 
   login(authRequest: AuthenticationRequest) {
     return this.http.post<AuthenticationResponse>(`${this.baseUrl}/login`, authRequest)
+    .pipe(takeUntil(this.destroy$))
     .subscribe({
       next: (data) => {
         this.authResponse = data;

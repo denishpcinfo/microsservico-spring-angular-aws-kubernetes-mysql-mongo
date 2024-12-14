@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Restaurant } from 'src/app/shared/models/restaurant.model';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant-listing',
   templateUrl: './restaurant-listing.component.html',
   styleUrls: ['./restaurant-listing.component.css']
 })
-export class RestaurantListingComponent {
+export class RestaurantListingComponent implements OnDestroy {
 
   public restaurantList: Restaurant[] = [];
 
@@ -16,11 +17,17 @@ export class RestaurantListingComponent {
   public count = 0;
   public pageSize = 12;
   public pageSizes = [12, 24, 36];
+  private destroy$ = new Subject<void>();
 
   constructor(
     private router: Router, 
     private restaurantService: RestaurantService
     ) { }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   ngOnInit() {
     this.getAllRestaurantsPage();
@@ -54,6 +61,7 @@ export class RestaurantListingComponent {
     const params = this.getRequestParams(this.page, this.pageSize);
 
     this.restaurantService.getAll(params)
+    .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {
           const { restaurantList, totalItems } = data;
@@ -64,7 +72,9 @@ export class RestaurantListingComponent {
   }
 
     getAllRestaurants() {
-    this.restaurantService.getAllRestaurants().subscribe(
+    this.restaurantService.getAllRestaurants()
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(
       data => {
         this.restaurantList = data;
       }

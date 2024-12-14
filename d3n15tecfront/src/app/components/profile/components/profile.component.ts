@@ -1,17 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/shared/models/user.model';
 import { TelefonePipe } from 'src/app/shared/pipes/telefone/telefone.pipe';
 import { CpfPipe } from 'src/app/shared/pipes/cpf/cpf.pipe';
 import { UsersEditComponent } from '../../users-edit/components/users-edit.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnDestroy {
 
   @ViewChild("editarPerfil", { static: true })
   editarPerfil: UsersEditComponent;
@@ -19,6 +20,7 @@ export class ProfileComponent {
   public item: any;
   public user: any;
   public confirmPassword: any;
+  private destroy$ = new Subject<void>();
 
   constructor( private authTokenService: AuthTokenService,
                private profileService: ProfileService) {
@@ -28,6 +30,11 @@ export class ProfileComponent {
     }
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   ngOnInit() {
     this.getProfile();
   }
@@ -35,6 +42,7 @@ export class ProfileComponent {
   getProfile() {
     this.user = new User();
     this.profileService.getProfileId(this.item.sub)
+    .pipe(takeUntil(this.destroy$))
     .subscribe(
       (data: any[]) => {
         this.user = data;

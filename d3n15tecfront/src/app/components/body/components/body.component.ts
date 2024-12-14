@@ -1,15 +1,16 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { Restaurant } from 'src/app/shared/models/restaurant.model';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent implements OnInit, OnDestroy {
 
   public restaurantes: Restaurant[] = [];
   public stick: boolean = false;
@@ -96,8 +97,15 @@ export class BodyComponent implements OnInit {
     }
   }
 
+  private destroy$ = new Subject<void>();
+
   constructor(private restaurantService: RestaurantService,
               private router: Router ) { }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   ngOnInit() {
     this.buscarRestaurantesSlider();
@@ -117,7 +125,9 @@ export class BodyComponent implements OnInit {
   }
 
   buscarRestaurantesSlider(){
-    this.restaurantService.getRestaurantesCarrossel.subscribe(
+    this.restaurantService.getRestaurantesCarrossel
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(
       response => {
         this.restaurantes = response;
       }

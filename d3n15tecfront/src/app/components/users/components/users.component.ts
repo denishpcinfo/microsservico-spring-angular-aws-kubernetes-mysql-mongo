@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { UserList } from 'src/app/shared/models/user-list.model';
 import { UsersEditComponent } from '../../users-edit/components/users-edit.component';
@@ -6,13 +6,14 @@ import { User } from 'src/app/shared/models/user.model';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent {
+export class UsersComponent implements OnDestroy {
 
   @ViewChild("editarPerfil", { static: true })
   editarPerfil: UsersEditComponent;
@@ -45,6 +46,7 @@ export class UsersComponent {
   public checkedBuscaCPF = false;
   public checkedBuscaEmail = false;
   public newPlaceHolder = "Busque por nome";
+  private destroy$ = new Subject<void>();
 
   constructor( 
     private userService: UserService,
@@ -52,6 +54,11 @@ export class UsersComponent {
     private toastr: ToastrService
   ) {}
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+  
   ngOnInit() {
     this.ordenacaoNomeasc();
   }
@@ -60,6 +67,7 @@ export class UsersComponent {
     const params = this.getRequestParams(this.page, this.pageSize);
 
     this.userService.getAll(params)
+    .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {
           const { allUsuarios, totalItems } = data;
@@ -79,7 +87,9 @@ export class UsersComponent {
   }
 
   delete(){
-    this.profileService.deletar(this.idUserExcluir).subscribe({
+    this.profileService.deletar(this.idUserExcluir)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe({
       next: (data) => {
         this.toastr.success('Usuário deletado com sucesso!');
         const { allUsuarios, totalItems } = data;

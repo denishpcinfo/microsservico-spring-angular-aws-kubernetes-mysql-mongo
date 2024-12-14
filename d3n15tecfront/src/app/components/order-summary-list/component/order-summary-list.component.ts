@@ -1,15 +1,16 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { OrderDTO } from 'src/app/shared/models/order-DTO.model';
 import { OrderEditComponent } from '../../order-edit/components/order-edit.component';
 import { PedidoEditar } from 'src/app/shared/models/pedido-editar.model';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-order-summary-list',
   templateUrl: './order-summary-list.component.html',
   styleUrls: ['./order-summary-list.component.css']
 })
-export class OrderSummaryListComponent {
+export class OrderSummaryListComponent implements OnDestroy {
 
   @ViewChild("editarPedidoModal", { static: true })
   editarPedidoModal: OrderEditComponent;
@@ -47,10 +48,16 @@ export class OrderSummaryListComponent {
   public checkedBuscaNomeCliente = false;
   public checkedBuscaData = true;
   public newPlaceHolder = "Busque por número do pedido";
+  private destroy$ = new Subject<void>();
 
   constructor( 
     private orderService: OrderService
   ) {}
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   ngOnInit() {
     this.ordenacaoDataDesc();
@@ -59,6 +66,7 @@ export class OrderSummaryListComponent {
   getAllPedidosPage(): void {
     const params = this.getRequestParams(this.page, this.pageSize);
     this.orderService.getAll(params)
+    .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {
           const { allPedidos, totalItems } = data;

@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ToastrService } from 'ngx-toastr';
 import { OrderService } from 'src/app/services/order.service';
 import { OrderDTO } from 'src/app/shared/models/order-DTO.model';
 import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-order-summary-list-user',
   templateUrl: './order-summary-list-user.component.html',
   styleUrls: ['./order-summary-list-user.component.css']
 })
-export class OrderSummaryListUserComponent {
+export class OrderSummaryListUserComponent implements OnDestroy {
 
   public tableItemPedido: OrderDTO[] = [];
   public buscaNomeString = null;
@@ -43,6 +44,7 @@ export class OrderSummaryListUserComponent {
   public checkedBuscaData = true;
   public newPlaceHolder = "Busque por número do pedido";
   public item: any;
+  private destroy$ = new Subject<void>();
 
   constructor( 
     private orderService: OrderService,
@@ -50,6 +52,11 @@ export class OrderSummaryListUserComponent {
     private toastr: ToastrService,
     private authTokenService: AuthTokenService
   ) {}
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   ngOnInit() {
     if(this.authTokenService.getToken != null){
@@ -61,6 +68,7 @@ export class OrderSummaryListUserComponent {
   getAllPedidosPage(): void {
     const params = this.getRequestParams(this.page, this.pageSize);
     this.orderService.getAllUser(params)
+    .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {
           const { allPedidos, totalItems } = data;

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/shared/models/user.model';
@@ -9,7 +10,7 @@ import { User } from 'src/app/shared/models/user.model';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
 
   public sidebar: any;
   public closeBtn: any;
@@ -19,10 +20,16 @@ export class SidebarComponent implements OnInit {
   public item: any;
   public isAdmin = false;
   public isUser = false;
+  private destroy$ = new Subject<void>();
 
   constructor( private router: Router,
                private profileService: ProfileService,
                private authTokenService: AuthTokenService ) { }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   ngOnInit(){
     this.sidebar = document.querySelector(".sidebar");
@@ -55,6 +62,7 @@ export class SidebarComponent implements OnInit {
   getProfile() {
     this.user = new User();
     this.profileService.getProfileId(this.item.sub)
+    .pipe(takeUntil(this.destroy$))
     .subscribe(
       (data: any[]) => {
         this.user = data;

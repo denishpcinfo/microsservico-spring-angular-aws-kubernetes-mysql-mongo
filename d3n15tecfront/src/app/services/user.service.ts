@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { API_URL_UD } from 'src/app/constants/url';
 import { User } from '../shared/models/user.model';
 import { ProfileService } from './profile.service';
@@ -10,17 +10,23 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnDestroy {
 
   private apiUrl = API_URL_UD + '/users/'; 
   public item: any;
   public user: any;
+  private destroy$ = new Subject<void>();
 
   constructor(private http: HttpClient,
               private profileService: ProfileService,
               private authTokenService: AuthTokenService,
               private router: Router) { }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }       
+         
   getAll(params: any): Observable<any> {
     return this.http.get<any>(this.apiUrl + 'todos-usuarios', { params });
   }
@@ -31,7 +37,9 @@ export class UserService {
     }
 
     this.user = new User();
-    this.profileService.getProfileId(this.item.sub).subscribe(
+    this.profileService.getProfileId(this.item.sub)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(
     (data: any[]) => {
         this.user = data;
     })

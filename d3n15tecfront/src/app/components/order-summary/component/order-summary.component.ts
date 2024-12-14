@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthTokenService } from 'src/app/services/auth/auth-token.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -6,13 +6,14 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { OrderDTO } from 'src/app/shared/models/order-DTO.model';
 import { User } from 'src/app/shared/models/user.model';
 import { ToastrService } from 'ngx-toastr';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-order-summary',
   templateUrl: './order-summary.component.html',
   styleUrls: ['./order-summary.component.css']
 })
-export class OrderSummaryComponent {
+export class OrderSummaryComponent implements OnDestroy {
 
   public orderSummary?: OrderDTO;
   public obj: any;
@@ -22,6 +23,7 @@ export class OrderSummaryComponent {
   public user: any;
   public isAdmin = false;
   public isUser = false;
+  private destroy$ = new Subject<void>();
 
   constructor(private route: ActivatedRoute, 
               private orderService: OrderService, 
@@ -33,6 +35,11 @@ export class OrderSummaryComponent {
     if(authTokenService.getToken != null){
       this.item = authTokenService.decodePayloadJWT();
     }              
+  }
+  
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
   
   ngOnInit() {
@@ -52,6 +59,7 @@ export class OrderSummaryComponent {
   getProfile() {
     this.user = new User();
     this.profileService.getProfileId(this.item.sub)
+    .pipe(takeUntil(this.destroy$))
     .subscribe(
       (data: any[]) => {
         this.user = data;
@@ -70,6 +78,7 @@ export class OrderSummaryComponent {
     this.orderSummary.valorTotal = this.total;
 
     this.orderService.saveOrder(this.orderSummary)
+    .pipe(takeUntil(this.destroy$))
       .subscribe(
         response => {
             this.showDialog = true;

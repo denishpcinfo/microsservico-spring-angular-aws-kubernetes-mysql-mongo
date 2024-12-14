@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import {  API_URL_ORDER } from 'src/app/constants/url'; 
 import { PedidoEditar } from '../shared/models/pedido-editar.model';
 import { ToastrService } from 'ngx-toastr';
@@ -9,13 +9,19 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 
-export class OrderService {
+export class OrderService implements OnDestroy {
 
   private apiUrl = API_URL_ORDER +'/pedido/';
+  private destroy$ = new Subject<void>();
 
   constructor(private http: HttpClient,
               private toastr: ToastrService) { }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }    
+          
   saveOrder(data: any):Observable<any>  {
     return this.http.post<any>(this.apiUrl + 'salvar-pedido', data);
   }
@@ -29,7 +35,9 @@ export class OrderService {
   }
 
   atualizar(orderDetails: PedidoEditar) {
-    return this.http.put<any>(`${this.apiUrl}atualizar-pedido`, orderDetails)    .subscribe({
+    return this.http.put<any>(`${this.apiUrl}atualizar-pedido`, orderDetails)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe({
       next: () => {
           this.toastr.success('Pedido atualizado com sucesso!');
       },

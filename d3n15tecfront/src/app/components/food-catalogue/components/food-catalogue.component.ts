@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subject, takeUntil } from 'rxjs';
 import { FoodItemService } from 'src/app/services/fooditem.service';
 import { FoodCataloguePage } from 'src/app/shared/models/food-catalogue-page.model';
 import { FoodItemPedido } from 'src/app/shared/models/food-item-pedido.model';
@@ -10,7 +11,7 @@ import { FoodItemPedido } from 'src/app/shared/models/food-item-pedido.model';
   templateUrl: './food-catalogue.component.html',
   styleUrls: ['./food-catalogue.component.css']
 })
-export class FoodCatalogueComponent {
+export class FoodCatalogueComponent implements OnDestroy {
 
   public restaurantId: number;
   public foodItemResponse: FoodCataloguePage;
@@ -20,22 +21,31 @@ export class FoodCatalogueComponent {
   public descricaoRestaurante: string;
 
   public cardapioRestaurante: FoodItemPedido[] = [];
-
+  private destroy$ = new Subject<void>();
 
   constructor(private route: ActivatedRoute, 
               private foodItemService: FoodItemService, 
               private router: Router,
               private toastr: ToastrService) { }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(params => {
       this.restaurantId = + params.get('id');
     });
     this.getFoodItemsByRestaurant(this.restaurantId);
   }
 
   getFoodItemsByRestaurant(restaurant: number) {
-    this.foodItemService.getFoodItemsByRestaurant(restaurant).subscribe(
+    this.foodItemService.getFoodItemsByRestaurant(restaurant)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(
       data => {
         this.foodItemResponse = data;
         this.nomeRestaurante = data.restaurant.name;
