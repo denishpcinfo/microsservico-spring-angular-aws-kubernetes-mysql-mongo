@@ -4,7 +4,7 @@ import com.d3n15tec.order.dto.OrderDTOFromFE;
 import com.d3n15tec.order.dto.UserDTO;
 import com.d3n15tec.order.entity.Order;
 import com.d3n15tec.order.enums.StatusPedido;
-import com.d3n15tec.order.repo.OrderRepo;
+import com.d3n15tec.order.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.Map;
 public class OrderService {
 
     @Autowired
-    OrderRepo orderRepo;
+    OrderRepository orderRepository;
 
     @Autowired
     SequenceGenerator sequenceGenerator;
@@ -37,7 +38,7 @@ public class OrderService {
         LocalDateTime dataAtual = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
         Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                 orderDetails.getUser(), dataAtual, StatusPedido.PEDIDO_REALIZADO.getDescricao(), orderDetails.getValorTotal());
-        orderToBeSaved = orderRepo.save(orderToBeSaved);
+        orderToBeSaved = orderRepository.save(orderToBeSaved);
         return orderToBeSaved;
     }
 
@@ -48,35 +49,35 @@ public class OrderService {
         if(orderDetails.getStatusPedido().equals(StatusPedido.PEDIDO_REALIZADO.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PEDIDO_REALIZADO.getDescricao(), orderDetails.getValorTotal());
-            orderToBeSaved = orderRepo.save(orderToBeSaved);
+            orderToBeSaved = orderRepository.save(orderToBeSaved);
             return orderToBeSaved;
         }
 
         if(orderDetails.getStatusPedido().equals(StatusPedido.PREPARANDO_PEDIDO.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PREPARANDO_PEDIDO.getDescricao(), orderDetails.getValorTotal());
-            orderToBeSaved = orderRepo.save(orderToBeSaved);
+            orderToBeSaved = orderRepository.save(orderToBeSaved);
             return orderToBeSaved;
         }
 
         if(orderDetails.getStatusPedido().equals(StatusPedido.PEDIDO_RETIRADO_ENTREGADOR.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PEDIDO_RETIRADO_ENTREGADOR.getDescricao(), orderDetails.getValorTotal());
-            orderToBeSaved = orderRepo.save(orderToBeSaved);
+            orderToBeSaved = orderRepository.save(orderToBeSaved);
             return orderToBeSaved;
         }
 
         if(orderDetails.getStatusPedido().equals(StatusPedido.PEDIDO_ENTREGUE.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PEDIDO_ENTREGUE.getDescricao(), orderDetails.getValorTotal());
-            orderToBeSaved = orderRepo.save(orderToBeSaved);
+            orderToBeSaved = orderRepository.save(orderToBeSaved);
             return orderToBeSaved;
         }
 
         if(orderDetails.getStatusPedido().equals(StatusPedido.PEDIDO_CANCELADO.getDescricao())){
             Order orderToBeSaved = new Order(newOrderID, orderDetails.getFoodItemsList(), orderDetails.getRestaurant(),
                     orderDetails.getUser(), dataAtual, StatusPedido.PEDIDO_CANCELADO.getDescricao(), orderDetails.getValorTotal());
-            orderToBeSaved = orderRepo.save(orderToBeSaved);
+            orderToBeSaved = orderRepository.save(orderToBeSaved);
             return orderToBeSaved;
         }
 
@@ -557,31 +558,31 @@ public class OrderService {
     }
 
     public Page<Order> getAllPedidosUserEmail(String email, Pageable paging) {
-        return orderRepo.getAllPedidosUserEmail(email, paging);
+        return orderRepository.getAllPedidosUserEmail(email, paging);
     }
 
     public Page<Order> getAllUsuariosBuscaDataAsc(Pageable pageable) {
-        return orderRepo.findAll(pageable);
+        return orderRepository.findAll(pageable);
     }
 
     public Page<Order> findByRestaurantName(String busca, Pageable paging) {
-        return orderRepo.findByRestaurantName(busca, paging);
+        return orderRepository.findByRestaurantName(busca, paging);
     }
 
     public Page<Order> findByOrderId(Pageable paging, String busca) {
-        return orderRepo.findByOrderId(paging, Integer.valueOf(busca));
+        return orderRepository.findByOrderId(paging, Integer.valueOf(busca));
     }
 
     public Page<Order> findByOrderIdAndUserEmail(String busca, String email, Pageable paging ) {
-        return orderRepo.findByOrderIdAndUserEmail(Integer.valueOf(busca), email, paging );
+        return orderRepository.findByOrderIdAndUserEmail(Integer.valueOf(busca), email, paging );
     }
 
     public Page<Order> findByRestaurantNameAndUserEmail(String restaurantName, String email, Pageable paging ) {
-        return orderRepo.findByRestaurantNameAndUserEmail(restaurantName, email, paging );
+        return orderRepository.findByRestaurantNameAndUserEmail(restaurantName, email, paging );
     }
 
     public Page<Order> findByUserDTONome(String busca, Pageable paging) {
-        return orderRepo.findByUserDTONome(busca, paging);
+        return orderRepository.findByUserDTONome(busca, paging);
     }
 
     public Map<String, Object> buscarPorDataUser(String email, int page, int size, String sort, String busca){
@@ -932,5 +933,14 @@ public class OrderService {
             return response;
         }
         return buscarPorDataUser(email, page, size, sort, busca);
+    }
+
+
+    public List<Order> getOrdersForToday(String statusPedido) {
+        LocalDate today = LocalDate.now(ZoneId.systemDefault());
+        LocalDateTime startOfDay = today.atStartOfDay();
+        LocalDateTime endOfDay = startOfDay.plusDays(1);
+
+        return orderRepository.findOrdersByDateAndStatus(startOfDay, endOfDay, statusPedido);
     }
 }

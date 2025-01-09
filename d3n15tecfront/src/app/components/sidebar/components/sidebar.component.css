@@ -23,7 +23,7 @@
   font-size: 40px !important;
 } 
 
-.sidebar{
+.sidebar {
   position: fixed;
   left: 0;
   top: 0;
@@ -34,8 +34,18 @@
   z-index: 99;
   transition: all 0.5s ease;
   font-family: 'Titillium Web', sans-serif;
-  border:2px solid #000000 !important;
+  border: 2px solid #000000 !important;
   cursor: pointer;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+}
+
+.nav-list {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .sidebar.open{
@@ -223,24 +233,12 @@
   border-radius: 12px;
 }
 
-.sidebar li.profile{
-  position: fixed;
-  height: 60px;
-  width: 78px;
-  left: 0;
-  bottom: -8px;
-  padding: 10px 14px;
-  background: #ffffff;
-  transition: all 0.5s ease;
-  overflow: hidden;
-  font-family: 'Titillium Web', sans-serif;
-  border-right:2px solid #000000 !important;
-  border-left:2px solid #000000 !important;
-  border-bottom: 2px solid #000000 !important;
-  cursor: pointer;
+.nav-list li.profile {
+  margin-top: auto;
+  bottom: -50%;
 }
 
-.sidebar.open li.profile{
+.sidebar.open li .profile{
   width: 250px;
 }
 
@@ -258,15 +256,15 @@
   margin-right: 10px;
 }
 
-.sidebar li.profile .name,
-.sidebar li.profile .job{
+.sidebar li .profile .name,
+.sidebar li .profile .job{
   font-size: 15px;
   font-weight: 400;
   color: #fff;
   white-space: nowrap;
 }
 
-.sidebar li.profile .job{
+.sidebar li .profile .job{
   font-size: 12px;
 }
 

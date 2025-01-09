@@ -61,13 +61,19 @@
                                 };
                                 let i = index" class="tr-mobile tr-position-mobile quebra">
                                 <td class="td-mobile align-center-div">
-                                    <button mat-raised-button (click)="editarUsuario(item)">
-                                        <i class='fa fa-edit'></i>
-                                    </button>
+                                    <div class="tooltip-container">
+                                        <button mat-raised-button (click)="editarUsuario(item)" class="tooltip-button">
+                                            <i class='fa fa-edit'></i>
+                                            <span class="tooltip-text">Editar Usuário</span>
+                                        </button>
+                                    </div>
 
-                                    <button mat-raised-button (click)="excluirUser(item)">
-                                        <i class='fa fa-trash-o'></i>
-                                    </button>
+                                    <div class="tooltip-container">
+                                        <button mat-raised-button (click)="excluirUser(item)" class="tooltip-button">
+                                            <i class='fa fa-trash-o'></i>
+                                            <span class="tooltip-text">Excluir Usuário</span>
+                                        </button>
+                                    </div>
                                 </td>
                                 <td class="align-center-div">
                                     {{item.nome}}

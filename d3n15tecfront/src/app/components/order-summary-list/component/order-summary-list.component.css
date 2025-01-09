@@ -2,6 +2,50 @@
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-button {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.tooltip-text {
+    margin: 0px 0px 5px -50px;
+    pointer-events: none;
+    visibility: hidden;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    border-radius: 4px;
+    padding: 6px 12px;
+    position: absolute;
+    z-index: 3;
+    bottom: 125%;
+    left: calc(100% + 15px);
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 0s;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.4s ease;
+    transform: translateY(-10%);
+    pointer-events: auto;
+}
+
 div{
     border: 0;
     font-family: 'Titillium Web', sans-serif;

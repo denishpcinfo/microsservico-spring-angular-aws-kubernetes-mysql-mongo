@@ -71,10 +71,13 @@
                                 let i = index" class="tr-mobile tr-position-mobile quebra">
 
                                 <td class="td-mobile align-center-div">
-                                    <button mat-raised-button
-                                        (click)="editarPedido(item)">
-                                        <i class='fa fa-edit f-12'></i>
-                                    </button>
+                                    <div class="tooltip-container">
+                                        <button mat-raised-button
+                                            (click)="editarPedido(item)" class="tooltip-button">
+                                            <i class='fa fa-edit f-12'></i>
+                                            <span class="tooltip-text">Editar Pedido</span>
+                                        </button>
+                                    </div>
                                 </td>
 
                                 <td class="align-center-div">
