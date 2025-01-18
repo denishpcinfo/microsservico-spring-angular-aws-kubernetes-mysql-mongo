@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: profile-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/profile/**
+
+        - id: user-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/users/**
+
+        - id: food-catalogue-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/catalogo-food/**
+
+        - id: order-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/pedido/**
+  kafka:
+    bootstrap-servers: localhost:9092
+    topic: api-events
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
