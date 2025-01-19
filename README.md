@@ -22,4 +22,4 @@ O arquivo "sql projeto microservice" na raiz do projeto, possui os SQLs para pop
 ![Captura de tela de 2024-04-13 22-32-48](https://github.com/denishpcinfo/microsservico-spring-angular-aws-kubernetes-mysql-mongo/assets/17712719/0d02d4c7-6904-4ad5-9a15-d50f9f20b1ec)
 
 
-Obs:Projeto em desenvolvimento, implementando kafka!
+Obs:Projeto em desenvolvimento, implementando melhorias!

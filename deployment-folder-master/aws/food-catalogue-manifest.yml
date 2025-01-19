@@ -19,7 +19,7 @@ spec:
           image: denishpcinfo/food-catalogue-service:0.0.1
           imagePullPolicy: Always
           ports:
-            - containerPort: 9092
+            - containerPort: 9095
 
           env:
             - name: SPRING_DATASOURCE_USERNAME
@@ -47,7 +47,7 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 9092
-      targetPort: 9092
+      port: 9095
+      targetPort: 9095
   selector:
     app: foodcatalogueapp

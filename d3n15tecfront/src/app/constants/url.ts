@@ -1,6 +1,6 @@
 export const API_URL_RL ='http://localhost:9091/api';
 export const API_URL_ORDER ='http://localhost:9094/api';
-export const API_URL_FC ='http://localhost:9092/api';
+export const API_URL_FC ='http://localhost:9095/api';
 export const API_URL_UD ='http://localhost:9093/api';
 
 

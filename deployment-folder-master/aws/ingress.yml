@@ -41,7 +41,7 @@ spec:
               service:
                 name: foodcatalogue-service
                 port:
-                  number: 9092
+                  number: 9095
 
           - path: /api/pedido
             pathType: Prefix

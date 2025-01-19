@@ -27,7 +27,7 @@ spring:
           predicates:
             - Path=/api/pedido/**
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:9095
     topic: api-events
 
 logging:
