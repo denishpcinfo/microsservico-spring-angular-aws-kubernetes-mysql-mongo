@@ -4,6 +4,7 @@ import com.d3n15tecback.dto.UserDTO;
 import com.d3n15tecback.repository.UserRepository;
 import com.d3n15tecback.service.UserService;
 import com.d3n15tecback.service.exception.AcaoNaoPermitidaException;
+import com.d3n15tecback.service.kafka.KafkaEventProducer;
 import com.d3n15tecback.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ public class ProfileController {
 
     private final UserRepository userRepository;
     private final UserService userService;
+    private final KafkaEventProducer kafkaEventProducer;
 
     @GetMapping("/{item}")
     public ResponseEntity<User> getUser(@PathVariable("item") String item) throws AcaoNaoPermitidaException {
@@ -28,7 +30,9 @@ public class ProfileController {
     @PutMapping("/atualizar-cadastro")
     public ResponseEntity<User> atualizarUser(@RequestBody UserDTO userNovo) throws AcaoNaoPermitidaException {
         userService.atualizarUser(userNovo);
-        return null;
+        //kafkaEventProducer.sendEvent("api-events", "Usuário atualizado: " + userNovo.toString());
+        //System.out.println("Mensagem enviada para o Gateway:");
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
