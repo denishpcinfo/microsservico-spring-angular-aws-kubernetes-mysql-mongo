@@ -30,8 +30,8 @@ public class ProfileController {
     @PutMapping("/atualizar-cadastro")
     public ResponseEntity<User> atualizarUser(@RequestBody UserDTO userNovo) throws AcaoNaoPermitidaException {
         userService.atualizarUser(userNovo);
-        //kafkaEventProducer.sendEvent("api-events", "Usuário atualizado: " + userNovo.toString());
-        //System.out.println("Mensagem enviada para o Gateway:");
+//        System.out.println("Mensagem enviada para o Gateway:");
+//        kafkaEventProducer.sendEvent("api-events", "Usuário atualizado: " + userNovo.toString());
         return ResponseEntity.ok().build();
     }
 

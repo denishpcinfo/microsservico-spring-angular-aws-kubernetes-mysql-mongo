@@ -12,14 +12,13 @@ public class KafkaMessageConsumer {
     @Autowired
     private MessageForwarder messageForwarder;
 
-    @KafkaListener(topics = {"user-events", "order-events"}, groupId = "gateway-group")
+    @KafkaListener(topics = {"api-events"}, groupId = "gateway-group")
     public void consume(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {
         System.out.println("Mensagem recebida no Gateway:");
         System.out.println("Tópico: " + record.topic());
         System.out.println("Mensagem: " + record.value());
 
-        messageForwarder.forwardMessage(record.value());
-
+        //messageForwarder.forwardMessage(record.value());
         acknowledgment.acknowledge();
     }
 }
