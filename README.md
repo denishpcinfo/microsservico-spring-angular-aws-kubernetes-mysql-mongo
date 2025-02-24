@@ -1,6 +1,5 @@
 # Projeto de Microsserviço com Spring Cloud, Kubernetes, Docker(Docker Hub), Eureka, Spring (3.1.6 e 2.7.12), Maven, Angular 16, My SQL, MongoDB, AWS(IAM, EC2, EKS e RDS), Jenkins CD, Argo DC e Github(Git Hooks).
 
-Visão Geral
 Este projeto implementa uma arquitetura de microsserviços utilizando Spring Cloud, Kubernetes e Docker para entrega e escalabilidade. Os microsserviços são escritos em Spring Boot (versões 3.1.6 e 2.7.12) e se comunicam via Eureka Service Discovery.
 
 O frontend é desenvolvido em Angular 16 e a solução utiliza MySQL e MongoDB como bancos de dados. A infraestrutura é provisionada na AWS utilizando IAM, EC2, EKS e RDS. O ciclo de vida da aplicação é gerenciado com Jenkins CD, ArgoCD e Git Hooks.
